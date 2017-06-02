@@ -1,0 +1,234 @@
+@import "bootstrap";
+
+/*=======================================================
+COLORS
+=======================================================*/
+
+$white: #fff;
+$light-gray: #fcfcfc;
+$gray: #f2f2f2;
+$light-black: #a4a4a4;
+$black: #585858;
+
+/* Budget section styling */
+$green: #A9F5A9;
+$blue: #8EE1FA;
+$red: #F5A9A9;
+
+.budget-color-fixed{
+  color: $blue !important;
+}
+
+.budget-color-variable{
+  color: $red !important;
+}
+
+.budget-color-savings{
+  color: $green !important;
+}
+
+
+/*=======================================================
+MEASUREMENTS
+=======================================================*/
+
+$navbar-height: 10vh;
+$main-padding:2vh;
+
+/*=======================================================
+MIXINS
+=======================================================*/
+
+@mixin dotted-bottom-border {
+  border-bottom: 1px dotted $light-black;
+}
+
+/*=======================================================
+GENERAL
+=======================================================*/
+
+html{
+  max-height:100vh;
+  overflow:hidden;
+  background-color:$light-gray !important;
+  width:100%;
+}
+
+html, body, main, h1, h2, h3, h4, h5, h6{
+  background-color:$light-gray;
+}
+
+main{
+  max-width:1300px;
+  display:block;
+  margin:auto;
+  margin-top: 8vh !important;
+}
+
+.bold{
+  font-weight:900 !important;
+  color: $black;
+}
+
+/*=======================================================
+NAVBAR
+=======================================================*/
+
+nav{
+  margin-bottom:20px !important;
+  border-radius:0px !important;
+
+  a{
+    text-transform: uppercase;
+    font-weight:500;
+    letter-spacing: 0.05em;
+  }
+}
+
+
+
+/*=======================================================
+BUDGET
+=======================================================*/
+
+
+.budget-table {
+  border: 1px solid #f2f2f2;
+  border-radius: 4px;
+  padding: 20px 5% 20px 5%;
+  border-collapse: collapse !important;
+  display:inline-block;
+  overflow:scroll;
+  height:100vh - $navbar-height + 2vh;
+  background-color: $white;
+
+  .budget-section-total{
+    font-size: 1.1em;
+    margin-bottom:5px;
+    margin-top:20px;
+
+    th{
+      padding: 10px 0px;
+    }
+  }
+
+  .budget-section-percent{
+      font-size:1.3em;
+  }
+
+  tr{
+    margin-left:10px;
+  }
+
+    #fixed-expenses-total{
+      border-bottom: 3px solid $blue !important;
+      color: $blue;
+    }
+
+    #savings-total{
+      border-bottom: 3px solid $green !important;
+      color: $green;
+    }
+
+    #variable-expenses-total{
+      border-bottom: 3px solid $red !important;
+      color: $red;
+    }
+
+
+
+
+  @mixin table-cell{
+    @include dotted-bottom-border;
+  }
+
+  td{
+     @include table-cell;
+  }
+
+  input{
+    border:none !important;
+    padding:10px 5px;
+
+    &:focus{
+
+    }
+  }
+
+      .table-desc{
+        width:150px;
+        font-weight:200;
+
+        input{
+          padding-left: 20px !important;
+          width:100%;
+        }
+      }
+      .table-currency{
+        text-align:left;
+        width:75px;
+        font-weight:200;
+
+        .dollar-sign{
+          padding-right:3px;
+          width:12px
+        }
+
+        input{
+          width:60px;
+        }
+      }
+
+      .table-icon{
+        border:none !important;
+        color:$light-black;
+        width:30px;
+
+        a{
+          text-decoration: none;
+        }
+      }
+
+      .table-checkbox{
+        @extend .table-icon;
+        width:90px;
+
+        input{
+          display:inline;
+          margin-left:6px;
+        }
+      }
+
+      .table-gap{
+        border:none !important;
+        width: 20px !important;
+      }
+
+      .table-gap-row{
+        @extend .table-gap;
+        height:3vh;
+      }
+
+}
+
+
+
+/*====================================================
+FONT AWESOME
+====================================================*/
+
+.fa{
+  color:$light-black;
+  display:block;
+  margin:auto;
+
+  &:hover{
+    color: $black;
+    cursor:pointer;
+    text-decoration: none;
+  }
+}
+
+
+
+
