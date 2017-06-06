@@ -1,0 +1,130 @@
+<div class="col-lg-6">
+  <table class="budget-table">
+    <!-- Fixed Expenses -->
+      <tr id="fixed-expenses-total" class="budget-section-total">
+        <th class="table-gap">
+          <button {{action 'handleCreateExpense' 'fixed'}} >
+            {{fa-icon "plus-circle"
+              width='40px'
+              class="budget-color-fixed"
+              fixedWidth=true
+            }}
+          </button>
+        </th>
+
+        <th class="bold table-desc">Fixed Expenses</th>
+        <th class="table-gap"></th>
+        <th class="bold table-currency">{{format-currency totalFixedExpenses}}</th>
+        <th class="budget-section-percent">{{percentFixed}}%</th>
+
+        <th class="table-icon toggle-expense-list">
+          {{#if showFixedExpenses}}
+            <button {{action 'toggleExpenses' 'fixed'}}>{{fa-icon "caret-down" fixedWidth=true}}</button>
+          {{else}}
+            <button {{action 'toggleExpenses' 'fixed'}}>{{fa-icon "caret-left" fixedWidth=true}}</button>
+          {{/if}}
+        </th>
+
+      </tr>
+
+      {{#if showFixedExpenses}}
+        {{#each fixedExpenses as |expense| }}
+          {{budget-expense
+            expense=expense
+            passUpEditedExpense=(action 'passUpEditedExpense')
+            passUpDeletedExpense=(action 'passUpDeletedExpense')
+          }}
+        {{/each}}
+      {{/if}}
+
+      <tr class="table-gap-row"></tr>
+      <!-- End Fixed Expenses -->
+
+      <!-- Savings -->
+        <tr id="savings-total" class="budget-section-total">
+
+         <th class="table-gap">
+            <button {{action 'handleCreateExpense' 'saving'}} >
+              {{fa-icon "plus-circle"
+                width='40px'
+                class="budget-color-savings"
+                fixedWidth=true
+              }}
+            </button>
+          </th>
+
+          <th class="bold table-desc">Savings</th>
+          <th class="table-gap"></th>
+          <th class="bold table-currency">{{format-currency totalSavings}}</th>
+          <th class="budget-section-percent">{{percentSavings}}%</th>
+
+          <th class="table-icon toggle-expense-list">
+            {{#if showSavings}}
+              <button {{action 'toggleExpenses' 'saving'}}>{{fa-icon "caret-down" fixedWidth=true}}</button>
+            {{else}}
+              <button {{action 'toggleExpenses' 'saving'}}>{{fa-icon "caret-left" fixedWidth=true}}</button>
+            {{/if}}
+          </th>
+
+        </tr>
+
+        {{#if showSavings}}
+          {{#each savingExpenses as |expense| }}
+            {{budget-expense
+              expense=expense
+              passUpEditedExpense=(action 'passUpEditedExpense')
+              passUpDeletedExpense=(action 'passUpDeletedExpense')
+            }}
+          {{/each}}
+        {{/if}}
+
+      <tr class="table-gap-row"></tr>
+      <!-- End Savings -->
+
+
+      <!-- Variable Expenses -->
+        <tr id="variable-expenses-total" class="budget-section-total">
+          <th class="table-gap">
+            <button {{action 'handleCreateExpense' 'variable'}} >
+              {{fa-icon "plus-circle"
+                width='40px'
+                class="budget-color-variable"
+                fixedWidth=true
+              }}
+            </button>
+          </th>
+
+          <th class="bold table-desc">Variable Expenses</th>
+          <th class="table-gap"></th>
+          <th class="bold table-currency">{{format-currency totalVariableExpenses}}</th>
+          <th class="budget-section-percent">{{percentVariable}}%</th>
+
+          <th class="table-icon toggle-expense-list">
+            {{#if showVariableExpenses}}
+              <button {{action 'toggleExpenses' 'variable'}}>{{fa-icon "caret-down" fixedWidth=true}}</button>
+            {{else}}
+              <button {{action 'toggleExpenses' 'variable'}}>{{fa-icon "caret-left" fixedWidth=true}}</button>
+            {{/if}}
+          </th>
+
+        </tr>
+
+        {{#if showVariableExpenses}}
+          {{#each variableExpenses as |expense| }}
+            {{budget-expense
+              expense=expense
+              passUpEditedExpense=(action 'passUpEditedExpense')
+              passUpDeletedExpense=(action 'passUpDeletedExpense')
+            }}
+          {{/each}}
+        {{/if}}
+
+      <tr class="table-gap-row"></tr>
+     <!-- End Variable Expenses -->
+
+  </table>
+</div>
+
+<div class="col-lg-6">
+  <h3>{{totalExpenses}}</h3>
+</div>
