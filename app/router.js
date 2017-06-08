@@ -8,6 +8,9 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('budget');
+  this.route('guides', function() {
+    this.route('estimate-take-home-pay', function() {});
+  });
 });
 
 export default Router;

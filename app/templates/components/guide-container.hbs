@@ -1,0 +1,44 @@
+<div class="{{if sidebarOpen "toggled"}}" id="wrapper">
+
+  {{guide-sidebar guide=guideInfo}}
+
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+
+      <!-- navbar -->
+      <div class="row">
+        <div class="col-lg-12">
+          <button {{action 'toggleSidebar'}}>
+            {{#if sidebarOpen}}
+              {{fa-icon "caret-square-o-left"
+                class="guide-sidebar-toggle fa-2x"
+              }}
+            {{else}}
+              {{fa-icon "caret-square-o-right"
+                class="guide-sidebar-toggle fa-2x"
+              }}
+            {{/if}}
+          </button>
+
+          {{#link-to 'index'}}
+            {{fa-icon "home"
+              id="guide-home-icon"
+              class="fa-2x"
+            }}
+          {{/link-to}}
+        </div>
+      </div>
+      <!-- /navbar -->
+
+      <!-- child route template (outlet)  -->
+      <div class="row guide-content">
+        <div class="col-lg-12">
+          {{yield}}
+        </div>
+      </div>
+      <!-- #/child route template  -->
+
+    </div>
+  </div>
+</div>
+

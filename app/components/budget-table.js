@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  //properties for budget table component
   amountArray: [],
   totalExpenses: 0,
   fixedExpenses: 0,
@@ -44,6 +43,7 @@ export default Ember.Component.extend({
       }
 
       let createExpenseAction = this.get('createExpense');
+
       createExpenseAction(type).then((newExpenseList) => {
         this.set('expenses', newExpenseList);
       })

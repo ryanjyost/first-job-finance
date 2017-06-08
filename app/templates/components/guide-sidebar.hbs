@@ -1,0 +1,24 @@
+
+<div id="sidebar-wrapper">
+  <ul class="sidebar-nav">
+    <div class="guide-title-container">
+      <h3 id="guide-title">{{guide.title}}</h3>
+    </div>
+
+    {{#each guide.modules as |module| }}
+
+      {{#link-to 'index' tagName="li" class="sidebar-module"}}
+        <h4 class="sidebar-module-name">{{module.name}}</h4>
+      {{/link-to}}
+
+
+      {{#each module.sections as |section| }}
+        {{#link-to 'index' tagName="li" class="sidebar-section"}}
+          <h4 class="sidebar-section-name">{{section.name}}</h4>
+        {{/link-to}}
+      {{/each}}
+
+    {{/each}}
+  </ul>
+</div>
+
