@@ -19,8 +19,8 @@ export default Ember.Controller.extend({
               infoLink: ''}
           )
 
-          this.get('repo').add(newExpense);
-          resolve(this.get('repo').findAll());
+          this.get('repo').addExpense(newExpense);
+          resolve(this.get('repo').findAll('expenses'));
         }
 
       })
@@ -29,11 +29,11 @@ export default Ember.Controller.extend({
     },
 
     editExpense(expense){
-      this.get('repo').persist()
+      this.get('repo').persist('expenses')
     },
 
     deleteExpense(expense){
-      this.get('repo').delete(expense);
+      this.get('repo').deleteExpense(expense);
     },
   }
 

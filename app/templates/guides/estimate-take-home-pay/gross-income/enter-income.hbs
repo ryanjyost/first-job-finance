@@ -1,0 +1,24 @@
+{{log model}}
+<button class="{{if model.isPaidHourly 'testing'}}">
+  Salary
+</button>
+
+<button>
+  Hourly
+</button>
+
+<br><br>
+
+
+
+{{input annualIncome type='number' placeholder='Enter Income' key-up='updateAnnualIncome' value=model.annualIncome}}
+
+<br><br>
+
+{{input hourlyWage type='number' placeholder='Enter Hourly Wage' key-up='updateHourlyWage' value=model.hourlyWage}}
+<br>
+{{input workingHoursPerWeek type='number' placeholder='Enter Hours Working per week' key-up='updateIncome' value=model.workingHoursPerWeek}}
+<br>
+{{input workingWeeksPerYear type='number' placeholder='Enter Income' key-up='updateIncome' value=model.workingWeeksPerYear}}
+
+

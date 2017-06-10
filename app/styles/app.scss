@@ -9,12 +9,16 @@ $light-gray: #fcfcfc;
 $gray: #f2f2f2;
 $medium-gray: #D8D8D8;
 $dark-gray: #bdbdbd;
-
 $light-black: #a4a4a4;
-$black: #585858;
+$medium-black: #6E6E6E;
+$dark-black: #585858;
+$black: #2E2E2E;
+
+$light-blue: #D7F7FF;
 $blue: #00c0f3;
-$light-blue: #8BDAF0;
+$medium-blue: #8BDAF0;
 $blue-gray: #537289;
+$blue-grayer: #658AA6;
 
 /* Budget section styling */
 $green: #A9F5A9;
@@ -64,6 +68,12 @@ GENERAL
 //   background-color:$light-gray;
 // }
 
+code{
+  width:90%;
+  line-height:1.2em;
+  height:1000px;
+}
+
 main{
   max-width:1300px;
   display:block;
@@ -84,6 +94,11 @@ button{
     &:focus{
       outline:none;
     }
+}
+
+.testing{
+  color: $blue;
+  text-transform: uppercase;
 }
 
 /*=======================================================
@@ -236,12 +251,6 @@ BUDGET
 
 }
 
-/*====================================================
-FONT AWESOME
-====================================================*/
-
-
-
 /*=======================================================
 GUIDES
 =======================================================*/
@@ -250,49 +259,68 @@ GUIDES
 Guide-Sidebar */
 
 #sidebar-wrapper{
-  background-color: $blue-gray;
+  background-color: $dark-black;
 
-  ul{
-    padding:5px;
-  }
+  #guide-title-container{
+    width:90%;
+    display:block;
+    margin:auto;
+    border-bottom: 1px dotted $white;
+    margin-bottom:20px;
 
-  li{
-    text-align:left;
-    color:$dark-gray;
-    text-transform: capitalize;
+    h3{
 
-    h4{
-       line-height:1.2em;
-       font-weight:400;
-       width:250px;
     }
-
-
-
-
-    &:hover{
-      cursor:pointer;
-    }
-  }
-}
-
 
     #guide-title{
       color:$white;
     }
 
 
+  }
 
-    .guide-sidebar-toggle{
-      color: $light-black;
+  ul{
 
-      &:hover{
-        cursor: pointer;
-      }
+  }
+
+  li{
+    text-align:left;
+    text-transform: capitalize;
+    width:325px;
+
+    h4{font-weight:500}
+    h5{font-weight:400}
+
+
+    &:hover{
+      cursor:pointer;
     }
+  }
 
-/*==============
-Guide Main Content */
+  .sidebar-module{
+     line-height:1.2em;
+      background-color: $dark-black;
+      color:$dark-gray;
+      padding:5px 15px;
+      letter-spacing: .05em;
+
+  }
+
+  .sidebar-section{
+     line-height:1.2em;
+     font-weight:400;
+     padding:7px 15px;
+     background-color: $black;
+     color:$blue;
+
+  }
+}
+
+
+
+
+/*====================
+Guide Main Container */
 
  #guide-home-icon{
     color: $light-black;
@@ -302,6 +330,28 @@ Guide Main Content */
       cursor: pointer;
     }
   }
+
+
+  .guide-sidebar-toggle{
+    color: $light-black;
+
+    &:hover{
+      cursor: pointer;
+    }
+  }
+
+/*==============
+Guide-Content */
+
+#guide-content{
+  background-color:$blue-gray;
+}
+
+
+
+
+
+
 
 /*=======================================================
 SIMPLE SIDEBAR
@@ -354,6 +404,8 @@ SIMPLE SIDEBAR
     width: 100%;
     position: absolute;
     padding: 10px;
+    background-color:$light-gray;
+    min-height:100vh;
 }
 
 #wrapper.toggled #page-content-wrapper {

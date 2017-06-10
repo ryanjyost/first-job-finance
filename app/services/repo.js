@@ -3,14 +3,42 @@ import Ember from 'ember';
 export default Ember.Service.extend({
   lastId: 0,
   data: null,
+  expenses: null,
+  annualIncome: null,
 
-  findAll() {
-    return this.get('data') ||
-      this.set('data', JSON.parse(window.localStorage.getItem('expenses') || '[]'));
+  hourlyWage: null,
+
+  payPeriod: null,
+
+  findAll(resource){
+    return this.get(resource) ||
+      this.set(resource, JSON.parse(window.localStorage.getItem(resource) || []));
   },
 
+  find(data){
+    return this.get(data) ||
+      this.set(data, JSON.parse(window.localStorage.getItem(data) || 0));
+  },
+
+  persist(property, value) {
+    //console.log(property);
+
+    if(value){
+      //console.log(property, value)
+      this.set(property, value)
+    }
+
+    window.localStorage.setItem(property, JSON.stringify(this.get(property)));
+
+
+  },
+
+  //=================
+  //EXPENSES
+  //=================
+
   findExpense(id){
-    let expenses = this.get('data');
+    let expenses = this.get('expenses');
     let expense = {};
 
     for(let i = 0; i<expenses.length; i++){
@@ -23,20 +51,18 @@ export default Ember.Service.extend({
     return expense;
   },
 
-  add(attrs) {
+  addExpense(attrs) {
     let expense = Object.assign({ id: `exp_${Date.now()}` }, attrs);
-    this.get('data').pushObject(expense);
-    this.persist();
+    this.get('expenses').pushObject(expense);
+    this.persist('expenses');
     return expense;
   },
 
-  delete(expense) {
-    this.get('data').removeObject(expense);
-    this.persist();
+  deleteExpense(expense) {
+    this.get('expenses').removeObject(expense);
+    this.persist('expenses');
   },
 
-  persist() {
-    window.localStorage.setItem('expenses', JSON.stringify(this.get('data')));
-  },
+
 
 });

@@ -5,8 +5,8 @@
   <div id="page-content-wrapper">
     <div class="container-fluid">
 
-      <!-- navbar -->
-      <div class="row">
+      <!-- guide navbar -->
+      <div id="guide-navbar" class="row">
         <div class="col-lg-12">
           <button {{action 'toggleSidebar'}}>
             {{#if sidebarOpen}}
@@ -28,7 +28,7 @@
           {{/link-to}}
         </div>
       </div>
-      <!-- /navbar -->
+      <!-- /guide-navbar -->
 
       <!-- child route template (outlet)  -->
       <div class="row guide-content">
@@ -40,5 +40,7 @@
 
     </div>
   </div>
+  <!-- /#page-content-wrapper  -->
+
 </div>
 
