@@ -1,36 +1,31 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
-  lastId: 0,
   data: null,
   expenses: null,
   annualIncome: null,
-
+  incomeType: null,
   hourlyWage: null,
-
+  workingHoursPerWeek: null,
+  workingWeeksPerYear: null,
   payPeriod: null,
 
   findAll(resource){
     return this.get(resource) ||
-      this.set(resource, JSON.parse(window.localStorage.getItem(resource) || []));
+      this.set(resource, JSON.parse(window.localStorage.getItem(resource) || '[]'));
   },
 
   find(data){
     return this.get(data) ||
-      this.set(data, JSON.parse(window.localStorage.getItem(data) || 0));
+      this.set(data, JSON.parse(window.localStorage.getItem(data) || 'null'));
   },
 
   persist(property, value) {
-    //console.log(property);
-
     if(value){
-      //console.log(property, value)
       this.set(property, value)
     }
 
     window.localStorage.setItem(property, JSON.stringify(this.get(property)));
-
-
   },
 
   //=================

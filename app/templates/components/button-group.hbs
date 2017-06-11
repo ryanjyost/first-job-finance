@@ -1,0 +1,8 @@
+{{#each buttons as |button|}}
+  {{button-option
+    label=button.label
+    value=button.value
+    currentSelected=currentSelected
+    select=(action 'handleSelect')
+  }}
+{{/each}}

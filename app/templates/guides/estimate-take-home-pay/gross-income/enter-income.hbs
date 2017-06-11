@@ -1,24 +1,20 @@
-{{log model}}
-<button class="{{if model.isPaidHourly 'testing'}}">
-  Salary
-</button>
-
-<button>
-  Hourly
-</button>
+{{button-group
+  currentSelected=model.user.incomeType
+  updateSelect=(route-action 'updateIncomeType')
+  buttons=model.guide.incomeTypeButtons
+}}
 
 <br><br>
 
 
-
-{{input annualIncome type='number' placeholder='Enter Income' key-up='updateAnnualIncome' value=model.annualIncome}}
+{{input annualIncome type='number' placeholder='Enter Income' key-up='updateGrossAnnualIncome' value=model.user.annualIncome}}
 
 <br><br>
 
-{{input hourlyWage type='number' placeholder='Enter Hourly Wage' key-up='updateHourlyWage' value=model.hourlyWage}}
+{{input hourlyWage type='number' placeholder='Enter Hourly Wage' key-up='updateHourlyWage' value=model.user.hourlyWage}}
 <br>
-{{input workingHoursPerWeek type='number' placeholder='Enter Hours Working per week' key-up='updateIncome' value=model.workingHoursPerWeek}}
+{{input workingHoursPerWeek type='number' placeholder='Enter Hours Working per week' key-up='updateworkingHoursPerWeek' value=model.user.workingHoursPerWeek}}
 <br>
-{{input workingWeeksPerYear type='number' placeholder='Enter Income' key-up='updateIncome' value=model.workingWeeksPerYear}}
+{{input workingWeeksPerYear type='number' placeholder='Weeks worked per year' key-up='updateworkingWeeksPerYear' value=model.user.workingWeeksPerYear}}
 
 

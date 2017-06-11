@@ -1,27 +1,26 @@
-<h1>Local Storage</h1><br>
+<div class="container">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <h1>Local Storage</h1><br>
 
-{{log model}}
+      <h4>Expenses</h4>
 
+      <code>
+        {{model.expenses}}
+      </code>
 
+      <h4>Data</h4>
 
-<h4>Expenses</h4>
+      <code>
+        annualIncome  -  {{model.annualIncome}}<br>
+        hourlyWage  -  {{model.hourlyWage}}<br>
+        workingHoursPerWeek  -  {{model.workingHoursPerWeek}}<br>
+        workingWeeksPerYear  -  {{model.workingWeeksPerYear}}<br>
+        incomeType  -  {{model.incomeType}}<br>
+      </code><br><br>
 
-<code>
-  {{model.expenses}}
-</code>
-
-<h4>Data</h4>
-
-<code>
-  Annual Income  -  {{model.annualIncome}}
-</code><br><br>
-
-<code>
-  Hourly Wage  -  {{model.hourlyWage}}
-</code>
-
-<br>
-<code>
-  Pay Period  -  {{model.payPeriod}}
-</code><br><br>
-
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>
