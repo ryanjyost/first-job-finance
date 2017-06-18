@@ -10,7 +10,7 @@ export default Ember.Route.extend({
         hourlyWage = this.get('repo').find('hourlyWage'),
         workingHoursPerWeek = this.get('repo').find('workingHoursPerWeek'),
         workingWeeksPerYear = this.get('repo').find('workingWeeksPerYear'),
-        payPeriod = this.get('repo').find('payPeriod');
+        payFrequency = this.get('repo').find('payFrequency');
 
 
     return Ember.RSVP.hash({
@@ -20,7 +20,7 @@ export default Ember.Route.extend({
       hourlyWage,
       workingHoursPerWeek,
       workingWeeksPerYear,
-      payPeriod
+      payFrequency
 
 
 

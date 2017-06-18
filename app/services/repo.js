@@ -8,7 +8,7 @@ export default Ember.Service.extend({
   hourlyWage: null,
   workingHoursPerWeek: null,
   workingWeeksPerYear: null,
-  payPeriod: null,
+  payFrequency: null,
 
   findAll(resource){
     return this.get(resource) ||
