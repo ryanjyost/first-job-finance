@@ -2,7 +2,7 @@
 <div id="sidebar-wrapper">
   <ul class="sidebar-nav">
     <div id="guide-title-container">
-      <h3 id="guide-title">{{guide.title}}</h3>
+      <h3 id="guide-title">{{#link-to guide.link}}{{guide.title}}{{/link-to}}</h3>
     </div>
 
     {{#each guide.modules as |module| }}
@@ -16,6 +16,7 @@
         {{#link-to section.link tagName="li" class="sidebar-section"}}
           <h5 class="sidebar-section-title">{{section.title}}</h5>
         {{/link-to}}
+
       {{/each}}
 
     {{/each}}

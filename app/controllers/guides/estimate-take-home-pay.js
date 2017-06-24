@@ -5,7 +5,8 @@ export default Ember.Controller.extend({
   skoosh: 'skoo!sh',
 
   guideInfo: {
-      title: 'Estimate Take-Home Pay',
+      title: 'Estimate Take-Home Pay Before Your First Paycheck',
+      link: 'guides.estimate-take-home-pay',
       modules: [
 
         //1. Gross Income
@@ -18,12 +19,12 @@ export default Ember.Controller.extend({
             { title: 'Salary or hourly?', // explain if other!
               link: 'guides.estimate-take-home-pay.module1.section2'
             },
+            { title: 'Your gross income',
+              link: 'guides.estimate-take-home-pay.module1.section3'
+            },
             { title: 'Payroll period - how frequently you\'re paid',
               link: 'guides.estimate-take-home-pay.module1.section4'
             },
-            { title: 'Your gross income',
-              link: 'guides.estimate-take-home-pay.module1.section3'
-            }
         ]},
 
         //2. Take out pre-tax retirement savings

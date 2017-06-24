@@ -57,16 +57,6 @@ MIXINS
 GENERAL
 =======================================================*/
 
-// html{
-//   max-height:100vh;
-//   overflow:hidden;
-//   background-color:$light-gray !important;
-//   width:100%;
-// }
-
-// html, body, main, h1, h2, h3, h4, h5, h6{
-//   background-color:$light-gray;
-// }
 
 code{
   width:90%;
@@ -101,6 +91,14 @@ button{
   text-transform: uppercase;
 }
 
+p{
+  font-size: 20px;
+}
+
+h2{
+  font-weight:400;
+}
+
 /*=======================================================
 BUTTON GROUP and BUTTON OPTION COMPONENTS
 =======================================================*/
@@ -112,6 +110,18 @@ BUTTON GROUP and BUTTON OPTION COMPONENTS
 .button-selected{
   color:$blue;
 }
+
+/*=======================================================
+GENERAL BUTTONS
+=======================================================*/
+
+.button-continue{
+  background-color: $black;
+  color:$white;
+  padding:5px 10px;
+  display:block;
+}
+
 
 /*=======================================================
 NAVBAR
@@ -270,7 +280,7 @@ GUIDES
 Guide-Sidebar */
 
 #sidebar-wrapper{
-  background-color: $dark-black;
+  background-color: $white;
 
   #guide-title-container{
     width:90%;
@@ -279,15 +289,11 @@ Guide-Sidebar */
     border-bottom: 1px dotted $white;
     margin-bottom:20px;
 
-    h3{
-
-    }
 
     #guide-title{
-      color:$white;
+      color:$black;
+      line-height:1.2;
     }
-
-
   }
 
   ul{
@@ -310,8 +316,8 @@ Guide-Sidebar */
 
   .sidebar-module{
      line-height:1.2em;
-      background-color: $dark-black;
-      color:$dark-gray;
+      background-color: $white;
+      color:$black;
       padding:5px 15px;
       letter-spacing: .05em;
 
@@ -321,8 +327,8 @@ Guide-Sidebar */
      line-height:1.2em;
      font-weight:400;
      padding:7px 15px;
-     background-color: $black;
-     color:$blue;
+     background-color: $white;
+     color:$black;
 
   }
 }
@@ -355,7 +361,18 @@ Guide Main Container */
 Guide-Content */
 
 #guide-content{
-  background-color:$blue-gray;
+  background-color:$white;
+  padding:20px;
+
+  h1{
+    text-transform: capitalize;
+  }
+
+
+
+
+
+
 }
 
 
@@ -415,7 +432,7 @@ SIMPLE SIDEBAR
     width: 100%;
     position: absolute;
     padding: 10px;
-    background-color:$light-gray;
+    background-color:$white;
     min-height:100vh;
 }
 
@@ -454,6 +471,7 @@ SIMPLE SIDEBAR
 .sidebar-nav li a:active,
 .sidebar-nav li a:focus {
     text-decoration: none;
+    color:$blue;
 }
 
 .sidebar-nav > .sidebar-brand {

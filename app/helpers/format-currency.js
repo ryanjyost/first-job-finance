@@ -7,7 +7,7 @@ export function formatCurrency(params) {
       sign = '$';
 
   if (cents.toString().length === 1) { cents = '0' + cents; }
-  return `${sign} ${dollars}`;
+  return `${sign}${dollars}`;
 
   return params;
 }

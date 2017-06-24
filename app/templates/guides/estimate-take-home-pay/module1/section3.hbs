@@ -1,5 +1,57 @@
-<h1>Monthly, Weekly, Semi-monthly, biweekly Income</h1>
+
+{{#if (or
+        (and model.incomeType model.annualIncome)
+        (and model.incomeType model.hourlyWage model.workingHoursPerWeek model.workingWeeksPerYear)
+      )
+}}
+
+  <h2>Your gross annual income is
+    {{#if (eq model.incomeType 'hourly')}}
+      {{format-currency (mult model.hourlyWage model.workingHoursPerWeek model.workingWeeksPerYear) }}
+    {{else}}
+      {{format-currency model.annualIncome}}
+    {{/if}}
+  </h2>
+
+  <hr>
+
+  <h2>Your gross monthly income is
+    {{#if (eq model.incomeType 'hourly')}}
+      {{format-currency (div (mult model.hourlyWage model.workingHoursPerWeek model.workingWeeksPerYear) 12) }}
+    {{else}}
+      {{format-currency (div model.annualIncome 12)}}
+    {{/if}}
+  </h2>
+
+  <hr>
+
+  <h2>Your gross semi-monthly income is
+    {{#if (eq model.incomeType 'hourly')}}
+      {{format-currency (div (mult model.hourlyWage model.workingHoursPerWeek model.workingWeeksPerYear) 24) }}
+    {{else}}
+      {{format-currency (div model.annualIncome 24)}}
+    {{/if}}
+  </h2>
+
+  <p>You'll get 24 paychecks per year under this method.</p>
+
+  <hr>
+
+  <h2>Your gross biweekly income is
+    {{#if (eq model.incomeType 'hourly')}}
+      {{format-currency (div (mult model.hourlyWage model.workingHoursPerWeek model.workingWeeksPerYear) 26) }}
+    {{else}}
+      {{format-currency (div model.annualIncome 26)}}
+    {{/if}}
+  </h2>
+
+  <p>You'll get 26 paychecks per year under this method.</p>
+
+  {{else}}
+    <h1>ERROR</h1>
+{{/if}}
 
 
 
-<h3>{{model.user.annualIncome}}</h3>
+
+
