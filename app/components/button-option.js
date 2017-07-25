@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   tagName: 'button',
   type: 'button',
-  classNames: ['button-option'],
+  classNames: ['button-group_option'],
   attributeBindings: ['type'],
   label: null,
   value: null,

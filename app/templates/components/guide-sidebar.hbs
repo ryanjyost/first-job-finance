@@ -2,13 +2,14 @@
 <div id="sidebar-wrapper">
   <ul class="sidebar-nav">
     <div id="guide-title-container">
-      <h3 id="guide-title">{{#link-to guide.link}}{{guide.title}}{{/link-to}}</h3>
+      <h6 id="guide-title">{{#link-to guide.link}}{{guide.title}}{{/link-to}}</h6>
     </div>
 
     {{#each guide.modules as |module| }}
 
+
       {{#link-to module.link tagName="li" class="sidebar-module"}}
-       <h4 class="sidebar-module-title"> {{module.title}}</h4>
+        <h4 class="sidebar-module-title playfair"> {{module.title}}</h4>
       {{/link-to}}
 
 

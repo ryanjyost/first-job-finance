@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
             { title: 'Gross Income - What it is & Why It Matters',
               link: 'guides.estimate-take-home-pay.module1.section1'
             },
-            { title: 'Salary or hourly?', // explain if other!
+            { title: 'Salary or hourly?',
               link: 'guides.estimate-take-home-pay.module1.section2'
             },
             { title: 'Your gross income',
@@ -27,42 +27,20 @@ export default Ember.Controller.extend({
             },
         ]},
 
-        //2. Take out pre-tax retirement savings
-        { title: 'Pre-tax retirement savings',
-          link: 'guides.estimate-take-home-pay.module1.section1',
+        //2. retirement savings
+        { title: 'Take Out Retirement Plan Savings',
+          link: 'guides.estimate-take-home-pay.module2.section1',
           sections: [
-            { title: '\"Pre-tax\" - what it is and why it matters',
-              link: 'guides.estimate-take-home-pay.module1.section1'
-            },
-            { title: 'Types of Employer-Provided Plans',
-              link: 'guides.estimate-take-home-pay.module1.section2'
+             { title: 'Know the basics', // including types of plans
+              link: 'guides.estimate-take-home-pay.module2.section1'
             },
             { title: 'What about an IRA?', // unless you have Payroll deduction, use after-tax and deduct on taxes
-              link: 'guides.estimate-take-home-pay.module1.section3'
+              link: 'guides.estimate-take-home-pay.module2.section2'
             },
-            { title: 'Employer Matching contribution',
+            { title: 'Employer Match - What It Is & Why It Matters',
               link: 'guides.estimate-take-home-pay.module1.section4'
             },
             { title: 'Your pre-tax retirement savings',
-              link: 'guides.estimate-take-home-pay.module1.section4'
-            }
-        ]},
-
-
-        //3. Take out any pre-tax benefits
-        { title: 'Pre-tax employee benefits',
-          link: 'guides.estimate-take-home-pay.module1.section1',
-          sections: [
-            { title: 'Retirement Savings',
-              link: 'guides.estimate-take-home-pay.module1.section2'
-            },
-            { title: 'Flexible Spending Account / Cafeteria Plan',
-              link: 'guides.estimate-take-home-pay.module1.section3'
-            },
-            { title: 'Medical Insurance & Health Savings Accounts',
-              link: 'guides.estimate-take-home-pay.module1.section4'
-            },
-            { title: 'Other pre-tax benefits',
               link: 'guides.estimate-take-home-pay.module1.section4'
             }
         ]},
@@ -92,21 +70,13 @@ export default Ember.Controller.extend({
         { title: 'Your estimated take-home pay',
           link: 'guides.estimate-take-home-pay.module1.section1',
           sections: [
-            { title: 'Tax withholding - what it is & why it matters',
+            { title: 'The number you use to make a budget',
               link: 'guides.estimate-take-home-pay.module1.section2'
             },
-            { title: 'Federal Income Tax Withholding',
+            { title: 'Next Steps',
               link: 'guides.estimate-take-home-pay.module1.section3'
             },
-            { title: 'State Income Tax Withholding', // mention city too
-              link: 'guides.estimate-take-home-pay.module1.section4'
-            },
-            { title: 'FICA Taxes',
-              link: 'guides.estimate-take-home-pay.module1.section4'
-            },
-            { title: 'Your total tax withholding',
-              link: 'guides.estimate-take-home-pay.module1.section4'
-            }
+
         ]},
       ]
     }

@@ -1,0 +1,90 @@
+<div class="col-lg-5">
+
+  <section>
+    <h5>Are you paid a salary or hourly?</h5>
+
+    {{button-group
+      currentSelected=model.incomeType
+      updateSelect=(route-action 'updateIncomeType')
+      buttons=incomeTypeButtons
+    }}
+  </section>
+
+  <section>
+
+    {{#if (eq model.incomeType 'salary')}}
+      {{slider-range
+        label_1="I make"
+        label_2="a year."
+        min=0
+        max=100000
+        step=100
+        value=model.annualIncome
+        update=(route-action 'updateGrossAnnualIncome')
+        numberType="currency"
+      }}
+    {{/if}}
+
+    {{#if (eq model.incomeType 'hourly')}}
+      {{slider-range
+        label_1="I get paid"
+        label_2="an hour."
+        min=0
+        max=50
+        step=0.25
+        value=model.hourlyWage
+        update=(route-action 'updateHourlyWage')
+        numberType="currency"
+        showDecimals=true
+      }}
+
+      {{slider-range
+        label_1="I work"
+        label_2="hours a week, on average."
+        min=0
+        max=168
+        step=1
+        value=model.workingHoursPerWeek
+        update=(route-action 'updateworkingHoursPerWeek')
+        numberType="plain"
+      }}
+
+      {{slider-range
+        label_1="I work"
+        label_2="weeks per year."
+        min=0
+        max=52
+        step=1
+        value=model.workingWeeksPerYear
+        update=(route-action 'updateworkingWeeksPerYear')
+        numberType="plain"
+      }}
+
+    {{/if}}
+  </section>
+
+  <section>
+    <h5>How frequently are you paid?</h5>
+    {{button-group
+      currentSelected=model.payPeriod
+      updateSelect=(route-action 'updatePayPeriod')
+      buttons=payFrequencyButtons
+    }}
+  </section>
+
+  <section>
+    {{slider-range
+      label_1="I plan to contribute"
+      label_2="of each paycheck to my company retirement plan (e.g. 401k)."
+      min=0
+      max=maxPreTaxSavingsRate
+      step=0.01
+      value=model.employerPlanSavingsRate
+      update=(route-action 'updateEmployerPlanSavingsRate')
+      numberType="percent"
+    }}
+
+
+  </section>
+
+</div>

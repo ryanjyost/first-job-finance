@@ -16,9 +16,20 @@ Router.map(function() {
         this.route('section3');
         this.route('section4');
       });
+      this.route('module2', function() {
+        this.route('section1');
+        this.route('section2');
+      });
     });
   });
   this.route('localStorage');
+  this.route('concepts', function() {
+    this.route('pre-tax');
+    this.route('gross-income');
+  });
+  this.route('calculators', function() {
+    this.route('estimate-take-home-pay');
+  });
 });
 
 export default Router;

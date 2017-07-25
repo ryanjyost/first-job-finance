@@ -3,30 +3,28 @@
   {{guide-sidebar guide=guide}}
 
   <div id="page-content-wrapper">
-    <div class="container-fluid">
+    <div id="guide-container" class="container-fluid">
 
       <!-- guide navbar -->
-      <div id="guide-navbar" class="row">
-        <div class="col-lg-12">
+      <div id="navbar" class="row">
           <button {{action 'toggleSidebar'}}>
             {{#if sidebarOpen}}
               {{fa-icon "caret-square-o-left"
-                class="guide-sidebar-toggle fa-2x"
+                class="fa fa-2x"
               }}
             {{else}}
               {{fa-icon "caret-square-o-right"
-                class="guide-sidebar-toggle fa-2x"
+                class="fa fa-2x"
               }}
             {{/if}}
           </button>
 
           {{#link-to 'index'}}
             {{fa-icon "home"
-              id="guide-home-icon"
-              class="fa-2x"
+              id="home-icon"
+              class="fa fa-2x"
             }}
           {{/link-to}}
-        </div>
       </div>
       <!-- /guide-navbar -->
 

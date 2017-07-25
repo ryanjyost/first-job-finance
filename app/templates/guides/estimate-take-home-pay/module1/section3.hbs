@@ -5,7 +5,7 @@
       )
 }}
 
-  <h2>Your gross annual income is
+  <h2>Your gross <strong>annual</strong> income is
     {{#if (eq model.incomeType 'hourly')}}
       {{format-currency (mult model.hourlyWage model.workingHoursPerWeek model.workingWeeksPerYear) }}
     {{else}}
@@ -13,9 +13,19 @@
     {{/if}}
   </h2>
 
+  <p>
+    <ul>
+      <li>This is how much you make from January 1 to December 31. It'll show up on the top of your tax return as the starting point for calculating your tax bill.</li>
+
+      {{#if (eq model.incomeType 'hourly')}}
+        <li>Gross annual income = ({{format-currency model.hourlyWage}} per hour) x ({{model.workingHoursPerWeek}} hours worked per week) x ({{model.workingWeeksPerYear}} weeks worked per year) </li>
+      {{/if}}
+    </ul>
+  </p>
+
   <hr>
 
-  <h2>Your gross monthly income is
+  <h2>Your gross <strong>monthly</strong> income is
     {{#if (eq model.incomeType 'hourly')}}
       {{format-currency (div (mult model.hourlyWage model.workingHoursPerWeek model.workingWeeksPerYear) 12) }}
     {{else}}
@@ -23,9 +33,21 @@
     {{/if}}
   </h2>
 
+  <p>
+    <ul>
+      <li>Most budgets focus on a single month of expenses, so how much you can afford to spend every month will depend on your gross monthly income.</li>
+      <li>You may be in a situation where your income fluctuates from month to month - that's totally OK.
+      Think of {{#if (eq model.incomeType 'hourly')}}
+        {{format-currency (div (mult model.hourlyWage model.workingHoursPerWeek model.workingWeeksPerYear) 12) }}
+      {{else}}
+        {{format-currency (div model.annualIncome 12)}}
+      {{/if}} as your <i>average</i> monthly income based on the annual figure you provided in the previous step.</li>
+    </ul>
+  </p>
+
   <hr>
 
-  <h2>Your gross semi-monthly income is
+  <h2>Your gross <strong>semi-monthly</strong> income is
     {{#if (eq model.incomeType 'hourly')}}
       {{format-currency (div (mult model.hourlyWage model.workingHoursPerWeek model.workingWeeksPerYear) 24) }}
     {{else}}
@@ -33,11 +55,16 @@
     {{/if}}
   </h2>
 
-  <p>You'll get 24 paychecks per year under this method.</p>
+  <p>
+    <ul>
+      <li><i>Semi-monthly</i> means "twice a month."</li>
+      <li>You'll get 24 paychecks per year if paid semi-monthly, usually on the 15th and 30th of every month.</li>
+    </ul>
+  </p>
 
   <hr>
 
-  <h2>Your gross biweekly income is
+  <h2>Your gross <strong>biweekly</strong> income is
     {{#if (eq model.incomeType 'hourly')}}
       {{format-currency (div (mult model.hourlyWage model.workingHoursPerWeek model.workingWeeksPerYear) 26) }}
     {{else}}
@@ -45,7 +72,47 @@
     {{/if}}
   </h2>
 
-  <p>You'll get 26 paychecks per year under this method.</p>
+  <p>
+    <ul>
+      <li><i>Biweekly</i> means "every two weeks."</li>
+      <li>You'll get 26 paychecks per year if paid biweekly.</li>
+    </ul>
+  </p>
+
+  <hr>
+
+  <h2>Your gross <strong>weekly</strong> income is
+    {{#if (eq model.incomeType 'hourly')}}
+      {{format-currency (div (mult model.hourlyWage model.workingHoursPerWeek model.workingWeeksPerYear) 52 ) }}
+    {{else}}
+      {{format-currency (div model.annualIncome 52)}}
+    {{/if}}
+  </h2>
+
+  <!-- -->
+  <!-- -->
+  <!-- -->
+  <!-- -->
+  <!-- -->
+  <!-- -->
+  <!-- MAKE CONDITIONAL BULLET POINTS FOR HOURLY WORKERS!!!!!!!!!  -->
+  <!-- -->
+  <!-- -->
+  <!-- -->
+  <!-- -->
+  <!-- -->
+  <!-- -->
+  <!-- -->
+  <!-- -->
+
+
+  <p>
+    <ul>
+      {{#if (eq model.incomeType 'hourly')}}
+        <li>Notice that this number is less than your hourly wage of {{format-currency model.hourlyWage}} multiplied by {{model.workingHoursPerWeek}}, the hours you work in a week. Why? Because you don't earn that much <i>every</i> week of the year, only {{model.workingWeeksPerYear}} weeks per year. Averaging like this will help you avoid overspending.</li>
+      {{/if}}
+    </ul>
+  </p>
 
   {{else}}
     <h1>ERROR</h1>

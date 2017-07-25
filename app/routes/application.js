@@ -3,6 +3,36 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   repo: Ember.inject.service(),
 
+  actions: {
+    updateGrossAnnualIncome(annualIncome){
+      this.get('repo').persist('annualIncome', annualIncome);
+    },
+
+    updateIncomeType(type){
+      this.get('repo').persist('incomeType', type);
+    },
+
+    updateHourlyWage(hourlyWage){
+      this.get('repo').persist('hourlyWage', hourlyWage);
+    },
+
+    updateworkingHoursPerWeek(workingHoursPerWeek){
+      this.get('repo').persist('workingHoursPerWeek', workingHoursPerWeek);
+    },
+
+    updateworkingWeeksPerYear(workingWeeksPerYear){
+      this.get('repo').persist('workingWeeksPerYear', workingWeeksPerYear);
+    },
+
+    updatePayPeriod(payPeriod){
+      this.get('repo').persist('payPeriod', payPeriod);
+    },
+
+    updateEmployerPlanSavingsRate(savingsRate){
+      this.get('repo').persist('employerPlanSavingsRate', savingsRate);
+    },
+  },
+
   model() {
     return Ember.RSVP.hash({
       expenses: this.get('repo').findAll('expenses'),
@@ -11,7 +41,9 @@ export default Ember.Route.extend({
       hourlyWage: this.get('repo').find('hourlyWage'),
       workingHoursPerWeek: this.get('repo').find('workingHoursPerWeek'),
       workingWeeksPerYear: this.get('repo').find('workingWeeksPerYear'),
-      payPeriod: this.get('repo').find('payPeriod')
+      payPeriod: this.get('repo').find('payPeriod'),
+      employerPlanSavingsRate: this.get('repo').find('employerPlanSavingsRate'),
+
     }) //RSVP Hash
   }
 });

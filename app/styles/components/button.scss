@@ -1,0 +1,35 @@
+
+.button-group{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin button-hover{
+  color:$white !important;
+  background-color:$blue !important;
+}
+
+.button-group_option{
+  margin:0px 5px;
+  padding:0px 5px;
+  background-color: transparent;
+  border:0px solid $blue;
+  border-radius:2px;
+
+  h6{
+    padding-bottom:0.3em;
+  }
+
+
+  &:focus{
+    outline:none !important;
+  }
+}
+
+.button--selected{
+  color: $blue;
+  border-bottom:0.1em solid $blue;
+  padding-bottom:0.2em !important;
+
+}
