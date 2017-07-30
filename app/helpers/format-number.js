@@ -4,14 +4,14 @@ export function formatNumber([value, numberType, showDecimals]) {
 
   //Format currency
   if(numberType === "currency") {
-      let dollars = Math.round(value).toLocaleString("en"),
+      let dollars = Math.floor(value).toLocaleString("en"),
       cents = value % 1,
       sign = '$';
 
-    if(showDecimals === true){
+    if(showDecimals){
 
       value = Number(dollars) + Number(cents);
-      let total = value.toFixed(2)
+      let total = value.toFixed(2).toLocaleString("en")
 
       return `${sign}${total}`
 

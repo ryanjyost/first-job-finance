@@ -9,6 +9,8 @@ export default Ember.Service.extend({
   workingHoursPerWeek: null,
   workingWeeksPerYear: null,
   payFrequency: null,
+  employerPlanDeferralRate: null,
+  stateAbbr: null,
 
   findAll(resource){
     return this.get(resource) ||
@@ -16,8 +18,28 @@ export default Ember.Service.extend({
   },
 
   find(data){
+
+    //default values
+    const defaults = {
+      "annualIncome": 40000,
+      "incomeType": '"salary"',
+      "hourlyWage": 10,
+      "workingHoursPerWeek": 40,
+      "workingWeeksPerYear": 50,
+      "payPeriod":'"semi-monthly"',
+      "employerPlanDeferralRate": 0.05,
+      "stateIndex": 5
+    }
+
+    let defaultValue = 'null'
+
+    if(defaults[data]){
+      defaultValue = defaults[data];
+    }
+
+    //return the localStorage value or default
     return this.get(data) ||
-      this.set(data, JSON.parse(window.localStorage.getItem(data) || 'null'));
+      this.set(data, JSON.parse(window.localStorage.getItem(data) || defaultValue));
   },
 
   persist(property, value) {

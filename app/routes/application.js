@@ -4,6 +4,7 @@ export default Ember.Route.extend({
   repo: Ember.inject.service(),
 
   actions: {
+
     updateGrossAnnualIncome(annualIncome){
       this.get('repo').persist('annualIncome', annualIncome);
     },
@@ -28,8 +29,13 @@ export default Ember.Route.extend({
       this.get('repo').persist('payPeriod', payPeriod);
     },
 
-    updateEmployerPlanSavingsRate(savingsRate){
-      this.get('repo').persist('employerPlanSavingsRate', savingsRate);
+    updateEmployerPlanDeferralRate(savingsRate){
+      this.get('repo').persist('employerPlanDeferralRate', savingsRate);
+    },
+
+    updateState(stateIndex){
+      this.get('repo').persist('stateIndex', stateIndex);
+      console.log(stateIndex)
     },
   },
 
@@ -42,8 +48,8 @@ export default Ember.Route.extend({
       workingHoursPerWeek: this.get('repo').find('workingHoursPerWeek'),
       workingWeeksPerYear: this.get('repo').find('workingWeeksPerYear'),
       payPeriod: this.get('repo').find('payPeriod'),
-      employerPlanSavingsRate: this.get('repo').find('employerPlanSavingsRate'),
-
-    }) //RSVP Hash
+      employerPlanDeferralRate: this.get('repo').find('employerPlanDeferralRate'),
+      stateIndex: this.get('repo').find('stateIndex'),
+    })
   }
 });

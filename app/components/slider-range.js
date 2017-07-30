@@ -2,10 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNames: ['slider-range'],
-
   currentValue: null,
-
-
 
   init(){
     this._super(...arguments);
@@ -13,15 +10,13 @@ export default Ember.Component.extend({
     let currentValue = this.get('value');
     this.set('currentValue', currentValue)
 
-    this.get('update')(currentValue);
-
-
   },
 
   didInsertElement(){
     let currentValue = this.get('value');
-    this.set('currentValue', currentValue)
+    this.set('currentValue', currentValue);
 
+    //set starting position of range thumb to equal repo value
     let sliderRange = this.$('.slider-range_input');
     sliderRange.val(currentValue);
 
@@ -41,8 +36,4 @@ export default Ember.Component.extend({
     this.get('update')(currentValue);
   },
 
-
-  actions:{
-
-  }
 });

@@ -1,5 +1,4 @@
 @import "bootstrap";
-
 @import "defaults";
 
 
@@ -8,15 +7,14 @@
 
 
 /*=======================================================
-GUIDE COMPONENTS
+COMPONENTS
 =======================================================*/
 @import "components/guide-sidebar";
 @import "components/guide-container";
 @import "components/simple-sidebar";
+@import "components/dropdown-select";
 
-/*=======================================================
-GENERAL COMPONENTS
-=======================================================*/
+/*general*/
 @import "components/navbar";
 @import "components/button";
 @import "components/slider-range";

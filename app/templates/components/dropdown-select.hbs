@@ -1,0 +1,8 @@
+<select class="dropdown-select">
+ {{!--  {{log optionsObject}} --}}
+  {{#each optionsObject as |item key|}}
+      <option class="dropdown-select_option" value={{key}}>
+        {{item}}
+      </option>
+  {{/each}}
+</select>
