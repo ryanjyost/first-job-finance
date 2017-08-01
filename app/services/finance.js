@@ -5,7 +5,36 @@ export default Ember.Service.extend({
   taxBrackets: [0.1, 0.15, 0.25, 0.28, 0.33, 0.35, 0.396],
 
   fedWithholdingTables: {
+    "weekly": [
+        //single, zero allowances
+        { fedWhDollarLimits: [224, 774, 1812, 3730, 8058, 8090], // no limit for top bracket (6 index)
+          fedWhSubtractionAmount: [44, 104, 372, 526.29, 1011.7, 1414.34, 2189.8]
+        },
 
+        //single, one allowance
+        { fedWhDollarLimits: [301.88, 851.88, 1889.88, 3807.88, 8135.88, 8167.88], // no limit for top bracket (6 index)
+          fedWhSubtractionAmount: [121.88, 181.88, 449.88, 604.17, 1089.58, 1492.22, 2267.68]
+        },
+
+        //single, two allowances
+        { fedWhDollarLimits: [379.76, 929.76, 1967.76, 3885.76, 8213.76, 8245.76], // no limit for top bracket (6 index)
+          fedWhSubtractionAmount: [199.76, 259.76, 527.76, 682.05, 1167.46, 1570.1, 2345.56]
+        }],
+    "bi-weekly": [
+        //single, zero allowances
+        { fedWhDollarLimits: [447, 1548, 3623, 7460, 16115, 16181], // no limit for top bracket (6 index)
+          fedWhSubtractionAmount: [88, 207.67, 743.8, 1052.29, 2023.15, 2828.4, 4379.46]
+        },
+
+        //single, one allowance
+        { fedWhDollarLimits: [602.77, 1703.77, 3778.77, 7615.77, 16270.77, 16336.77], // no limit for top bracket (6 index)
+          fedWhSubtractionAmount: [243.77, 363.44, 899.57, 1208.06, 2178.92, 2984.17, 4535.23]
+        },
+
+        //single, two allowances
+        { fedWhDollarLimits: [758.54, 1859.54, 3934.54, 7771.54, 16426.54, 16492.54], // no limit for top bracket (6 index)
+          fedWhSubtractionAmount: [399.54, 519.21, 1055.34, 1363.83, 2334.69, 3139.94, 4691]
+        }],
     "semi-monthly": [
         //single, zero allowances
         { fedWhDollarLimits: [484, 1677, 3925, 8081, 17458, 17529], // no limit for top bracket (6 index)
@@ -16,19 +45,34 @@ export default Ember.Service.extend({
         { fedWhDollarLimits: [652.75, 1845.75, 4093.75, 8249.75, 17626.75, 17697.75], // no limit for top bracket (6 index)
           fedWhSubtractionAmount: [264.75, 394.08, 974.75, 1308.93, 2360.57, 3232.92, 4913.18]
         },
-    ]
 
+        //single, two allowances
+        { fedWhDollarLimits: [821.5, 2014.5, 4262.5, 8418.5, 17795.5, 17866.5], // no limit for top bracket (6 index)
+          fedWhSubtractionAmount: [433.5, 562.83, 1143.5, 1477.68, 2529.32, 3401.67, 5081.92]
+        }],
+    "monthly": [
+        //single, zero allowances
+        { fedWhDollarLimits: [969, 3354, 7850, 16163, 34917, 35058], // no limit for top bracket (6 index)
+          fedWhSubtractionAmount: [192, 451, 1612.2, 2280.54, 4383.94, 6128.69, 9489.16]
+        },
 
+        //single, one allowance
+        { fedWhDollarLimits: [1306.5, 3691.5, 8187.5, 16500.5, 35254.5, 35395.5], // no limit for top bracket (6 index)
+          fedWhSubtractionAmount: [529.5, 788.5, 1949.7, 2618.04, 4721.44, 6466.19, 9826.66]
+        },
 
+        //single, two allowances
+        { fedWhDollarLimits: [1644, 4029, 8525, 16838, 35592, 35733], // no limit for top bracket (6 index)
+          fedWhSubtractionAmount: [867, 1126, 2287.2, 2955.54, 5058.94, 6803.69, 10164.16]
+        }],
   },
 
 
-  fedTaxWithholding(annualIncome, preTaxSavingsRate, allowances, payPeriod, ){
+  fedTaxWithholdingPerPaycheck(annualIncome, preTaxSavingsRate, allowances, payPeriod, ){
     //assumes the user is single (not married)
 
     const taxTable = this.get('fedWithholdingTables')[payPeriod][allowances],
-          taxBrackets = this.get('taxBrackets'),
-          incomeSubjectToWh = annualIncome*(1-preTaxSavingsRate);
+          taxBrackets = this.get('taxBrackets');
 
     let grossIncomePerPaycheck = 0;
 
@@ -47,11 +91,35 @@ export default Ember.Service.extend({
           break;
       }
 
+      //remove retirement savings not subject to fed/state tax withholding
+      const paycheckSubjectToTaxWh = grossIncomePerPaycheck * (1-preTaxSavingsRate);
 
 
+    //===============================
+    //calculate amount of withholding
 
+      let index = 0;
 
-    return grossIncomePerPaycheck;
+      //determine tax bracket (index) for given income (step B in pub 15-A 2017)
+      while(index < taxBrackets.length-1){
+        //if pay is less than next limit, then currently in the correct bracket (index)
+        if(paycheckSubjectToTaxWh < taxTable.fedWhDollarLimits[index]){
+          break;
+        }
+
+        index++;
+      }
+
+      //subtract the proper amount based on brackets in fed withholding tax tables (step C in pub 15-A 2017)
+      let incomeAtMarginalRate = paycheckSubjectToTaxWh - taxTable.fedWhSubtractionAmount[index];
+
+      //multiply result by margin tax bracket (step D in pub 15-A 2017)
+      let fedWhAmountPerPaycheck = incomeAtMarginalRate * taxBrackets[index];
+
+    //end of calculation
+    //=================================
+
+    return fedWhAmountPerPaycheck;
 
   },
 

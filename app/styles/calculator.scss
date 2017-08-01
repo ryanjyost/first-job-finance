@@ -2,6 +2,19 @@
   background-color: $blue-gray;
   padding:0px !important;
 
+  @media(min-width: 576px){
+    #calculator_container{
+      height:100vh - $nav-height;
+      overflow:hidden;
+    }
+
+    .calculator_input, .calculator_output {
+      overflow:scroll;
+      float:left;
+      height:100%;
+    }
+  }
+
   h5{
     text-align:center;
   }

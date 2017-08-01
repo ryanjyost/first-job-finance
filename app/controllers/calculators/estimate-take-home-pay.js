@@ -6,9 +6,7 @@ export default Ember.Controller.extend({
 
   //constants
   payFrequencyButtons: [{label: 'monthly', value: 'monthly'},{label: 'semi-monthly', value: 'semi-monthly'},{label: 'bi-weekly', value: 'bi-weekly'},{label: 'weekly', value: 'weekly'}],
-
   incomeTypeButtons: [{label: 'hourly', value: 'hourly'},{label: 'salary', value: 'salary'}],
-
   listOfStates: ["Alaska",
                   "Alabama",
                   "Arkansas",
@@ -63,15 +61,64 @@ export default Ember.Controller.extend({
                   "Washington",
                   "Wisconsin",
                   "West Virginia",
-                  "Wyoming"
-                ],
+                  "Wyoming"],
 
-  fedTaxWithholdingMonthly: Ember.computed('model.annualIncome', function(){
-    let annualIncome = this.get('model.annualIncome');
+  incomePerYear: Ember.computed(
+    'model.annualIncome',
+    'model.incomeType',
+    'model.hourlyWage',
+    'model.workingHoursPerWeek',
+    'model.workingWeeksPerYear',
 
-    let result = this.get('finance').fedTaxWithholding(annualIncome, 0.05, 1, "semi-monthly")
+    function(){
+      let annualIncome = this.get('model.annualIncome'),
+          incomeType = this.get('model.incomeType'),
+          hourlyWage = this.get('model.hourlyWage'),
+          workingHoursPerWeek = this.get('model.workingHoursPerWeek'),
+          workingWeeksPerYear = this.get('model.workingWeeksPerYear');
 
-    return result;
+        if(incomeType === "hourly"){
+          annualIncome = hourlyWage*workingHoursPerWeek*workingWeeksPerYear;
+        }
+
+        return annualIncome;
+  }),
+
+  incomePerMonth: Ember.computed('incomePerYear', function(){
+    return this.get('incomePerYear')/12;
+  }),
+
+
+  fedTaxWhPerMonth: Ember.computed(
+    'model.employerPlanDeferralRate',
+    'model.payPeriod',
+    'incomePerYear',
+
+    function(){
+      let annualIncome = this.get('incomePerYear'),
+          employerPlanDeferralRate = this.get('model.employerPlanDeferralRate'),
+          payPeriod = this.get('model.payPeriod')
+
+      let fedWhPerPaycheck = this.get('finance').fedTaxWithholdingPerPaycheck(annualIncome, employerPlanDeferralRate, 2, payPeriod)
+
+      let fedTaxWhPerMonth = 0;
+
+      switch(payPeriod){
+        case "weekly":
+          fedTaxWhPerMonth = (fedWhPerPaycheck*52)/12;
+          break;
+        case "bi-weekly":
+          fedTaxWhPerMonth = (fedWhPerPaycheck*26)/12;
+          break;
+        case "semi-monthly":
+          fedTaxWhPerMonth = fedWhPerPaycheck*2;
+          break;
+        case "monthly":
+          fedTaxWhPerMonth = fedWhPerPaycheck;
+          break;
+      }
+
+      return fedTaxWhPerMonth;
   }),
 
   currentStateName: Ember.computed('model.stateIndex', function(){
@@ -116,7 +163,7 @@ export default Ember.Controller.extend({
         return 18000/annualIncome;
   }),
 
-  employerPlanDeferralAmount: Ember.computed(
+  employerPlanDeferralPerMonth: Ember.computed(
     'model.employerPlanDeferralRate',
     'model.annualIncome',
     'model.incomeType',
@@ -135,7 +182,7 @@ export default Ember.Controller.extend({
        if(incomeType === "hourly"){
         return (hourlyWage*workingHoursPerWeek*workingWeeksPerYear)*rate || 0;
        } else{
-        return annualIncome*rate || 0;
+        return (annualIncome*rate)/12 || 0;
        }
   })
 

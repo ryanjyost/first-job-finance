@@ -1,7 +1,9 @@
 <div id="calculator_container">
-  <div class="col-sm-5 calculator_input">
-
-  {{log fedTaxWithholdingMonthly}}
+{{log fedTaxWhPerMonth}}
+<!--==============
+  INPUT
+===============-->
+<div class="col-sm-5 calculator_input">
 
   <!-- Salary or Hourly -->
   <section>
@@ -41,7 +43,7 @@
         value=model.hourlyWage
         update=(route-action 'updateHourlyWage')
         numberType="currency"
-        showDecimals=true
+        showDecimals=2
       }}
 
       {{slider-range
@@ -84,15 +86,17 @@
     {{slider-range
       update=(route-action 'updateEmployerPlanDeferralRate')
       numberType="percent"
+      value=model.employerPlanDeferralRate
+      showDecimals=1
+      min=0.01
+      max=maxPreTaxSavingsRate
+      step=0.001
       label_1="I plan to contribute"
       label_2="a.k.a."
       label_3="of my annual income to my company's retirement plan (e.g. 401k)."
-      min=0.01
-      max=maxPreTaxSavingsRate
-      step=0.005
-      value=model.employerPlanDeferralRate
-      helperValue=employerPlanDeferralAmount
       helperType="currency"
+      helperValue=(mult employerPlanDeferralPerMonth 12)
+
     }}
   </section>
 
@@ -107,17 +111,21 @@
   </section>
 </div> <!-- Calculator Input -->
 
+<!--==============
+  OUTPUT
+ ===============-->
 <div class="col-sm-7 calculator_output">
 
+  <!-- -->
     <div class="row">
-      <h1>{{format-number model.annualIncome "currency"}}</h1><br>
+      <h1>{{format-number (div incomePerYear 12) "currency"}}</h1><br>
        <h4>is how much you earn a month</h4>
     </div>
 
     <!-- Retirement Savings  -->
     <div class="row">
       <div class="col col-xs-5">
-        <h1>{{format-number (div employerPlanDeferralAmount 12) "currency"}}</h1>
+        <h1>{{format-number employerPlanDeferralPerMonth "currency"}}</h1>
         <hr>
         <h1 class="text--bold-gray">{{format-number  model.employerPlanDeferralRate "percent"}}</h1>
       </div>
@@ -129,9 +137,9 @@
     <!-- Federal Tax Withholding  -->
     <div class="row">
       <div class="col col-xs-5">
-        <h1>{{format-number (div employerPlanDeferralAmount 12) "currency"}}</h1>
+        <h1>{{format-number fedTaxWhPerMonth "currency"}}</h1>
         <hr>
-        <h1 class="text--bold-gray">{{format-number  model.employerPlanDeferralRate "percent"}}</h1>
+        <h1 class="text--bold-gray">{{format-number  (div fedTaxWhPerMonth incomePerMonth) "percent"}}</h1>
       </div>
       <div class="col col-xs-7">
         <h4>will be withheld to pay federal income tax</h4>
@@ -141,9 +149,9 @@
     <!-- State Tax Withholding  -->
     <div class="row">
       <div class="col col-xs-5">
-        <h1>{{format-number (div employerPlanDeferralAmount 12) "currency"}}</h1>
+        <h1>{{format-number 100 "currency"}}</h1>
         <hr>
-        <h1 class="text--bold-gray">{{format-number  model.employerPlanDeferralRate "percent"}}</h1>
+        <h1 class="text--bold-gray">{{format-number 0.05 "percent"}}</h1>
       </div>
       <div class="col col-xs-7">
         <h4>will be withheld to pay {{model.stateIndex}} state income tax</h4>
@@ -153,9 +161,9 @@
     <!-- FICA Tax Withholding  -->
     <div class="row">
       <div class="col col-xs-5">
-        <h1>{{format-number (div employerPlanDeferralAmount 12) "currency"}}</h1>
+        <h1>{{format-number 100 "currency"}}</h1>
         <hr>
-        <h1 class="text--bold-gray">{{format-number  model.employerPlanDeferralRate "percent"}}</h1>
+        <h1 class="text--bold-gray">{{format-number 0.05 "percent"}}</h1>
       </div>
       <div class="col col-xs-7">
         <h4>will be withheld to pay social security and medicare (FICA) tax</h4>
@@ -164,7 +172,7 @@
 
     <div class="row">
       <h4 class="bold text-align--center">Your monthly take-home pay will be roughly</h4>
-      <h1>{{format-number (div employerPlanDeferralAmount 2) "currency"}}</h1>
+      <h1>{{format-number 100 "currency"}}</h1>
     </div>
 
     <hr class="line--thick-blue">

@@ -2,11 +2,12 @@
       <p class="slider-range_label-text">{{label_1}}</p>
         <h3>{{format-number currentValue numberType showDecimals}}</h3>
       <p class="slider-range_label-text">{{label_2}}</p>
-        {{#if helperValue}}
 
-          <h3>{{format-number helperValue helperType showDecimals}}</h3>
-          <p class="slider-range_label-text">{{label_3}}</p>
-        {{/if}}
+      {{#if helperValue}}
+        <h3>{{format-number helperValue helperType showHelperDecimals}}</h3>
+        <p class="slider-range_label-text">{{label_3}}</p>
+      {{/if}}
+
    </label>
 
 

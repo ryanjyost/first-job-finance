@@ -11,7 +11,7 @@ export function formatNumber([value, numberType, showDecimals]) {
     if(showDecimals){
 
       value = Number(dollars) + Number(cents);
-      let total = value.toFixed(2).toLocaleString("en")
+      let total = value.toFixed(showDecimals).toLocaleString("en")
 
       return `${sign}${total}`
 
@@ -21,7 +21,7 @@ export function formatNumber([value, numberType, showDecimals]) {
   }
 
   else if(numberType === "percent"){
-    let percentage = Math.round(value*100);
+    let percentage = (value*100).toFixed(showDecimals);
     return `${percentage}%`
   }
 
