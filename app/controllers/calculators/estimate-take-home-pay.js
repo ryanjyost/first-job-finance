@@ -4,13 +4,10 @@ export default Ember.Controller.extend({
 
   finance: Ember.inject.service(),
 
-  // fedTaxWithholdingAnnual: Ember.computed('model.annualIncome', function(){
-  //   let annualIncome = this.get('model.annualIncome');
+  //constants
+  payFrequencyButtons: [{label: 'monthly', value: 'monthly'},{label: 'semi-monthly', value: 'semi-monthly'},{label: 'bi-weekly', value: 'bi-weekly'},{label: 'weekly', value: 'weekly'}],
 
-  //   let result = this.get('finance').fedTaxWithholding(annualIncome)
-
-  //   return result;
-  // }),
+  incomeTypeButtons: [{label: 'hourly', value: 'hourly'},{label: 'salary', value: 'salary'}],
 
   listOfStates: ["Alaska",
                   "Alabama",
@@ -69,9 +66,21 @@ export default Ember.Controller.extend({
                   "Wyoming"
                 ],
 
-  payFrequencyButtons: [{label: 'monthly', value: 'monthly'},{label: 'semi-monthly', value: 'semi-monthly'},{label: 'bi-weekly', value: 'bi-weekly'},{label: 'weekly', value: 'weekly'}],
+  fedTaxWithholdingMonthly: Ember.computed('model.annualIncome', function(){
+    let annualIncome = this.get('model.annualIncome');
 
-  incomeTypeButtons: [{label: 'hourly', value: 'hourly'},{label: 'salary', value: 'salary'}],
+    let result = this.get('finance').fedTaxWithholding(annualIncome, 0.05, 1, "semi-monthly")
+
+    return result;
+  }),
+
+  currentStateName: Ember.computed('model.stateIndex', function(){
+    let listOfStates = this.get('listOfStates'),
+        stateIndex = this.get('model.stateIndex')
+
+    return listOfStates[stateIndex];
+  }),
+
 
   maxPreTaxSavingsRate: Ember.computed(
     'model.employerPlanDeferralRate',

@@ -1,0 +1,24 @@
+/*=======================================================
+Cards
+=======================================================*/
+
+.card_container{
+  padding:50px 10%;
+  height:100vh;
+  background-color:$light-blue;
+}
+
+
+.card_single{
+ padding:5px;
+}
+
+.card_single_inner-cont{
+  border:1px solid $gray;
+  background-color:$white;
+  border-radius:3px;
+}
+
+.card_title{
+
+}

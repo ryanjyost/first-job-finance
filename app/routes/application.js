@@ -35,7 +35,6 @@ export default Ember.Route.extend({
 
     updateState(stateIndex){
       this.get('repo').persist('stateIndex', stateIndex);
-      console.log(stateIndex)
     },
   },
 

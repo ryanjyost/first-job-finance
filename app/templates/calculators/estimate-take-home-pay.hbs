@@ -1,4 +1,8 @@
-<div class="col-md-5 calculator_input">
+<div id="calculator_container">
+  <div class="col-sm-5 calculator_input">
+
+  {{log fedTaxWithholdingMonthly}}
+
   <!-- Salary or Hourly -->
   <section>
     <h5>How will you be paid?</h5>
@@ -101,9 +105,9 @@
       selected=model.stateIndex
     }}
   </section>
-</div>
+</div> <!-- Calculator Input -->
 
-<div class="col-md-7 calculator_output">
+<div class="col-sm-7 calculator_output">
 
     <div class="row">
       <h1>{{format-number model.annualIncome "currency"}}</h1><br>
@@ -142,7 +146,7 @@
         <h1 class="text--bold-gray">{{format-number  model.employerPlanDeferralRate "percent"}}</h1>
       </div>
       <div class="col col-xs-7">
-        <h4>will be withheld to pay state income tax</h4>
+        <h4>will be withheld to pay {{model.stateIndex}} state income tax</h4>
       </div>
     </div>
 
@@ -158,10 +162,8 @@
       </div>
     </div>
 
-    <hr class="line--thick-blue">
-
     <div class="row">
-      <h4 class="bold text-align--center">Your <u>monthly</u> take-home pay will be roughly</h4>
+      <h4 class="bold text-align--center">Your monthly take-home pay will be roughly</h4>
       <h1>{{format-number (div employerPlanDeferralAmount 2) "currency"}}</h1>
     </div>
 
@@ -171,6 +173,6 @@
       <h3>Use this number as the starting point for your monthly budget.</h3>
     </div>
 
+  </div> <!-- Calculator Output -->
+</div> <!-- Calculator Container -->
 
-
-</div>
