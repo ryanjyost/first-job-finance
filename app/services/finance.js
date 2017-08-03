@@ -67,8 +67,121 @@ export default Ember.Service.extend({
         }],
   },
 
+  stateTaxWhTables: {
+    //all single filers, 2016 rates
+    //there should be 'n' rates and n-1 upper limits
 
-  fedTaxWithholdingPerPaycheck(annualIncome, preTaxSavingsRate, allowances, payPeriod, ){
+    "Alaska": null,
+    "Alabama": {
+      marginalRates: [0.02, 0.04, 0.05],
+      upperLimitsForBrackets: [500, 3000]
+    },
+    "Arkansas": {
+      marginalRates: [0.009, .025, .035, .045, .06, .069],
+      upperLimitsForBrackets: [4299, 8399, 12599, 20999, 35099]
+    },
+    "Arizona": {
+      marginalRates: [2.59, 2.88, 3.36, 4.24, 4.54],
+      upperLimitsForBrackets: [10000, 25000, 50000, 150000]
+    },
+    "California": {
+      marginalRates: [0.01, 0.02, 0.04, 0.06, 0.08, 0.093, 0.103, 0.113, 0.123, 0.133],
+      upperLimitsForBrackets: [7850, 18610, 29372, 40773, 51530, 263222, 315866, 526443, 1000000]
+    },
+    "Colorado": {
+      marginalRates: [0.0463],
+      upperLimitsForBrackets: [0]
+    },
+    "Connecticut":{
+      marginalRates: [0.03, 0.05, 0.055, 0.06, 0.065, 0.069, 0.0699],
+      upperLimitsForBrackets: [10000, 50000, 100000, 200000, 250000, 500000]
+    },
+    "Delaware":{
+      marginalRates: [0, 0.022, 0.039, 0.048, 0.052, 0.0555, 0.066],
+      upperLimitsForBrackets: [2000, 5000, 10000, 20000, 25000, 60000]
+    },
+    "District of Columbia":{
+      marginalRates: [0.04, 0.06, 0.065, 0.085, 0.0875, 0.0895],
+      upperLimitsForBrackets: [10000, 40000, 60000, 350000, 1000000]
+    },
+    "Florida": null,
+    "Georgia":{
+      marginalRates: [0.01, 0.02, 0.03, 0.04, 0.05, 0.06],
+      upperLimitsForBrackets: [750, 2250, 3750, 5250, 7000]
+    },
+    "Hawaii":{
+      marginalRates: [0.014, 0.032, 0.055, 0.064, 0.068, 0.072, 0.076, 0.079, 0.0825],
+      upperLimitsForBrackets: [2400, 4800, 9600, 14400, 19200, 24000, 36000, 48000]
+    },
+    "Idaho":{
+      marginalRates: [0.016, 0.036, 0.041, 0.051, 0.061, 0.071, 0.074],
+      upperLimitsForBrackets: [1452, 2940, 4356, 5808, 7260, 10890]
+    },
+    "Illinois":{
+      marginalRates:[0.0495], // updated for 2017
+      upperLimitsForBrackets: [0]
+    },
+    "Indiana":{
+      marginalRates:[0.033],
+      upperLimitsForBrackets: [0]
+    },
+    "Iowa": {
+      marginalRates: [0.0036, 0.0072, 0.0243, 0.045, 0.0612, 0.0648, 0.068, 0.0792, 0.0898],
+      upperLimitsForBrackets: [1554, 3108, 6216, 13896, 23310, 31080, 46620, 69930]
+    },
+    "Kansas":{
+      marginalRates: [0.027, 0.046],
+      upperLimitsForBrackets: [15000]
+    },
+    "Kentucky":{
+      marginalRates: [0.02, 0.03, 0.04, 0.05, 0.058, 0.06],
+      upperLimitsForBrackets: [3000, 4000, 5000, 8000, 75000]
+    },
+    "Louisiana": {
+      marginalRates: [0.02, 0.04, 0.06],
+      upperLimitsForBrackets: [12500, 50000]
+    }
+        // "Massachusetts",
+        // "Maryland",
+        // "Maine",
+        // "Michigan",
+        // "Minnesota",
+        // "Missouri",
+        // "Mississippi",
+        // "Montana",
+        // "North Carolina",
+        // "North Dakota",
+        // "Nebraska",
+        // "New Hampshire",
+        // "New Jersey",
+        // "New Mexico",
+        // "Nevada",
+        // "New York",
+        // "Ohio",
+        // "Oklahoma",
+        // "Oregon",
+        // "Pennsylvania",
+        // "Puerto Rico",
+        // "Rhode Island",
+        // "South Carolina",
+        // "South Dakota",
+        // "Tennessee",
+        // "Texas",
+        // "Utah",
+        // "Virginia",
+        // "Vermont",
+        // "Washington",
+        // "Wisconsin",
+        // "West Virginia",
+        // "Wyoming"
+      },
+
+
+
+
+
+
+  fedTaxWithholdingPerPaycheck(annualIncome, preTaxSavingsRate, allowances, payPeriod){
     //assumes the user is single (not married)
 
     const taxTable = this.get('fedWithholdingTables')[payPeriod][allowances],
@@ -112,6 +225,10 @@ export default Ember.Service.extend({
 
       //subtract the proper amount based on brackets in fed withholding tax tables (step C in pub 15-A 2017)
       let incomeAtMarginalRate = paycheckSubjectToTaxWh - taxTable.fedWhSubtractionAmount[index];
+
+      //return zero if the income reduced to less than zero by subtraction amount
+      if(incomeAtMarginalRate < 0)
+        return 0;
 
       //multiply result by margin tax bracket (step D in pub 15-A 2017)
       let fedWhAmountPerPaycheck = incomeAtMarginalRate * taxBrackets[index];

@@ -2,7 +2,7 @@
   background-color: $blue-gray;
   padding:0px !important;
 
-  @media(min-width: 576px){
+  @media(min-width: 768px){
     #calculator_container{
       height:100vh - $nav-height;
       overflow:hidden;
@@ -37,7 +37,7 @@
   }
 
   .calculator_output{
-    padding:50px 5%;
+    padding:20px 5% 50px 5%;
     min-height:100vh;
     background-color:$light-blue;
 

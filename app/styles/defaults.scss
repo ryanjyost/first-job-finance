@@ -148,9 +148,9 @@ $roboto:'Roboto', sans-serif;;
   color: $medium-gray !important;
 }
 
-h1, h4 {font-family: 'Open Sans', sans-serif;}
+h1, h4, h6 {font-family: 'Open Sans', sans-serif;}
 h2, h5{font-family: 'Playfair Display', serif;}
-h3, h6, p {font-family: 'Roboto', sans-serif; font-weight:700;}
+h3, p {font-family: 'Roboto', sans-serif; font-weight:700;}
 
 p {
   font-size: 20px;
@@ -185,10 +185,11 @@ h5{font-size:24px;}
 
 
 h6{
-  font-size:12px;
+  font-size:13px;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   line-height:1.2;
+  font-weight:700;
 }
 
 

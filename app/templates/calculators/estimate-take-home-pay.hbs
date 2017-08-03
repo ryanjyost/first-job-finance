@@ -1,5 +1,4 @@
 <div id="calculator_container">
-{{log fedTaxWhPerMonth}}
 <!--==============
   INPUT
 ===============-->
@@ -23,7 +22,7 @@
       {{slider-range
         label_1="I make"
         label_2="a year."
-        min=100
+        min=10000
         max=100000
         step=100
         value=model.annualIncome
@@ -37,7 +36,7 @@
       {{slider-range
         label_1="I get paid"
         label_2="an hour."
-        min=1
+        min=7.25
         max=50
         step=0.25
         value=model.hourlyWage
@@ -116,16 +115,26 @@
  ===============-->
 <div class="col-sm-7 calculator_output">
 
-  <!-- -->
+    <!-- Pick Time Period -->
     <div class="row">
-      <h1>{{format-number (div incomePerYear 12) "currency"}}</h1><br>
+      {{button-group
+        currentSelected='year'
+        updateSelect=(action 'updateTimeframe')
+        buttons=selectTimeframeButtons
+      }}
+    </div>
+
+
+    <!-- Income Per Period -->
+    <div class="row">
+      <h1>{{format-number (div incomePerYear timeframeDivisor) "currency"}}</h1><br>
        <h4>is how much you earn a month</h4>
     </div>
 
     <!-- Retirement Savings  -->
     <div class="row">
       <div class="col col-xs-5">
-        <h1>{{format-number employerPlanDeferralPerMonth "currency"}}</h1>
+        <h1>{{format-number employerPlanDeferralPerYear "currency"}}</h1>
         <hr>
         <h1 class="text--bold-gray">{{format-number  model.employerPlanDeferralRate "percent"}}</h1>
       </div>
@@ -137,9 +146,9 @@
     <!-- Federal Tax Withholding  -->
     <div class="row">
       <div class="col col-xs-5">
-        <h1>{{format-number fedTaxWhPerMonth "currency"}}</h1>
+        <h1>{{format-number fedTaxWhPerYear "currency"}}</h1>
         <hr>
-        <h1 class="text--bold-gray">{{format-number  (div fedTaxWhPerMonth incomePerMonth) "percent"}}</h1>
+        <h1 class="text--bold-gray">{{format-number  (div fedTaxWhPerYear incomePerYear) "percent"}}</h1>
       </div>
       <div class="col col-xs-7">
         <h4>will be withheld to pay federal income tax</h4>
@@ -154,7 +163,7 @@
         <h1 class="text--bold-gray">{{format-number 0.05 "percent"}}</h1>
       </div>
       <div class="col col-xs-7">
-        <h4>will be withheld to pay {{model.stateIndex}} state income tax</h4>
+        <h4>will be withheld to pay {{model.stateIndex}} state income tax.</h4>
       </div>
     </div>
 
@@ -171,7 +180,7 @@
     </div>
 
     <div class="row">
-      <h4 class="bold text-align--center">Your monthly take-home pay will be roughly</h4>
+      <h4 class="bold text-align--center">Your monthly take-home pay will be <u>roughly</u></h4>
       <h1>{{format-number 100 "currency"}}</h1>
     </div>
 

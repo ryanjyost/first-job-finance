@@ -7,14 +7,15 @@ nav{
   height:$nav-height;
   min-height:60px;
   border-bottom:1px solid $black;
-  padding:5px 0px 0px 0px;
+  padding:8px 0px 0px 0px;
 
   a{
     text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-weight:700;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.1em;
     color:$dark-black;
+    font-size:14px;
 
     &:hover{
       background-color:transparent !important;

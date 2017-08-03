@@ -4,27 +4,31 @@ export default Ember.Controller.extend({
 
   finance: Ember.inject.service(),
 
+  //=======================================================
+  //controller variables
+  timeframe: 'year',
+  timeframeDivisor: 1, //from annual figure, divide by...
+
+  //=======================================================
   //constants
   payFrequencyButtons: [{label: 'monthly', value: 'monthly'},{label: 'semi-monthly', value: 'semi-monthly'},{label: 'bi-weekly', value: 'bi-weekly'},{label: 'weekly', value: 'weekly'}],
   incomeTypeButtons: [{label: 'hourly', value: 'hourly'},{label: 'salary', value: 'salary'}],
+  selectTimeframeButtons: [{label: 'Year', value: 'year'},{label: 'month', value: 'month'},{label: 'paycheck', value: 'paycheck'}],
   listOfStates: ["Alaska",
-                  "Alabama",
                   "Arkansas",
-                  "American Samoa",
                   "Arizona",
                   "California",
                   "Colorado",
                   "Connecticut",
-                  "District of Columbia",
                   "Delaware",
+                  "District of Columbia",
                   "Florida",
                   "Georgia",
-                  "Guam",
                   "Hawaii",
-                  "Iowa",
                   "Idaho",
                   "Illinois",
                   "Indiana",
+                  "Iowa",
                   "Kansas",
                   "Kentucky",
                   "Louisiana",
@@ -37,7 +41,7 @@ export default Ember.Controller.extend({
                   "Mississippi",
                   "Montana",
                   "North Carolina",
-                  " North Dakota",
+                  "North Dakota",
                   "Nebraska",
                   "New Hampshire",
                   "New Jersey",
@@ -56,13 +60,14 @@ export default Ember.Controller.extend({
                   "Texas",
                   "Utah",
                   "Virginia",
-                  "Virgin Islands",
                   "Vermont",
                   "Washington",
                   "Wisconsin",
                   "West Virginia",
                   "Wyoming"],
 
+  //=======================================================
+  //computed properties
   incomePerYear: Ember.computed(
     'model.annualIncome',
     'model.incomeType',
@@ -88,8 +93,7 @@ export default Ember.Controller.extend({
     return this.get('incomePerYear')/12;
   }),
 
-
-  fedTaxWhPerMonth: Ember.computed(
+  fedTaxWhPerYear: Ember.computed(
     'model.employerPlanDeferralRate',
     'model.payPeriod',
     'incomePerYear',
@@ -101,24 +105,24 @@ export default Ember.Controller.extend({
 
       let fedWhPerPaycheck = this.get('finance').fedTaxWithholdingPerPaycheck(annualIncome, employerPlanDeferralRate, 2, payPeriod)
 
-      let fedTaxWhPerMonth = 0;
+      let fedTaxWhPerYear = 0;
 
       switch(payPeriod){
         case "weekly":
-          fedTaxWhPerMonth = (fedWhPerPaycheck*52)/12;
+          fedTaxWhPerYear = fedWhPerPaycheck*52;
           break;
         case "bi-weekly":
-          fedTaxWhPerMonth = (fedWhPerPaycheck*26)/12;
+          fedTaxWhPerYear = fedWhPerPaycheck*26;
           break;
         case "semi-monthly":
-          fedTaxWhPerMonth = fedWhPerPaycheck*2;
+          fedTaxWhPerYear = fedWhPerPaycheck*24;
           break;
         case "monthly":
-          fedTaxWhPerMonth = fedWhPerPaycheck;
+          fedTaxWhPerMonth = fedWhPerPaycheck*12;
           break;
       }
 
-      return fedTaxWhPerMonth;
+      return fedTaxWhPerYear;
   }),
 
   currentStateName: Ember.computed('model.stateIndex', function(){
@@ -127,7 +131,6 @@ export default Ember.Controller.extend({
 
     return listOfStates[stateIndex];
   }),
-
 
   maxPreTaxSavingsRate: Ember.computed(
     'model.employerPlanDeferralRate',
@@ -163,7 +166,7 @@ export default Ember.Controller.extend({
         return 18000/annualIncome;
   }),
 
-  employerPlanDeferralPerMonth: Ember.computed(
+  employerPlanDeferralPerYear: Ember.computed(
     'model.employerPlanDeferralRate',
     'model.annualIncome',
     'model.incomeType',
@@ -182,8 +185,46 @@ export default Ember.Controller.extend({
        if(incomeType === "hourly"){
         return (hourlyWage*workingHoursPerWeek*workingWeeksPerYear)*rate || 0;
        } else{
-        return (annualIncome*rate)/12 || 0;
+        return (annualIncome*rate) || 0;
        }
-  })
+  }),
+
+  //=======================================================
+  //actions
+
+  actions: {
+    updateTimeframe(timeframe){
+      this.set('timeframe', timeframe);
+
+      let newTimeframeDivisor = 1;
+
+      if(timeframe == 'month')
+        newTimeframeDivisor = 12
+
+      if(timeframe=='paycheck'){
+        let payPeriod = this.get('model.payPeriod');
+
+        switch(payPeriod){
+          case "weekly":
+            newTimeframeDivisor = 52;
+            break;
+          case "bi-weekly":
+            newTimeframeDivisor = 26;
+            break;
+          case "semi-monthly":
+            newTimeframeDivisor = 24;
+            break;
+          case "monthly":
+            newTimeframeDivisor = 12;
+            break;
+        }
+      }
+
+      this.set('timeframeDivisor', newTimeframeDivisor)
+
+      console.log(newTimeframeDivisor)
+    }
+  }
+
 
 });
