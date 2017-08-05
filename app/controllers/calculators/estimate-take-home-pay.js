@@ -4,6 +4,10 @@ export default Ember.Controller.extend({
 
   finance: Ember.inject.service(),
 
+  listOfStates: Ember.computed(function(){
+    return this.get('finance').listOfStates;
+  }),
+
   //=======================================================
   //controller variables
   timeframe: 'year',
@@ -14,57 +18,7 @@ export default Ember.Controller.extend({
   payFrequencyButtons: [{label: 'monthly', value: 'monthly'},{label: 'semi-monthly', value: 'semi-monthly'},{label: 'bi-weekly', value: 'bi-weekly'},{label: 'weekly', value: 'weekly'}],
   incomeTypeButtons: [{label: 'hourly', value: 'hourly'},{label: 'salary', value: 'salary'}],
   selectTimeframeButtons: [{label: 'Year', value: 'year'},{label: 'month', value: 'month'},{label: 'paycheck', value: 'paycheck'}],
-  listOfStates: ["Alaska",
-                  "Arkansas",
-                  "Arizona",
-                  "California",
-                  "Colorado",
-                  "Connecticut",
-                  "Delaware",
-                  "District of Columbia",
-                  "Florida",
-                  "Georgia",
-                  "Hawaii",
-                  "Idaho",
-                  "Illinois",
-                  "Indiana",
-                  "Iowa",
-                  "Kansas",
-                  "Kentucky",
-                  "Louisiana",
-                  "Massachusetts",
-                  "Maryland",
-                  "Maine",
-                  "Michigan",
-                  "Minnesota",
-                  "Missouri",
-                  "Mississippi",
-                  "Montana",
-                  "North Carolina",
-                  "North Dakota",
-                  "Nebraska",
-                  "New Hampshire",
-                  "New Jersey",
-                  "New Mexico",
-                  "Nevada",
-                  "New York",
-                  "Ohio",
-                  "Oklahoma",
-                  "Oregon",
-                  "Pennsylvania",
-                  "Puerto Rico",
-                  "Rhode Island",
-                  "South Carolina",
-                  "South Dakota",
-                  "Tennessee",
-                  "Texas",
-                  "Utah",
-                  "Virginia",
-                  "Vermont",
-                  "Washington",
-                  "Wisconsin",
-                  "West Virginia",
-                  "Wyoming"],
+
 
   //=======================================================
   //computed properties
@@ -118,19 +72,35 @@ export default Ember.Controller.extend({
           fedTaxWhPerYear = fedWhPerPaycheck*24;
           break;
         case "monthly":
-          fedTaxWhPerMonth = fedWhPerPaycheck*12;
+          fedTaxWhPerYear = fedWhPerPaycheck*12;
           break;
       }
 
       return fedTaxWhPerYear;
   }),
 
-  currentStateName: Ember.computed('model.stateIndex', function(){
-    let listOfStates = this.get('listOfStates'),
-        stateIndex = this.get('model.stateIndex')
-
-    return listOfStates[stateIndex];
+  stateIncomeTaxPerYear: Ember.computed('incomePerYear', 'model.annualIncome',function(){
+    let stateIncomeTaxPerYear = this.get('finance').estimatedStateIncomeTaxPerYear(this.get('incomePerYear'), this.get('model.stateName'));
+    return stateIncomeTaxPerYear;
   }),
+
+  ficaTaxPerYear: Ember.computed(
+    'model.annualIncome',
+
+    function(){
+      let annualIncome = this.get('model.annualIncome'),
+          ficaTaxPerYear = this.get('finance').ficaTaxPerYear(annualIncome);
+
+      return ficaTaxPerYear;
+
+  }),
+
+  // currentStateName: Ember.computed('model.stateIndex', function(){
+  //   let listOfStates = this.get('listOfStates'),
+  //       stateIndex = this.get('model.stateIndex')
+
+  //   return listOfStates[stateIndex];
+  // }),
 
   maxPreTaxSavingsRate: Ember.computed(
     'model.employerPlanDeferralRate',
@@ -189,14 +159,11 @@ export default Ember.Controller.extend({
        }
   }),
 
-  //=======================================================
-  //actions
+  timeframeDivisor: Ember.computed('model.payPeriod', 'timeframe', function(){
+    let payPeriod = this.get('model.payPeriod'),
+        timeframe = this.get('timeframe');
 
-  actions: {
-    updateTimeframe(timeframe){
-      this.set('timeframe', timeframe);
-
-      let newTimeframeDivisor = 1;
+    let newTimeframeDivisor = 1;
 
       if(timeframe == 'month')
         newTimeframeDivisor = 12
@@ -220,9 +187,15 @@ export default Ember.Controller.extend({
         }
       }
 
-      this.set('timeframeDivisor', newTimeframeDivisor)
+      return newTimeframeDivisor
+  }),
 
-      console.log(newTimeframeDivisor)
+  //=======================================================
+  //actions
+
+  actions: {
+    updateTimeframe(timeframe){
+      this.set('timeframe', timeframe);
     }
   }
 

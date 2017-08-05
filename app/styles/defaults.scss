@@ -91,6 +91,12 @@ GENERAL MIXINS
   text-align:center !important
 }
 
+.text--blue-gray{
+  color:$blue-grayer !important;
+}
+
+
+
 /*=======================================================
 GENERAL
 =======================================================*/
@@ -108,6 +114,10 @@ hr{
 
   .line--thick-blue{
     border-top:3px solid $blue;
+    width:60%;
+    margin:auto;
+    margin-top:10px;
+    margin-bottom:10px;
   }
 
 .main{
@@ -201,12 +211,15 @@ GENERAL BLOCKS
   @include max-width;
   display:block;
   margin:auto;
-  min-height:100vh;
   padding-top:50px;
 }
 
 .block--padded-15{
   padding: 30px;
+}
+
+.no-padding{
+  padding: 0px !important;
 }
 
 

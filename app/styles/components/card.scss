@@ -3,22 +3,43 @@ Cards
 =======================================================*/
 
 .card_container{
-  padding:50px 10%;
-  height:100vh;
+  padding:50px 5%;
   background-color:$light-blue;
 }
 
 
 .card_single{
- padding:5px;
+  padding:5px 15px;
+
+  a:hover{
+    text-decoration: none!important
+  }
+
+  hr{
+    border-top:2px solid $blue;
+    width:100%;
+  }
+
+  h2{
+    margin:0px;
+    font-weight:700;
+    letter-spacing: 0.02em;
+  }
 }
 
 .card_single_inner-cont{
   border:1px solid $gray;
   background-color:$white;
   border-radius:3px;
+  padding:20px;
+  height:300px;
 }
 
 .card_title{
+  color:$blue-grayer;
 
+  &:hover{
+    color:$blue-grayer;
+    text-decoration: none !important;
+  }
 }

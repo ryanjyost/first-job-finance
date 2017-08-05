@@ -33,8 +33,8 @@ export default Ember.Route.extend({
       this.get('repo').persist('employerPlanDeferralRate', savingsRate);
     },
 
-    updateState(stateIndex){
-      this.get('repo').persist('stateIndex', stateIndex);
+    updateState(stateName){
+      this.get('repo').persist('stateName', stateName);
     },
   },
 
@@ -48,7 +48,7 @@ export default Ember.Route.extend({
       workingWeeksPerYear: this.get('repo').find('workingWeeksPerYear'),
       payPeriod: this.get('repo').find('payPeriod'),
       employerPlanDeferralRate: this.get('repo').find('employerPlanDeferralRate'),
-      stateIndex: this.get('repo').find('stateIndex'),
+      stateName: this.get('repo').find('stateName'),
     })
   }
 });

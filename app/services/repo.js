@@ -10,7 +10,7 @@ export default Ember.Service.extend({
   workingWeeksPerYear: null,
   payFrequency: null,
   employerPlanDeferralRate: null,
-  stateAbbr: null,
+  stateName: null,
 
   findAll(resource){
     return this.get(resource) ||
@@ -28,7 +28,7 @@ export default Ember.Service.extend({
       "workingWeeksPerYear": 50,
       "payPeriod":'"semi-monthly"',
       "employerPlanDeferralRate": 0.05,
-      "stateIndex": 5
+      "stateName": '"IL"'
     }
 
     let defaultValue = 'null'

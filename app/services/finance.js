@@ -2,7 +2,60 @@ import Ember from 'ember';
 
 export default Ember.Service.extend({
 
+  taxee: Ember.inject.service(),
+
   taxBrackets: [0.1, 0.15, 0.25, 0.28, 0.33, 0.35, 0.396],
+    listOfStates: ["Alaska",
+                  "Arkansas",
+                  "Arizona",
+                  "California",
+                  "Colorado",
+                  "Connecticut",
+                  "Delaware",
+                  "District of Columbia",
+                  "Florida",
+                  "Georgia",
+                  "Hawaii",
+                  "Idaho",
+                  "Illinois",
+                  "Indiana",
+                  "Iowa",
+                  "Kansas",
+                  "Kentucky",
+                  "Louisiana",
+                  "Maine",
+                  "Maryland",
+                  "Massachusetts",
+                  "Michigan",
+                  "Minnesota",
+                  "Missouri",
+                  "Mississippi",
+                  "Montana",
+                  "North Carolina",
+                  "North Dakota",
+                  "Nebraska",
+                  "New Hampshire",
+                  "New Jersey",
+                  "New Mexico",
+                  "Nevada",
+                  "New York",
+                  "Ohio",
+                  "Oklahoma",
+                  "Oregon",
+                  "Pennsylvania",
+                  "Puerto Rico",
+                  "Rhode Island",
+                  "South Carolina",
+                  "South Dakota",
+                  "Tennessee",
+                  "Texas",
+                  "Utah",
+                  "Virginia",
+                  "Vermont",
+                  "Washington",
+                  "Wisconsin",
+                  "West Virginia",
+                  "Wyoming"],
 
   fedWithholdingTables: {
     "weekly": [
@@ -68,7 +121,7 @@ export default Ember.Service.extend({
   },
 
   stateTaxWhTables: {
-    //all single filers, 2016 rates
+    //all single filers, 2016 rates unless noted
     //there should be 'n' rates and n-1 upper limits
 
     "Alaska": null,
@@ -140,45 +193,121 @@ export default Ember.Service.extend({
     "Louisiana": {
       marginalRates: [0.02, 0.04, 0.06],
       upperLimitsForBrackets: [12500, 50000]
-    }
-        // "Massachusetts",
-        // "Maryland",
-        // "Maine",
-        // "Michigan",
-        // "Minnesota",
-        // "Missouri",
-        // "Mississippi",
-        // "Montana",
-        // "North Carolina",
-        // "North Dakota",
-        // "Nebraska",
-        // "New Hampshire",
-        // "New Jersey",
-        // "New Mexico",
-        // "Nevada",
-        // "New York",
-        // "Ohio",
-        // "Oklahoma",
-        // "Oregon",
-        // "Pennsylvania",
-        // "Puerto Rico",
-        // "Rhode Island",
-        // "South Carolina",
-        // "South Dakota",
-        // "Tennessee",
-        // "Texas",
-        // "Utah",
-        // "Virginia",
-        // "Vermont",
-        // "Washington",
-        // "Wisconsin",
-        // "West Virginia",
-        // "Wyoming"
-      },
-
-
-
-
+    },
+    "Maine":{
+      marginalRates:[0.058, 0.0675, 0.0715],
+      upperLimitsForBrackets: [21049, 37499]
+    },
+    "Maryland":{
+      marginalRates: [0.02, 0.03, 0.04, 0.0475, 0.05, 0.0525, 0.055, 0.0575],
+      upperLimitsForBrackets: [1000, 2000, 3000, 100000, 125000, 150000, 250000]
+    },
+    "Massachusetts": {
+      marginalRates:[0.051],
+      upperLimitsForBrackets: [0]
+    },
+    "Michigan": {
+      marginalRates:[0.0425],
+      upperLimitsForBrackets: [0]
+    },
+    "Minnesota":{
+      marginalRates: [0.0535, 0.0705, 0.0785, 0.0985],
+      upperLimitsForBrackets:[25180, 82740, 155650]
+    },
+    "Mississippi":{
+      marginalRates:[0.03, 0.04, 0.05],
+      upperLimitsForBrackets: [5000, 10000]
+    },
+    "Missouri": {
+      marginalRates:[0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05, 0.055, 0.06],
+      upperLimitsForBrackets:[1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000]
+    },
+    "Montana":{
+      marginalRates: [0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.069],
+      upperLimitsForBrackets: [2900, 5100, 7800, 10500, 13500, 17400]
+    },
+    "Nebraska": {
+      marginalRates: [0.0246, 0.0351, 0.0501, 0.0684],
+      upperLimitsForBrackets: [3060, 18370, 29590]
+    },
+    "Nevada": null,
+    "New Hampshire":{
+      marginalRates: [0.05],
+      upperLimitsForBrackets: [0]
+    },
+    "New Jersey":{
+      marginalRates:[0.014, 0.0175, 0.035, 0.0553, 0.0637, 0.0897],
+      upperLimitsForBrackets: [20000, 35000, 40000, 75000, 500000]
+    },
+    "New Mexico":{
+      marginalRates: [0.017, 0.032, 0.047, 0.049],
+      upperLimitsForBrackets: [5500, 11000, 16000]
+    },
+    "New York":{
+      marginalRates: [0.04, 0.045, 0.0525, 0.059, 0.0645, 0.065, 0.0685, 0.082],
+      upperLimitsForBrackets: [8450, 11650, 13850, 21300, 80150, 214000, 1070350]
+    },
+    "North Carolina":{
+      marginalRates: [0.0575],
+      upperLimitsForBrackets: [0]
+    },
+    "North Dakota":{
+      marginalRates: [0.011, 0.0204, 0.0227, 0.0264, 0.029],
+      upperLimitsForBrackets: [37450, 90750, 189300, 411500]
+    },
+    "Ohio": {
+      marginalRates: [0.005, 0.0099, 0.0198, 0.0248, 0.0297, 0.0346, 0.0396, 0.046, 0.05],
+      upperLimitsForBrackets: [5200, 10400, 15650, 20900, 41700, 83350, 104250, 208500]
+    },
+    "Oklahoma": {
+      marginalRates: [0.005, 0.01, 0.02, 0.03, 0.04, 0.05],
+      upperLimitsForBrackets: [1000, 2500, 3750, 4900, 7200]
+    },
+    "Oregon":{
+      marginalRates:[0.05, 0.07, 0.09, 0.099],
+      upperLimitsForBrackets: [3350, 8400, 125000]
+    },
+    "Pennsylvania":{
+      marginalRates: [0.0307],
+      upperLimitsForBrackets: [0]
+    },
+    "Rhode Island":{
+      marginalRates:[0.0375, 0.0475, 0.0599],
+      upperLimitsForBrackets:[60850, 138300]
+    },
+    "South Carolina":{
+      marginalRates:[0, 0.03, 0.04, 0.05, 0.06, 0.07],
+      upperLimitsForBrackets: [2920, 5840, 8760, 11680, 14600]
+    },
+    "South Dakota":null,
+    "Tennessee":{
+      marginalRates: [0.06],
+      upperLimitsForBrackets: [0]
+    },
+    "Texas":null,
+    "Utah":{
+      marginalRates: [0.05],
+      upperLimitsForBrackets: [0]
+    },
+    "Vermont":{
+      marginalRates: [0.0355, 0.068, 0.078, 0.088, 0.0895],
+      upperLimitsForBrackets:[39900, 93400, 192400, 415600]
+    },
+    "Virginia":{
+      marginalRates:[0.02, 0.03, 0.05, 0.0575],
+      upperLimitsForBrackets:[3000, 5000, 17000]
+    },
+    "Washington": null,
+    "West Virginia": {
+      marginalRates: [0.03, 0.04, 0.045, 0.06, 0.065],
+      upperLimitsForBrackets: [10000, 25000, 40000, 60000]
+    },
+    "Wisconsin":{
+      marginalRates:[0.04, 0.0584, 0.0627, 0.0765],
+      upperLimitsForBrackets:[11150, 22230, 244750]
+    },
+    "Wyoming":null
+  },
 
 
   fedTaxWithholdingPerPaycheck(annualIncome, preTaxSavingsRate, allowances, payPeriod){
@@ -237,7 +366,45 @@ export default Ember.Service.extend({
     //=================================
 
     return fedWhAmountPerPaycheck;
+  },
+
+  estimatedStateIncomeTaxPerYear(annualIncome, stateName){
+    //only estimates based on state tax brackets, NOT withholding tables
+    console.log(stateName, annualIncome)
+
+    let taxTable = this.get('stateTaxWhTables')[stateName];
+    console.log(taxTable)
+
+    if(!taxTable){
+      return 0
+    }
+
+    let index = 0;
+
+    //find the state income tax bracket when income less than bracket limit
+    while(index < taxTable.marginalRates.length - 1){
+      if(annualIncome < taxTable.upperLimitsForBrackets[index])
+        break;
+
+      index++;
+    }
+
 
   },
+
+  ficaTaxPerYear(annualIncome){
+    let socialSecurityWageBaseLimit = 127200, // 2017 figure
+        socialSecurityTaxPerYear = 0,
+        socialSecurityTaxRate = 0.062,
+        medicareTaxPerYear = 0,
+        medicareTaxRate = 0.0145;
+
+    if(annualIncome > socialSecurityWageBaseLimit){
+      return ((socialSecurityWageBaseLimit*socialSecurityTaxRate) + (annualIncome * medicareTaxRate))
+    } else{
+      return (medicareTaxRate+socialSecurityTaxRate)*annualIncome
+    }
+
+  }
 
 });

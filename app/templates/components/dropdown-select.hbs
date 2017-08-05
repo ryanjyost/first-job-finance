@@ -1,7 +1,7 @@
 <select class="dropdown-select">
  {{!--  {{log optionsObject}} --}}
-  {{#each optionsObject as |item key|}}
-      <option class="dropdown-select_option" value={{key}}>
+  {{#each optionsObject as |item|}}
+      <option class="dropdown-select_option" value={{item}}>
         {{item}}
       </option>
   {{/each}}

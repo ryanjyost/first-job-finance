@@ -1,3 +1,5 @@
+{{log stateIncomeTaxPerYear}}
+
 <div id="calculator_container">
 <!--==============
   INPUT
@@ -94,7 +96,7 @@
       label_2="a.k.a."
       label_3="of my annual income to my company's retirement plan (e.g. 401k)."
       helperType="currency"
-      helperValue=(mult employerPlanDeferralPerMonth 12)
+      helperValue=employerPlanDeferralPerYear
 
     }}
   </section>
@@ -105,7 +107,7 @@
     {{dropdown-select
       optionsObject=listOfStates
       update=(route-action 'updateState')
-      selected=model.stateIndex
+      selected=model.stateName
     }}
   </section>
 </div> <!-- Calculator Input -->
@@ -128,13 +130,21 @@
     <!-- Income Per Period -->
     <div class="row">
       <h1>{{format-number (div incomePerYear timeframeDivisor) "currency"}}</h1><br>
-       <h4>is how much you earn a month</h4>
+       <h4>is how much you earn per
+        {{#if (eq timeframe "year")}}
+          year
+        {{else if (eq timeframe "month")}}
+          month
+        {{else}}
+          paycheck
+        {{/if}}
+       </h4>
     </div>
 
     <!-- Retirement Savings  -->
     <div class="row">
       <div class="col col-xs-5">
-        <h1>{{format-number employerPlanDeferralPerYear "currency"}}</h1>
+        <h1>{{format-number (div employerPlanDeferralPerYear timeframeDivisor) "currency"}}</h1>
         <hr>
         <h1 class="text--bold-gray">{{format-number  model.employerPlanDeferralRate "percent"}}</h1>
       </div>
@@ -146,7 +156,7 @@
     <!-- Federal Tax Withholding  -->
     <div class="row">
       <div class="col col-xs-5">
-        <h1>{{format-number fedTaxWhPerYear "currency"}}</h1>
+        <h1>{{format-number (div fedTaxWhPerYear timeframeDivisor) "currency"}}</h1>
         <hr>
         <h1 class="text--bold-gray">{{format-number  (div fedTaxWhPerYear incomePerYear) "percent"}}</h1>
       </div>
@@ -163,16 +173,16 @@
         <h1 class="text--bold-gray">{{format-number 0.05 "percent"}}</h1>
       </div>
       <div class="col col-xs-7">
-        <h4>will be withheld to pay {{model.stateIndex}} state income tax.</h4>
+        <h4>will be withheld to pay {{currentStateName}} state income tax. <i>This is a rough estimate</i></h4>
       </div>
     </div>
 
-    <!-- FICA Tax Withholding  -->
+    <!-- FICA Tax  -->
     <div class="row">
       <div class="col col-xs-5">
-        <h1>{{format-number 100 "currency"}}</h1>
+        <h1>{{format-number (div ficaTaxPerYear timeframeDivisor) "currency"}}</h1>
         <hr>
-        <h1 class="text--bold-gray">{{format-number 0.05 "percent"}}</h1>
+        <h1 class="text--bold-gray">{{format-number (div ficaTaxPerYear incomePerYear) "percent"}}</h1>
       </div>
       <div class="col col-xs-7">
         <h4>will be withheld to pay social security and medicare (FICA) tax</h4>
@@ -180,14 +190,27 @@
     </div>
 
     <div class="row">
-      <h4 class="bold text-align--center">Your monthly take-home pay will be <u>roughly</u></h4>
+      <h4 class="bold text-align--center">
+        Your take-home pay per
+          <span class="text--blue-gray">
+            {{#if (eq timeframe "year")}}
+              year
+            {{else if (eq timeframe "month")}}
+              month
+            {{else}}
+              paycheck
+            {{/if}}
+          </span>
+        will be <i>approximately</i>
+
+      </h4>
       <h1>{{format-number 100 "currency"}}</h1>
     </div>
 
     <hr class="line--thick-blue">
 
     <div class="row">
-      <h3>Use this number as the starting point for your monthly budget.</h3>
+      <h3>Next Steps</h3>
     </div>
 
   </div> <!-- Calculator Output -->
