@@ -25,7 +25,7 @@ export default Ember.Component.extend({
 
   actions:{
     handleSelect(value){
-      this.set('selected', value);
+      this.set('currentSelected', value);
       this.get('updateSelect')(value);
     }
   }

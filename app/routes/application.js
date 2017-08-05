@@ -35,6 +35,7 @@ export default Ember.Route.extend({
 
     updateState(stateName){
       this.get('repo').persist('stateName', stateName);
+      console.log('update state in repo')
     },
   },
 

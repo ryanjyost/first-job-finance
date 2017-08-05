@@ -134,7 +134,7 @@ export default Ember.Service.extend({
       upperLimitsForBrackets: [4299, 8399, 12599, 20999, 35099]
     },
     "Arizona": {
-      marginalRates: [2.59, 2.88, 3.36, 4.24, 4.54],
+      marginalRates: [0.0259, 0.0288, 0.0336, 0.0424, 0.0454],
       upperLimitsForBrackets: [10000, 25000, 50000, 150000]
     },
     "California": {
@@ -368,27 +368,53 @@ export default Ember.Service.extend({
     return fedWhAmountPerPaycheck;
   },
 
-  estimatedStateIncomeTaxPerYear(annualIncome, stateName){
+  estimatedStateIncomeTaxPerYear(annualIncome, stateName, preTaxSavingsRate){
     //only estimates based on state tax brackets, NOT withholding tables
-    console.log(stateName, annualIncome)
 
-    let taxTable = this.get('stateTaxWhTables')[stateName];
-    console.log(taxTable)
+    let taxTable = this.get('stateTaxWhTables')[stateName],
+        taxableIncome = annualIncome*(1-preTaxSavingsRate);
 
+    //if no state income tax for state
     if(!taxTable){
+      console.log(`${stateName} has no income tax`)
       return 0
+    }
+
+    //if flat tax
+    if(taxTable.marginalRates.length == 1){
+       console.log(`${taxableIncome} at ${(taxTable.marginalRates[0]*100).toFixed(2)}%`)
+       return taxableIncome*taxTable.marginalRates[0];
     }
 
     let index = 0;
 
     //find the state income tax bracket when income less than bracket limit
     while(index < taxTable.marginalRates.length - 1){
-      if(annualIncome < taxTable.upperLimitsForBrackets[index])
+      if(taxableIncome < taxTable.upperLimitsForBrackets[index])
         break;
 
       index++;
     }
 
+    let tax = 0
+
+    //calculate state income tax for lower brackets, then final bracket based on annual income
+    for(let j = 0; j < index+1; j++){
+      let lowerBound = taxTable.upperLimitsForBrackets[j-1] || 0,
+          upperBound = taxTable.upperLimitsForBrackets[j] || taxableIncome,
+          marginalRate = taxTable.marginalRates[j];
+
+      if(taxableIncome <= upperBound)
+        upperBound = taxableIncome;
+
+      let bracketRange = upperBound - lowerBound;
+
+      console.log(`${lowerBound} to ${upperBound} at ${(marginalRate*100).toFixed(2)}% plus ${tax}`)
+
+      tax = tax + bracketRange*marginalRate
+    }
+
+    return tax;
 
   },
 

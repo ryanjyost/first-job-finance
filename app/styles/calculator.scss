@@ -12,6 +12,7 @@
       overflow:scroll;
       float:left;
       height:100%;
+      padding:5vh 0px 20vh 0px;
     }
   }
 
@@ -37,7 +38,6 @@
 
   .calculator_output{
     padding:20px 5% 50px 5%;
-    min-height:100vh;
     background-color:$light-blue;
 
     h5{

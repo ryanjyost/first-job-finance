@@ -28,7 +28,7 @@ export default Ember.Service.extend({
       "workingWeeksPerYear": 50,
       "payPeriod":'"semi-monthly"',
       "employerPlanDeferralRate": 0.05,
-      "stateName": '"IL"'
+      "stateName": '"Illinois"'
     }
 
     let defaultValue = 'null'

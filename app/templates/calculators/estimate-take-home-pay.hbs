@@ -1,5 +1,3 @@
-{{log stateIncomeTaxPerYear}}
-
 <div id="calculator_container">
 <!--==============
   INPUT
@@ -168,12 +166,12 @@
     <!-- State Tax Withholding  -->
     <div class="row">
       <div class="col col-xs-5">
-        <h1>{{format-number 100 "currency"}}</h1>
+        <h1>{{format-number (div stateIncomeTaxPerYear timeframeDivisor) "currency"}}</h1>
         <hr>
-        <h1 class="text--bold-gray">{{format-number 0.05 "percent"}}</h1>
+        <h1 class="text--bold-gray">{{format-number (div stateIncomeTaxPerYear incomePerYear) "percent"}}</h1>
       </div>
       <div class="col col-xs-7">
-        <h4>will be withheld to pay {{currentStateName}} state income tax. <i>This is a rough estimate</i></h4>
+        <h4>will be withheld to pay {{model.stateName}} state income tax. <i>This is a rough, conservative estimate</i></h4>
       </div>
     </div>
 
@@ -198,20 +196,17 @@
             {{else if (eq timeframe "month")}}
               month
             {{else}}
-              paycheck
+              {{model.payPeriod}} paycheck
             {{/if}}
           </span>
         will be <i>approximately</i>
 
       </h4>
-      <h1>{{format-number 100 "currency"}}</h1>
+      <h1>{{format-number (div takeHomePayPerYear timeframeDivisor) "currency"}}</h1>
     </div>
 
     <hr class="line--thick-blue">
 
-    <div class="row">
-      <h3>Next Steps</h3>
-    </div>
 
   </div> <!-- Calculator Output -->
 </div> <!-- Calculator Container -->

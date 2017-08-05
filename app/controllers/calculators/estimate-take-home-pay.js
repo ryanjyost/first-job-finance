@@ -43,10 +43,6 @@ export default Ember.Controller.extend({
         return annualIncome;
   }),
 
-  incomePerMonth: Ember.computed('incomePerYear', function(){
-    return this.get('incomePerYear')/12;
-  }),
-
   fedTaxWhPerYear: Ember.computed(
     'model.employerPlanDeferralRate',
     'model.payPeriod',
@@ -79,9 +75,16 @@ export default Ember.Controller.extend({
       return fedTaxWhPerYear;
   }),
 
-  stateIncomeTaxPerYear: Ember.computed('incomePerYear', 'model.annualIncome',function(){
-    let stateIncomeTaxPerYear = this.get('finance').estimatedStateIncomeTaxPerYear(this.get('incomePerYear'), this.get('model.stateName'));
-    return stateIncomeTaxPerYear;
+  currentStateName: Ember.computed('model.stateName', function(){
+    console.log('change state computed')
+    return this.get('model.stateName')
+  }),
+
+  stateIncomeTaxPerYear: Ember.computed('incomePerYear', 'model.employerPlanDeferralRate', 'currentStateName',function(){
+
+      let stateIncomeTaxPerYear = this.get('finance').estimatedStateIncomeTaxPerYear(this.get('incomePerYear'), this.get('currentStateName'), this.get('model.employerPlanDeferralRate'));
+
+      return stateIncomeTaxPerYear;
   }),
 
   ficaTaxPerYear: Ember.computed(
@@ -92,15 +95,7 @@ export default Ember.Controller.extend({
           ficaTaxPerYear = this.get('finance').ficaTaxPerYear(annualIncome);
 
       return ficaTaxPerYear;
-
   }),
-
-  // currentStateName: Ember.computed('model.stateIndex', function(){
-  //   let listOfStates = this.get('listOfStates'),
-  //       stateIndex = this.get('model.stateIndex')
-
-  //   return listOfStates[stateIndex];
-  // }),
 
   maxPreTaxSavingsRate: Ember.computed(
     'model.employerPlanDeferralRate',
@@ -159,6 +154,15 @@ export default Ember.Controller.extend({
        }
   }),
 
+  takeHomePayPerYear: Ember.computed(
+    'incomePerYear',
+    'fedTaxWhPerYear',
+    'stateIncomeTaxPerYear',
+    'ficaTaxPerYear',
+    function(){
+      return this.get('incomePerYear') - this.get('employerPlanDeferralPerYear') - this.get('fedTaxWhPerYear') - this.get('stateIncomeTaxPerYear') - this.get('ficaTaxPerYear');
+  }),
+
   timeframeDivisor: Ember.computed('model.payPeriod', 'timeframe', function(){
     let payPeriod = this.get('model.payPeriod'),
         timeframe = this.get('timeframe');
@@ -196,6 +200,11 @@ export default Ember.Controller.extend({
   actions: {
     updateTimeframe(timeframe){
       this.set('timeframe', timeframe);
+    },
+
+    updateCurrentStateName(newStateName){
+      this.set('currentStateName', newStateName);
+      console.log('change state action')
     }
   }
 

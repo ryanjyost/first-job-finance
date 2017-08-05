@@ -17,15 +17,20 @@ export default Ember.Component.extend({
     //set starting position of range thumb to equal repo value
     let select = this.$('.dropdown-select');
     select.val(selected);
+  },
 
+  didReceiveAttrs(){
+    this._super(...arguments);
+
+    let selected = this.get('selected');
+    this.set('selected', selected)
   },
 
   change(){
-
-    //set starting position of range thumb to equal repo value
     let select = this.$('.dropdown-select');
     let selected = select.val();
 
+    this.set('selected', selected)
     this.get('update')(selected);
   }
 });
