@@ -2,6 +2,14 @@
 Cards
 =======================================================*/
 
+$card-width: 85%;
+
+@mixin card-text{
+  width:$card-width;
+  display:block;
+  margin:auto;
+}
+
 .card_container{
   padding:20px 5%;
   background-color:$light-blue;
@@ -9,7 +17,7 @@ Cards
 
 
 .card_single{
-  padding:5px 15px;
+  padding:15px;
   max-width:600px;
   margin:auto;
 
@@ -17,13 +25,17 @@ Cards
     text-decoration: none!important
   }
 
+  a:focus{
+    text-decoration: none!important
+  }
+
   hr{
     border-top:2px solid $blue;
-    width:100%;
+    width:$card-width;
+    margin:auto;
   }
 
   h2{
-    margin:0px;
     font-weight:700;
     letter-spacing: 0.02em;
   }
@@ -33,15 +45,42 @@ Cards
   border:1px solid $gray;
   background-color:$white;
   border-radius:3px;
-  padding:20px;
-  height:300px;
+
+   &:hover{
+    border:1px solid $blue;
+  }
 }
 
 .card_title{
   color:$blue-grayer;
+  padding: 40px 0px 20px 0px;
+  @include card-text;
+
 
   &:hover{
     color:$blue-grayer;
     text-decoration: none !important;
   }
+}
+
+.card_desc{
+  padding:15px 2px 25px 2px;
+  @include card-text;
+}
+
+.card_type{
+  @include card-text;
+  text-align:right;
+  color:$dark-gray;
+  padding-bottom:30px;
+}
+
+.card_coming-soon{
+  width:100%;
+  background-color:$blue-grayer;
+  text-align:center;
+  padding:10px;
+  color:$gray;
+  margin:0px;
+
 }

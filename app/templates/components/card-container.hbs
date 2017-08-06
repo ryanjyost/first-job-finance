@@ -6,11 +6,12 @@
 
 <div class="row card_container">
   {{#each filteredCardList as |card|}}
-    {{card-preview
+    {{card-single
       title=card.title
       description=card.description
-      status=card.status
+      comingSoon=card.comingSoon
       link=card.link
+      type=card.type
     }}
   {{/each}}
 </div>
