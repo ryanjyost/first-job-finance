@@ -120,8 +120,9 @@ hr{
     margin-bottom:10px;
   }
 
-.main{
+main{
   padding:0px !important;
+  background-color: $light-blue;
 }
 
 
@@ -214,7 +215,7 @@ GENERAL BLOCKS
   padding-top:50px;
 }
 
-.block--padded-15{
+.block--padded{
   padding: 30px;
 }
 
@@ -247,6 +248,15 @@ GENERAL BUTTONS
   display:block;
 }
 
+
+/*=======================================================
+HOME
+=======================================================*/
+
+#home-container{
+  padding: 50px;
+  min-height:100vh;
+}
 
 
 

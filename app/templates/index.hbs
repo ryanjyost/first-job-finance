@@ -1,6 +1,15 @@
 {{main-nav}}
 
 <main>
-  {{outlet}}
+  <div id="home-container" class="container-fluid">
+    <div class="block--max-width row">
+
+      {{card-container
+        filterButtons=filterButtons
+        cards=cards
+      }}
+
+    </div>
+  </div>
 </main>
 

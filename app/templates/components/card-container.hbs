@@ -1,0 +1,16 @@
+{{card-filter
+  filterButtons=filterButtons
+  updateCardList=(action filterCards)
+}}
+
+
+<div class="row card_container">
+  {{#each filteredCardList as |card|}}
+    {{card-preview
+      title=card.title
+      description=card.description
+      status=card.status
+      link=card.link
+    }}
+  {{/each}}
+</div>
