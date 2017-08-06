@@ -14,15 +14,15 @@ export default Ember.Controller.extend({
             type: 'calculator'
           },
           {
-            title: 'Guide',
-            description: 'You landed your first job',
+            title: 'Estimate Your Take-Home Pay',
+            description: 'This is a step-by-step guide for estimating your take home pay.',
             comingSoon: true,
             link: 'calculators.estimate-take-home-pay',
             type: 'guide'
           },
           {
-            title: 'Budget',
-            description: 'You landed your first job',
+            title: 'Create a Budget',
+            description: 'This is a tool to create a budget.',
             comingSoon: true,
             link: 'calculators.estimate-take-home-pay',
             type: 'tool'
