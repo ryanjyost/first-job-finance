@@ -24,7 +24,7 @@ export default Ember.Controller.extend({
             title: 'Create a Budget',
             description: 'This is a tool to create a budget.',
             comingSoon: true,
-            link: 'calculators.estimate-take-home-pay',
+            link: 'tools.budget',
             type: 'tool'
           },
   ],

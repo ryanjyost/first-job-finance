@@ -41,7 +41,6 @@ export default Ember.Component.extend({
     handleEditExpense(){
       let passUpEditedExpense = this.get('passUpEditedExpense');
       let expense = this.get('expense');
-      console.log('editing expense')
 
       passUpEditedExpense(expense);
     },

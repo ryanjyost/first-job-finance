@@ -30,6 +30,9 @@ Router.map(function() {
   this.route('calculators', function() {
     this.route('estimate-take-home-pay');
   });
+  this.route('tools', function() {
+    this.route('budget');
+  });
 });
 
 export default Router;
