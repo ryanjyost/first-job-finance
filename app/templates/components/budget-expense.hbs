@@ -1,5 +1,5 @@
 <tr>
-  <td class="table-icon">
+  <td class="table-icon budget-remove-expense">
     {{#if currentHover}}
       <button {{action 'handleDeleteExpense'}}>{{fa-icon "minus-circle" fixedWidth=true}}</button>
     {{/if}}
@@ -12,15 +12,6 @@
   <td class="table-currency"><span class="dollar-sign">$</span>{{input type='number' value=expense.amount key-up="handleEditExpense" focus-out="handleEditExpense"}}</td>
 
   <td class="table-gap-small"></td>
-
- {{!--  {{#if infoLink }} --}}
-    <td class="table-icon">
-      <a target="_blank" href={{infoLink}}>{{fa-icon "info-circle" fixedWidth=true}}</a>
-    </td>
-{{!--   {{/if}} --}}
-
-
-
 
 </tr>
 

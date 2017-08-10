@@ -9,9 +9,8 @@ export function formatNumber([value, numberType, showDecimals]) {
       sign = '$';
 
     if(showDecimals){
-
       value = Number(dollars) + Number(cents);
-      let total = value.toFixed(showDecimals).toLocaleString("en")
+      const total = value.toFixed(showDecimals).toLocaleString("en")
 
       return `${sign}${total}`
 
@@ -20,8 +19,9 @@ export function formatNumber([value, numberType, showDecimals]) {
     }
   }
 
+  //Format Percentage
   else if(numberType === "percent"){
-    let percentage = (value*100).toFixed(showDecimals);
+    const percentage = (value*100).toFixed(showDecimals);
     return `${percentage}%`
   }
 

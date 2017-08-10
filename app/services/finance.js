@@ -5,57 +5,59 @@ export default Ember.Service.extend({
   taxee: Ember.inject.service(),
 
   taxBrackets: [0.1, 0.15, 0.25, 0.28, 0.33, 0.35, 0.396],
-    listOfStates: ["Alaska",
-                  "Arkansas",
-                  "Arizona",
-                  "California",
-                  "Colorado",
-                  "Connecticut",
-                  "Delaware",
-                  "District of Columbia",
-                  "Florida",
-                  "Georgia",
-                  "Hawaii",
-                  "Idaho",
-                  "Illinois",
-                  "Indiana",
-                  "Iowa",
-                  "Kansas",
-                  "Kentucky",
-                  "Louisiana",
-                  "Maine",
-                  "Maryland",
-                  "Massachusetts",
-                  "Michigan",
-                  "Minnesota",
-                  "Missouri",
-                  "Mississippi",
-                  "Montana",
-                  "North Carolina",
-                  "North Dakota",
-                  "Nebraska",
-                  "New Hampshire",
-                  "New Jersey",
-                  "New Mexico",
-                  "Nevada",
-                  "New York",
-                  "Ohio",
-                  "Oklahoma",
-                  "Oregon",
-                  "Pennsylvania",
-                  "Puerto Rico",
-                  "Rhode Island",
-                  "South Carolina",
-                  "South Dakota",
-                  "Tennessee",
-                  "Texas",
-                  "Utah",
-                  "Virginia",
-                  "Vermont",
-                  "Washington",
-                  "Wisconsin",
-                  "West Virginia",
-                  "Wyoming"],
+    listOfStates: [
+      "Alaska",
+      "Arkansas",
+      "Arizona",
+      "California",
+      "Colorado",
+      "Connecticut",
+      "Delaware",
+      "District of Columbia",
+      "Florida",
+      "Georgia",
+      "Hawaii",
+      "Idaho",
+      "Illinois",
+      "Indiana",
+      "Iowa",
+      "Kansas",
+      "Kentucky",
+      "Louisiana",
+      "Maine",
+      "Maryland",
+      "Massachusetts",
+      "Michigan",
+      "Minnesota",
+      "Missouri",
+      "Mississippi",
+      "Montana",
+      "North Carolina",
+      "North Dakota",
+      "Nebraska",
+      "New Hampshire",
+      "New Jersey",
+      "New Mexico",
+      "Nevada",
+      "New York",
+      "Ohio",
+      "Oklahoma",
+      "Oregon",
+      "Pennsylvania",
+      "Puerto Rico",
+      "Rhode Island",
+      "South Carolina",
+      "South Dakota",
+      "Tennessee",
+      "Texas",
+      "Utah",
+      "Virginia",
+      "Vermont",
+      "Washington",
+      "Wisconsin",
+      "West Virginia",
+      "Wyoming"
+    ],
 
   fedWithholdingTables: {
     "weekly": [
@@ -376,13 +378,13 @@ export default Ember.Service.extend({
 
     //if no state income tax for state
     if(!taxTable){
-      console.log(`${stateName} has no income tax`)
+      // console.log(`${stateName} has no income tax`)
       return 0
     }
 
     //if flat tax
     if(taxTable.marginalRates.length == 1){
-       console.log(`${taxableIncome} at ${(taxTable.marginalRates[0]*100).toFixed(2)}%`)
+       //console.log(`${taxableIncome} at ${(taxTable.marginalRates[0]*100).toFixed(2)}%`)
        return taxableIncome*taxTable.marginalRates[0];
     }
 
@@ -409,7 +411,7 @@ export default Ember.Service.extend({
 
       let bracketRange = upperBound - lowerBound;
 
-      console.log(`${lowerBound} to ${upperBound} at ${(marginalRate*100).toFixed(2)}% plus ${tax}`)
+      //console.log(`${lowerBound} to ${upperBound} at ${(marginalRate*100).toFixed(2)}% plus ${tax}`)
 
       tax = tax + bracketRange*marginalRate
     }
@@ -419,7 +421,7 @@ export default Ember.Service.extend({
   },
 
   ficaTaxPerYear(annualIncome){
-    let socialSecurityWageBaseLimit = 127200, // 2017 figure
+    const socialSecurityWageBaseLimit = 127200, // 2017 figure
         socialSecurityTaxPerYear = 0,
         socialSecurityTaxRate = 0.062,
         medicareTaxPerYear = 0,

@@ -6,9 +6,6 @@
   font-size:20px;
   font-family: $roboto;
   text-align:center;
-  border:2px solid $dark-gray;
-  background-color: $medium-gray;
-  color:$black;
   font-weight: 700;
   text-align: center;
   margin-top:20px;
@@ -18,9 +15,5 @@
     outline:none !important;
   }
 
-  .dropdown-select_option{
-    font-family:$roboto;
 
-    color:$blue !important;
-  }
 }

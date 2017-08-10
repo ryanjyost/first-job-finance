@@ -3,12 +3,12 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   cardList: null,
   filteredCardList: null,
-  filter: null,
+  filter: null, //type of card to filter
 
   init(){
     this._super(...arguments);
 
-    let cards = this.get('cards');
+    const cards = this.get('cards');
     this.set('cardList', cards)
     this.set('filteredCardList', cards)
   },
@@ -16,7 +16,7 @@ export default Ember.Component.extend({
   filterCards(filter){
     this.set('filter', filter);
 
-    let cardList = this.get('cardList');
+    const cardList = this.get('cardList');
 
     let filteredCardList = cardList;
 

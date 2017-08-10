@@ -7,17 +7,17 @@ export default Ember.Component.extend({
   init(){
     this._super(...arguments);
 
-    let currentValue = this.get('value');
+    const currentValue = this.get('value');
     this.set('currentValue', currentValue)
 
   },
 
   didInsertElement(){
-    let currentValue = this.get('value');
+    const currentValue = this.get('value');
     this.set('currentValue', currentValue);
 
     //set starting position of range thumb to equal repo value
-    let sliderRange = this.$('.slider-range_input');
+    const sliderRange = this.$('.slider-range_input');
     sliderRange.val(currentValue);
 
   },
@@ -25,12 +25,12 @@ export default Ember.Component.extend({
   didReceiveAttrs(){
     this._super(...arguments);
 
-    let currentValue = this.get('value');
+    const currentValue = this.get('value');
     this.set('currentValue', currentValue)
   },
 
   change(){
-    let currentValue = this.get('value');
+    const currentValue = this.get('value');
     this.set('currentValue', currentValue);
 
     this.get('update')(currentValue);

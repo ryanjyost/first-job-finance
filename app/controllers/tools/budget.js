@@ -1,22 +1,38 @@
 import Ember from 'ember';
 
+let { computed, inject } = Ember
+
 export default Ember.Controller.extend({
-  repo: Ember.inject.service(),
+  monthlyTakeHomePay: null,
+  budgetSurplus: null,
+  repo: inject.service(),
+
+  _amountStringArray: computed.mapBy('model.expenses', 'amount'),
+
+  expenseAmountArray: computed.map('_amountStringArray', (numString) => {
+    return Number(numString);
+  }),
+
+  totalMonthlyExpenses: computed.sum('expenseAmountArray'),
+
+  budgetSurplus: computed('model.expenses','totalMonthlyExpenses', 'model.monthlyTakeHomePay', function(){
+    return (this.get('model.monthlyTakeHomePay') - this.get('totalMonthlyExpenses'));
+  }),
 
   actions: {
     createExpense(type){
-      console.log(`Creating ${type} Expense`)
-
-       let updatedExpenses = new Promise((resolve, reject) => {
+       const updatedExpenses = new Promise((resolve, reject) => {
 
         if(!type){
           reject('no type specified')
         } else{
-          let newExpense = Ember.Object.create(
-            { expenseType: type,
+          const newExpense = Ember.Object.create(
+            {
+              expenseType: type,
               name: '',
               amount: 0,
-              infoLink: ''}
+              infoLink: ''
+            }
           )
 
           this.get('repo').addExpense(newExpense);

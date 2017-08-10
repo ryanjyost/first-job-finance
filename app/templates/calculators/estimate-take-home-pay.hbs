@@ -4,9 +4,15 @@
 ===============-->
 <div class="col-sm-5 calculator_input">
 
+  <section class="calculator_title">
+    <h3>Estimate Your Take-Home Pay</h3>
+  </section>
+
+
+
   <!-- Salary or Hourly -->
   <section>
-    <h5>How will you be paid?</h5>
+    <h5>How are you paid?</h5>
 
     {{button-group
       currentSelected=model.incomeType
@@ -128,7 +134,8 @@
     <!-- Income Per Period -->
     <div class="row">
       <h1>{{format-number (div incomePerYear timeframeDivisor) "currency"}}</h1><br>
-       <h4>is how much you earn per
+       <h4 class="text-align--center">
+          is how much you earn per
         {{#if (eq timeframe "year")}}
           year
         {{else if (eq timeframe "month")}}

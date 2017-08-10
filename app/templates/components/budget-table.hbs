@@ -1,4 +1,4 @@
-<div class="col-lg-6">
+
   <table class="budget-table">
     <!-- Fixed Expenses -->
       <tr id="fixed-expenses-total" class="budget-section-total">
@@ -14,7 +14,7 @@
 
         <th class="bold table-desc">Essential Expenses</th>
         <th class="table-gap"></th>
-        <th class="bold table-currency">{{format-number totalFixedExpenses}}</th>
+        <th class="bold table-currency">{{format-number totalFixedExpenses "currency"}}</th>
         <th class="budget-section-percent">{{percentFixed}}%</th>
 
         <th class="table-icon toggle-expense-list">
@@ -55,7 +55,7 @@
 
           <th class="bold table-desc">Savings</th>
           <th class="table-gap"></th>
-          <th class="bold table-currency">{{format-number totalSavings}}</th>
+          <th class="bold table-currency">{{format-number totalSavings "currency"}}</th>
           <th class="budget-section-percent">{{percentSavings}}%</th>
 
           <th class="table-icon toggle-expense-list">
@@ -96,7 +96,7 @@
 
           <th class="bold table-desc">Variable Expenses</th>
           <th class="table-gap"></th>
-          <th class="bold table-currency">{{format-number totalVariableExpenses}}</th>
+          <th class="bold table-currency">{{format-number totalVariableExpenses "currency"}}</th>
           <th class="budget-section-percent">{{percentVariable}}%</th>
 
           <th class="table-icon toggle-expense-list">
@@ -123,8 +123,3 @@
      <!-- End Variable Expenses -->
 
   </table>
-</div>
-
-<div class="col-lg-6">
-  <h3>{{totalExpenses}}</h3>
-</div>

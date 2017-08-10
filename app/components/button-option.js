@@ -15,21 +15,21 @@ export default Ember.Component.extend({
 
   didReceiveAttrs(){
     this._super(...arguments);
-    let value = this.get('value');
+
+    const value = this.get('value');
     this.set('value', value);
 
-    let currentSelected = this.get('currentSelected');
+    const currentSelected = this.get('currentSelected');
     this.set('currentSelected', currentSelected);
   },
 
   isSelected: Ember.computed('currentSelected', function(){
-    //console.log(this.get('currentSelected'));
     return this.get('value') == this.get('currentSelected');
   }),
 
   click(){
-    let value = this.get('value');
+    const value = this.get('value');
     this.set('currentSelected', value);
-    this.get('select')(value);
+    this.get('select')(value); //pass value to update action in button group
   }
 });

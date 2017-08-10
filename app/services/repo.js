@@ -11,6 +11,7 @@ export default Ember.Service.extend({
   payFrequency: null,
   employerPlanDeferralRate: null,
   stateName: null,
+  monthlyTakeHomePay: null,
 
   findAll(resource){
     return this.get(resource) ||
@@ -28,7 +29,8 @@ export default Ember.Service.extend({
       "workingWeeksPerYear": 50,
       "payPeriod":'"semi-monthly"',
       "employerPlanDeferralRate": 0.05,
-      "stateName": '"Illinois"'
+      "stateName": '"Illinois"',
+      monthlyTakeHomePay: 0,
     }
 
     let defaultValue = 'null'
@@ -45,6 +47,7 @@ export default Ember.Service.extend({
   persist(property, value) {
     if(value){
       this.set(property, value)
+      console.log(property)
     }
 
     window.localStorage.setItem(property, JSON.stringify(this.get(property)));

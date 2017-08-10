@@ -1,11 +1,11 @@
 #calculator_container{
-  background-color: $blue-gray;
+  background-color: $light-blue;
   padding:0px !important;
 
   @media(min-width: 768px){
     #calculator_container{
-      height:101vh - $nav-height;
       overflow:hidden;
+      height:100vh - $navbar-height;
     }
 
     .calculator_input, .calculator_output {
@@ -18,6 +18,7 @@
 
   h5{
     text-align:center;
+    color:$dark-black;
   }
 
   hr{
@@ -32,13 +33,21 @@
     border-radius:2px;
   }
 
+    .calculator_title{
+      width:100%;
+      text-align:center;
+      background-color: $blue-gray;
+      color:$light-gray;
+    }
+
   section:nth-child(even){
-    background-color: $blue-grayer;
+    // background-color: $light-blue;
   }
 
   .calculator_output{
     padding:20px 5% 50px 5%;
     background-color:$light-blue;
+    border-left:4px solid $gray;
 
     h5{
       display:inline;
@@ -47,7 +56,7 @@
     }
 
     h4{
-      color:$light-black;
+
       font-size:24px;
       vertical-align: middle;
       line-height:1.4;
@@ -59,22 +68,12 @@
     }
 
     h1{
-      display:inline-block;
-      color:$blue;
-      font-weight:700;
-      font-size:40px;
-      margin:0px;
+      @include text-number-big;
     }
 
     .row{
-      display:block;
-      margin:auto;
-      text-align:center;
-      margin-bottom:10px;
-      margin-top:10px;
-      max-width:95%;
-      display: table;
-      padding:10px 0px;
+      @include row--text-center
+       display: table;
     }
 
     .col{
@@ -87,13 +86,18 @@
 
   .calculator_input{
     min-height:100%;
-    padding:30px 0px 0px 0px !important;
-    background-color: $blue-gray;
+    padding:0px 0px 0px 0px !important;
 
-    color:$light-gray;
+    color:$black;
 
     p{
-      color:$light-gray;
+      color:$medium-black;
+    }
+
+    select{
+      background-color: $light-gray;
+      border:1px solid $medium-gray;
+      color:$blue;
     }
 
   }

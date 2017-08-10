@@ -1,10 +1,12 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
+let { computed, Controller, inject, } = Ember;
 
-  finance: Ember.inject.service(),
+export default Controller.extend({
+  finance: inject.service(),
+  repo: inject.service(),
 
-  listOfStates: Ember.computed(function(){
+  listOfStates: computed(function(){
     return this.get('finance').listOfStates;
   }),
 
@@ -22,7 +24,7 @@ export default Ember.Controller.extend({
 
   //=======================================================
   //computed properties
-  incomePerYear: Ember.computed(
+  incomePerYear: computed(
     'model.annualIncome',
     'model.incomeType',
     'model.hourlyWage',
@@ -30,11 +32,12 @@ export default Ember.Controller.extend({
     'model.workingWeeksPerYear',
 
     function(){
-      let annualIncome = this.get('model.annualIncome'),
-          incomeType = this.get('model.incomeType'),
-          hourlyWage = this.get('model.hourlyWage'),
-          workingHoursPerWeek = this.get('model.workingHoursPerWeek'),
-          workingWeeksPerYear = this.get('model.workingWeeksPerYear');
+      const incomeType = this.get('model.incomeType'),
+            hourlyWage = this.get('model.hourlyWage'),
+            workingHoursPerWeek = this.get('model.workingHoursPerWeek'),
+            workingWeeksPerYear = this.get('model.workingWeeksPerYear');
+
+        let annualIncome = this.get('model.annualIncome');
 
         if(incomeType === "hourly"){
           annualIncome = hourlyWage*workingHoursPerWeek*workingWeeksPerYear;
@@ -43,17 +46,17 @@ export default Ember.Controller.extend({
         return annualIncome;
   }),
 
-  fedTaxWhPerYear: Ember.computed(
+  fedTaxWhPerYear: computed(
     'model.employerPlanDeferralRate',
     'model.payPeriod',
     'incomePerYear',
 
     function(){
-      let annualIncome = this.get('incomePerYear'),
-          employerPlanDeferralRate = this.get('model.employerPlanDeferralRate'),
-          payPeriod = this.get('model.payPeriod')
+      const annualIncome = this.get('incomePerYear'),
+            employerPlanDeferralRate = this.get('model.employerPlanDeferralRate'),
+            payPeriod = this.get('model.payPeriod')
 
-      let fedWhPerPaycheck = this.get('finance').fedTaxWithholdingPerPaycheck(annualIncome, employerPlanDeferralRate, 2, payPeriod)
+      const fedWhPerPaycheck = this.get('finance').fedTaxWithholdingPerPaycheck(annualIncome, employerPlanDeferralRate, 2, payPeriod)
 
       let fedTaxWhPerYear = 0;
 
@@ -75,29 +78,34 @@ export default Ember.Controller.extend({
       return fedTaxWhPerYear;
   }),
 
-  currentStateName: Ember.computed('model.stateName', function(){
-    console.log('change state computed')
+  currentStateName: computed('model.stateName', function(){
     return this.get('model.stateName')
   }),
 
-  stateIncomeTaxPerYear: Ember.computed('incomePerYear', 'model.employerPlanDeferralRate', 'currentStateName',function(){
+  stateIncomeTaxPerYear: computed(
+    'incomePerYear',
+    'model.employerPlanDeferralRate',
+    'currentStateName',
 
-      let stateIncomeTaxPerYear = this.get('finance').estimatedStateIncomeTaxPerYear(this.get('incomePerYear'), this.get('currentStateName'), this.get('model.employerPlanDeferralRate'));
+    function(){
+      const stateIncomeTaxPerYear = this.get('finance')
+        .estimatedStateIncomeTaxPerYear(
+          this.get('incomePerYear'),
+          this.get('currentStateName'),
+          this.get('model.employerPlanDeferralRate')
+        );
 
       return stateIncomeTaxPerYear;
   }),
 
-  ficaTaxPerYear: Ember.computed(
-    'model.annualIncome',
+  ficaTaxPerYear: computed('incomePerYear', function(){
+      const annualIncome = this.get('incomePerYear');
 
-    function(){
-      let annualIncome = this.get('model.annualIncome'),
-          ficaTaxPerYear = this.get('finance').ficaTaxPerYear(annualIncome);
-
+      const ficaTaxPerYear = this.get('finance').ficaTaxPerYear(annualIncome);
       return ficaTaxPerYear;
   }),
 
-  maxPreTaxSavingsRate: Ember.computed(
+  maxPreTaxSavingsRate: computed(
     'model.employerPlanDeferralRate',
     'model.annualIncome',
     'model.incomeType',
@@ -106,17 +114,18 @@ export default Ember.Controller.extend({
     'model.workingWeeksPerYear',
 
     function(){
-      let rate = this.get('model.employerPlanDeferralRate'),
-          annualIncome = this.get('model.annualIncome'),
-          incomeType = this.get('model.incomeType'),
-          hourlyWage = this.get('model.hourlyWage'),
-          workingHoursPerWeek = this.get('model.workingHoursPerWeek'),
-          workingWeeksPerYear = this.get('model.workingWeeksPerYear');
+      const rate = this.get('model.employerPlanDeferralRate'),
+            incomeType = this.get('model.incomeType'),
+            hourlyWage = this.get('model.hourlyWage'),
+            workingHoursPerWeek = this.get('model.workingHoursPerWeek'),
+            workingWeeksPerYear = this.get('model.workingWeeksPerYear');
+
+      let annualIncome = this.get('model.annualIncome');
 
         if(incomeType === "hourly"){
-          let annualIncome = hourlyWage*workingHoursPerWeek*workingWeeksPerYear;
+          annualIncome = hourlyWage*workingHoursPerWeek*workingWeeksPerYear;
 
-          if(annualIncome - 18000 < 0)
+          if(annualIncome - 18000 < 0) //if annual income is less than or equal to 18000 (max deferral rate) then max 100% can be contributed
             return 1
 
           return 18000/annualIncome;
@@ -131,7 +140,7 @@ export default Ember.Controller.extend({
         return 18000/annualIncome;
   }),
 
-  employerPlanDeferralPerYear: Ember.computed(
+  employerPlanDeferralPerYear: computed(
     'model.employerPlanDeferralRate',
     'model.annualIncome',
     'model.incomeType',
@@ -154,17 +163,23 @@ export default Ember.Controller.extend({
        }
   }),
 
-  takeHomePayPerYear: Ember.computed(
+  takeHomePayPerYear: computed(
     'incomePerYear',
     'fedTaxWhPerYear',
     'stateIncomeTaxPerYear',
     'ficaTaxPerYear',
+
     function(){
-      return this.get('incomePerYear') - this.get('employerPlanDeferralPerYear') - this.get('fedTaxWhPerYear') - this.get('stateIncomeTaxPerYear') - this.get('ficaTaxPerYear');
+      const takeHomePayPerYear = this.get('incomePerYear') - this.get('employerPlanDeferralPerYear') - this.get('fedTaxWhPerYear') - this.get('stateIncomeTaxPerYear') - this.get('ficaTaxPerYear');
+      const monthlyTakeHomePay = takeHomePayPerYear / 12;
+
+      this.get('repo').persist('monthlyTakeHomePay', monthlyTakeHomePay); //save take-home-pay in repo to use for budget tool
+
+      return takeHomePayPerYear
   }),
 
-  timeframeDivisor: Ember.computed('model.payPeriod', 'timeframe', function(){
-    let payPeriod = this.get('model.payPeriod'),
+  timeframeDivisor: computed('model.payPeriod', 'timeframe', function(){
+    const payPeriod = this.get('model.payPeriod'),
         timeframe = this.get('timeframe');
 
     let newTimeframeDivisor = 1;
@@ -173,8 +188,6 @@ export default Ember.Controller.extend({
         newTimeframeDivisor = 12
 
       if(timeframe=='paycheck'){
-        let payPeriod = this.get('model.payPeriod');
-
         switch(payPeriod){
           case "weekly":
             newTimeframeDivisor = 52;
@@ -204,7 +217,6 @@ export default Ember.Controller.extend({
 
     updateCurrentStateName(newStateName){
       this.set('currentStateName', newStateName);
-      console.log('change state action')
     }
   }
 

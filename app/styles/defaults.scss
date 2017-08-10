@@ -11,6 +11,8 @@ $medium-black: #6E6E6E;
 $dark-black: #585858;
 $black: #2E2E2E;
 
+$red: #FE2E64;
+
 $light-blue: #f5f8fa;
 .light-blue{background-color:$light-blue !important}
 
@@ -41,7 +43,7 @@ $red: #F5A9A9;
 MEASUREMENTS
 =======================================================*/
 
-$navbar-height: 10vh;
+$navbar-height: 8vh;
 $main-padding:2vh;
 $max-width:1300px;
 
@@ -79,21 +81,11 @@ GENERAL MIXINS
   border-radius: 50%;
 }
 
-.text-align--right{
-  text-align:right !important
+@mixin focus-no-style{
+  outline:none !important;
+  border:none !important;
 }
 
-.text-align--left{
-  text-align:left !important
-}
-
-.text-align--center{
-  text-align:center !important
-}
-
-.text--blue-gray{
-  color:$blue-grayer !important;
-}
 
 
 
@@ -141,8 +133,13 @@ $playfair: 'Playfair Display', serif !important;
   font-family: 'Roboto', sans-serif;
 }
 
-$roboto:'Roboto', sans-serif;;
+$roboto:'Roboto', sans-serif;
 
+.open-sans{
+  font-family: 'Open Sans', sans-serif;
+}
+
+$open-sans:'Open Sans', sans-serif;
 
 .bold{
   font-weight:900 !important;
@@ -157,6 +154,34 @@ $roboto:'Roboto', sans-serif;;
 .text--bold-gray{
   font-weight:700;
   color: $medium-gray !important;
+}
+
+.text-align--right{
+  text-align:right !important
+}
+
+.text-align--left{
+  text-align:left !important
+}
+
+.text-align--center{
+  text-align:center !important
+}
+
+.text--blue-gray{
+  color:$blue-grayer !important;
+}
+
+.text--red{
+  color: $red !important;
+}
+
+@mixin text-number-big{
+  display:inline-block;
+  color:$blue;
+  font-weight:700;
+  font-size:40px;
+  margin:0px;
 }
 
 h1, h4, h6 {font-family: 'Open Sans', sans-serif;}
@@ -190,6 +215,7 @@ h3{
 
 h4{
   font-size:20px;
+  color:$light-black;
 }
 
 h5{font-size:24px;}
@@ -212,11 +238,20 @@ GENERAL BLOCKS
   @include max-width;
   display:block;
   margin:auto;
-  padding-top:50px;
 }
 
 .block--padded{
-  padding: 30px;
+  padding: 50px 0px 0px 0px;
+}
+
+@mixin row--text-center{
+  display:block;
+  margin:auto;
+  text-align:center;
+  margin-bottom:10px;
+  margin-top:10px;
+  width:95%;
+  padding:10px 0px;
 }
 
 .no-padding{
@@ -250,12 +285,13 @@ GENERAL BUTTONS
 
 
 /*=======================================================
-HOME
+PAGE containers
 =======================================================*/
 
-#home-container{
-  padding: 50px 2%;
-  min-height:100vh;
+#main-container{
+  padding: 0px 0% 0px 0px;
+  min-height:100vh - $navbar-height;
+  background-color:$light-blue;
 }
 
 

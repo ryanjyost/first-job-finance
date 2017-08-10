@@ -1,13 +1,12 @@
 
-$nav-height: 9vh;
 
 nav{
   background-color:$white;
+  height:8vh;
   width:100%;
-  height:$nav-height;
   max-height:65px;
   border-bottom:1px solid $black;
-  padding:8px 0px 0px 0px;
+  padding:0vh 0px 0px 0px;
 
   a{
     text-transform: uppercase;
@@ -37,6 +36,7 @@ nav{
  .navbar{
   border-bottom:1px solid $medium-gray;
   margin-right:0px !important;
+  margin-bottom:0px !important;
 
     .fa{
       color:$blue-gray;
@@ -45,6 +45,7 @@ nav{
 
  .navbar-brand{
     color:$black;
+    line-height:4vh;
 
     &:hover{
       color:$black !important;

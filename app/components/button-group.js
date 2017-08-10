@@ -9,25 +9,23 @@ export default Ember.Component.extend({
     this._super(...arguments);
     this.errors = [];
 
-    let currentSelected = this.get('currentSelected');
+    const currentSelected = this.get('currentSelected');
     //console.log(currentSelected);
     this.set('currentSelected', currentSelected);
   },
 
- didReceiveAttrs(){
+  didReceiveAttrs(){
     this._super(...arguments);
-    this.errors = [];
 
-    let currentSelected = this.get('currentSelected');
-    //console.log(currentSelected);
+    const currentSelected = this.get('currentSelected');
     this.set('currentSelected', currentSelected);
- },
+  },
 
   actions:{
     handleSelect(value){
       this.set('currentSelected', value);
       this.get('updateSelect')(value);
-    }
   }
+}
 
 });

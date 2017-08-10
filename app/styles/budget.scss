@@ -1,29 +1,86 @@
-.budget-table {
-  border: 1px solid #f2f2f2;
-  border-radius: 4px;
-  padding: 20px 5% 20px 5%;
-  border-collapse: collapse !important;
-  display:inline-block;
-  overflow:scroll;
-  height:100vh - $navbar-height + 2vh;
-  background-color: $white;
 
-  .fa{
-    color:$black;
+#budget_container{
+  padding:0px !important;
+  font-family:$open-sans;
+
+}
+
+
+@media(min-width: 768px){
+    #budget_container{
+      overflow:hidden;
+      height:100vh - $navbar-height;
+    }
+
+    #budget_input, #budget_output{
+      overflow:scroll;
+      float:left;
+      height:100%;
+      padding:5vh 0px 20vh 0px;
+    }
+}
+
+//=========================
+//BUDGET INPUT
+
+#budget_input{
+  background-color:$light-blue;
+  padding:20px 2% 30px 4%;
+}
+
+.budget-table {
+  display:block;
+  margin:auto;
+
+
+  .fa {
+    color:$light-black;
     display:block;
     margin:auto;
+    border:none !important;
 
     &:hover{
-      color: $light-black;
+      color: $medium-black;
       cursor:pointer;
       text-decoration: none;
     }
+
+    &:focus{
+      @include focus-no-style
+    }
+
+    &:active{
+      @include focus-no-style
+    }
+
+
   }
 
+  button{
+    border:none;
+    background-color: transparent;
+
+    &:hover{
+      cursor:pointer;
+      text-decoration: none;
+    }
+
+    &:focus{
+      @include focus-no-style
+    }
+
+    &:active{
+     @include focus-no-style
+    }
+  }
+
+
+
   .budget-section-total{
-    font-size: 1.1em;
+    font-size: 1.3em;
     margin-bottom:5px;
     margin-top:20px;
+
 
     th{
       padding: 10px 0px;
@@ -31,7 +88,7 @@
   }
 
   .budget-section-percent{
-      font-size:1.3em;
+      font-size:1.2em;
       width:80px;
       text-align:right;
       padding-right:10px !important;
@@ -70,59 +127,106 @@
   input{
     border:none !important;
     padding:10px 5px;
+    font-size:16px;
+    background-color:$light-blue;
+  }
 
-    &:focus{
+  .table-desc{
+    width:250px;
+    font-weight:200;
+    color:$dark-black;
+
+    input{
+      padding-left: 20px !important;
+      width:100%;
+      font-size:16px;
+      background-color:$light-blue;
+
+
+        &:focus{
+          @include focus-no-style
+          background-color: $light-gray;
+        }
 
     }
   }
+  .table-currency{
+    text-align:left;
+    width:80px;
+    font-weight:200;
+     color:$dark-black;
 
-      .table-desc{
-        width:200px;
-        font-weight:200;
+    .dollar-sign{
+      padding-right:3px;
+      width:12px
+    }
 
-        input{
-          padding-left: 20px !important;
-          width:100%;
+    input{
+      width:120px;
+      font-size:16px;
+      background-color:$light-blue;
+
+        &:focus{
+          @include focus-no-style
+          background-color: $light-gray;
         }
-      }
-      .table-currency{
-        text-align:left;
-        width:80px;
-        font-weight:200;
+    }
+  }
 
-        .dollar-sign{
-          padding-right:3px;
-          width:12px
-        }
+  .table-icon{
+    border:none !important;
+    color:$light-black;
+    width:30px;
 
-        input{
-          width:60px;
-        }
-      }
 
-      .table-icon{
-        border:none !important;
-        color:$light-black;
-        width:30px;
+    &:focus{
+      @include focus-no-style
+    }
 
-        a{
-          text-decoration: none;
-        }
-      }
+    a{
+      text-decoration: none;
+    }
+  }
 
-      .table-gap{
-        border:none !important;
-        width: 40px !important;
-      }
+  .table-gap{
+    border:none !important;
+    width: 40px !important;
+  }
 
-      .table-gap-small{
-        border:none !important;
-        width: 20px !important;
-      }
+  .table-gap-small{
+    border:none !important;
+    width: 20px !important;
+  }
 
-      .table-gap-row{
-        @extend .table-gap;
-        height:3vh;
-      }
+  .table-gap-row{
+    @extend .table-gap;
+    height:3vh;
+  }
 
 }
+
+//=========================
+//BUDGET OUTPUT
+
+#budget_output{
+  border-left:4px solid $gray;
+
+  h1{
+    @include text-number-big;
+  }
+
+  h4{
+    line-height:1.4;
+  }
+
+  .row{
+    @include row--text-center
+  }
+}
+
+
+
+
+
+
+

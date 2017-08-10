@@ -6,29 +6,29 @@ export default Ember.Component.extend({
   init(){
     this._super(...arguments);
 
-    let selected = this.get('selected');
+    const selected = this.get('selected');
     this.set('selected', selected);
   },
 
   didInsertElement(){
-    let selected = this.get('selected');
+    const selected = this.get('selected');
     this.set('selected', selected)
 
-    //set starting position of range thumb to equal repo value
-    let select = this.$('.dropdown-select');
+    //set initial selected option on dropdown
+    const select = this.$('.dropdown-select');
     select.val(selected);
   },
 
   didReceiveAttrs(){
     this._super(...arguments);
 
-    let selected = this.get('selected');
+    const selected = this.get('selected');
     this.set('selected', selected)
   },
 
   change(){
-    let select = this.$('.dropdown-select');
-    let selected = select.val();
+    const select = this.$('.dropdown-select');
+    const selected = select.val();
 
     this.set('selected', selected)
     this.get('update')(selected);

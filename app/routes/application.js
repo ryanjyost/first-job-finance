@@ -4,7 +4,6 @@ export default Ember.Route.extend({
   repo: Ember.inject.service(),
 
   actions: {
-
     updateGrossAnnualIncome(annualIncome){
       this.get('repo').persist('annualIncome', annualIncome);
     },
@@ -35,7 +34,39 @@ export default Ember.Route.extend({
 
     updateState(stateName){
       this.get('repo').persist('stateName', stateName);
-      console.log('update state in repo')
+    },
+
+    updateTakeHomePay(amount){
+      this.get('repo').persist('monthlyTakeHomePay', amount);
+    },
+
+    createExpense(type){
+       const updatedExpenses = new Promise((resolve, reject) => {
+
+        if(!type){
+          reject('no type specified')
+        } else {
+          const newExpense = Ember.Object.create(
+            { expenseType: type,
+              name: '',
+              amount: 0,
+              infoLink: ''}
+          )
+
+          this.get('repo').addExpense(newExpense);
+          resolve(this.get('repo').findAll('expenses'));
+        }
+      })
+
+      return updatedExpenses
+    },
+
+    editExpense(expense){
+      this.get('repo').persist('expenses')
+    },
+
+    deleteExpense(expense){
+      this.get('repo').deleteExpense(expense);
     },
   },
 
@@ -50,6 +81,7 @@ export default Ember.Route.extend({
       payPeriod: this.get('repo').find('payPeriod'),
       employerPlanDeferralRate: this.get('repo').find('employerPlanDeferralRate'),
       stateName: this.get('repo').find('stateName'),
+      monthlyTakeHomePay: this.get('repo').find('monthlyTakeHomePay'),
     })
   }
 });

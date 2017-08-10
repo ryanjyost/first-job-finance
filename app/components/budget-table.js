@@ -1,6 +1,11 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
+let { Component, computed } = Ember;
+
+export default Component.extend({
+
+  //===================
+  //Variables
   amountArray: [],
   totalExpenses: 0,
   fixedExpenses: 0,
@@ -13,9 +18,79 @@ export default Ember.Component.extend({
   totalVariableExpenses: 0,
   percentVariable: 0,
 
+  //UI state variables
   showFixedExpenses:true,
   showSavings: true,
   showVariableExpenses: true,
+
+
+  _amountStringArray: computed.mapBy('expenses', 'amount'),
+
+  amountArray: computed.map('_amountStringArray', (numString) => {
+    return Number(numString);
+  }),
+
+  totalExpenses: computed.sum('amountArray'),
+
+  //=================================
+  // FIXED/ESSENTIAL EXPENSES
+
+  fixedExpenses: computed.filter('expenses', (expense) => {
+    return expense.expenseType == 'fixed';
+  }),
+
+  _fixedAmountStringArray: computed.mapBy('fixedExpenses', 'amount'),
+
+  fixedAmountArray: computed.map('_fixedAmountStringArray', (numString) => {
+    return Number(numString);
+  }),
+
+  totalFixedExpenses: computed.sum('fixedAmountArray'),
+
+  percentFixed: computed('totalExpenses', 'totalFixedExpenses', function() {
+    return Math.round(this.get('totalFixedExpenses')/this.get('totalExpenses')*100) || 0;
+  }),
+
+  //=================================
+  // SAVINGS
+
+  savingExpenses: computed.filter('expenses', (expense) => {
+    return expense.expenseType == 'saving';
+  }),
+
+  _savingsAmountStringArray: computed.mapBy('savingExpenses', 'amount'),
+
+  savingsAmountArray: computed.map('_savingsAmountStringArray', (numString) => {
+    return Number(numString);
+  }),
+
+  totalSavings: computed.sum('savingsAmountArray'),
+
+  percentSavings: computed('totalExpenses', 'totalSavings', function() {
+    return Math.round(this.get('totalSavings')/this.get('totalExpenses')*100) || 0;
+  }),
+
+  //=================================
+  // VARIABLE EXPENSES
+
+  variableExpenses: computed.filter('expenses', (expense) => {
+    return expense.expenseType == 'variable';
+  }),
+
+  _variableAmountStringArray: computed.mapBy('variableExpenses', 'amount'),
+
+  variableAmountArray: computed.map('_variableAmountStringArray', (numString) => {
+    return Number(numString);
+  }),
+
+  totalVariableExpenses: computed.sum('variableAmountArray'),
+
+  percentVariable: computed('totalExpenses', 'totalVariableExpenses', function(){
+    return Math.round(this.get('totalVariableExpenses')/this.get('totalExpenses')*100) || 0;
+  }),
+
+  //===================
+  //Actions & Events
 
   init(){
     this._super(...arguments);
@@ -23,7 +98,8 @@ export default Ember.Component.extend({
 
   didReceiveAttrs(){
     this._super(...arguments);
-    let expenses = this.get('model');
+
+    const expenses = this.get('model');
     this.set('expenses', expenses);
   },
 
@@ -42,7 +118,7 @@ export default Ember.Component.extend({
         this.set('showVariableExpenses', true)
       }
 
-      let createExpenseAction = this.get('createExpense');
+      const createExpenseAction = this.get('createExpense');
 
       createExpenseAction(type).then((newExpenseList) => {
         this.set('expenses', newExpenseList);
@@ -50,12 +126,12 @@ export default Ember.Component.extend({
     },
 
     passUpEditedExpense(expense){
-      let editExpense = this.get('editExpense');
+      const editExpense = this.get('editExpense');
       editExpense(expense)
     },
 
     passUpDeletedExpense(expense){
-      let deleteExpense = this.get('deleteExpense');
+      const deleteExpense = this.get('deleteExpense');
       deleteExpense(expense);
     },
 
@@ -72,76 +148,6 @@ export default Ember.Component.extend({
         this.toggleProperty('showVariableExpenses')
       }
     }
-  },
-
-  //Expense actions
-  editExpenseName: Ember.computed('expenses', function(expense){
-    return this.get('editExpenseName');
-  }),
-
-  _amountStringArray: Ember.computed.mapBy('expenses', 'amount'),
-
-  amountArray: Ember.computed.map('_amountStringArray', function(numString){
-    return Number(numString);
-  }),
-
-  totalExpenses: Ember.computed.sum('amountArray'),
-
-  //=================================
-  // FIXED EXPENSES
-
-  fixedExpenses: Ember.computed.filter('expenses', function(expense){
-    return expense.expenseType == 'fixed';
-  }),
-
-  _fixedAmountStringArray: Ember.computed.mapBy('fixedExpenses', 'amount'),
-
-  fixedAmountArray: Ember.computed.map('_fixedAmountStringArray', function(numString){
-    return Number(numString);
-  }),
-
-  totalFixedExpenses: Ember.computed.sum('fixedAmountArray'),
-
-  percentFixed: Ember.computed('totalExpenses', 'totalFixedExpenses', function(){
-    return Math.round(this.get('totalFixedExpenses')/this.get('totalExpenses')*100) || 0;
-  }),
-
-  //=================================
-  // SAVINGS
-
-  savingExpenses: Ember.computed.filter('expenses', function(expense){
-    return expense.expenseType == 'saving';
-  }),
-
-  _savingsAmountStringArray: Ember.computed.mapBy('savingExpenses', 'amount'),
-
-  savingsAmountArray: Ember.computed.map('_savingsAmountStringArray', function(numString){
-    return Number(numString);
-  }),
-
-  totalSavings: Ember.computed.sum('savingsAmountArray'),
-
-  percentSavings: Ember.computed('totalExpenses', 'totalSavings', function(){
-    return Math.round(this.get('totalSavings')/this.get('totalExpenses')*100) || 0;
-  }),
-
-  //=================================
-  // VARIABLE EXPENSES
-
-  variableExpenses: Ember.computed.filter('expenses', function(expense){
-    return expense.expenseType == 'variable';
-  }),
-
-  _variableAmountStringArray: Ember.computed.mapBy('variableExpenses', 'amount'),
-
-  variableAmountArray: Ember.computed.map('_variableAmountStringArray', function(numString){
-    return Number(numString);
-  }),
-
-  totalVariableExpenses: Ember.computed.sum('variableAmountArray'),
-
-  percentVariable: Ember.computed('totalExpenses', 'totalVariableExpenses', function(){
-    return Math.round(this.get('totalVariableExpenses')/this.get('totalExpenses')*100) || 0;
-  })
+  }, //close actions object
 
 });

@@ -1,6 +1,90 @@
-  {{budget-table
-    model=model
-    createExpense=(action 'createExpense')
-    editExpense=(action 'editExpense')
-    deleteExpense=(action 'deleteExpense')
-  }}
+{{log fixedAndVariableAmountArray}}
+
+<div id="budget_container" class="container-fluid">
+      <div id="budget_input" class="col-sm-6">
+        {{budget-table
+          model=model.expenses
+          createExpense=(action 'createExpense')
+          editExpense=(action 'editExpense')
+          deleteExpense=(action 'deleteExpense')
+        }}
+
+         <div class="row">
+          <h4 class="text-align--center">
+            Input your monthly expenses and savings
+          </h4>
+        </div>
+      </div>
+
+
+
+      <div id="budget_output" class="col-sm-6">
+
+        <!-- Take Home Pay -->
+        <div class="row">
+          {{slider-range
+            label_1="My take-home pay is"
+            label_2="a month"
+            min=100
+            max=10000
+            step=1
+            value=model.monthlyTakeHomePay
+            update=(route-action 'updateTakeHomePay')
+            numberType="currency"
+          }}
+
+          <span class="text_input-helper"><i>
+            Use the slider or the
+            {{#link-to 'calculators.estimate-take-home-pay'}}
+              Estimate Take-Home Pay Calculator
+            {{/link-to}}
+          </i></span>
+        </div>
+
+        <br>
+        <div class="row">
+          <h1>{{format-number totalMonthlyExpenses "currency"}}</h1>
+          <h4>
+            is how much I spend and save a month <br>
+            <i>(essential + savings + variable)</i>
+          </h4>
+        </div>
+
+
+
+
+
+        <div class="row">
+          <h4>
+            My budget
+
+            {{#if (lt budgetSurplus 0)}}
+              <span class="bold text--red">deficit</span>
+            {{else}}
+              <span class="bold text--blue-gray">surplus</span>
+            {{/if}}
+
+            is
+
+          </h4>
+
+            {{#if (lt budgetSurplus 0)}}
+               <h1 class="text--red">{{format-number budgetSurplus "currency"}}</h1>
+            {{else}}
+               <h1>{{format-number budgetSurplus "currency"}}</h1>
+            {{/if}}
+
+        </div>
+
+
+
+
+
+
+
+
+      </div>
+
+
+
+</div>
