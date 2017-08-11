@@ -3,12 +3,12 @@ COLORS
 =======================================================*/
 $white: #fff;
 $light-gray: #fcfcfc;
-$gray: #EEEEEE;
-$medium-gray: #D8D8D8;
+$gray: #D8D8D8;
+$medium-gray: #F2F2F2;
 $dark-gray: #bdbdbd;
 $light-black: #a4a4a4;
 $medium-black: #6E6E6E;
-$dark-black: #585858;
+$dark-black: #414141;
 $black: #2E2E2E;
 
 $red: #FE2E64;
@@ -97,7 +97,14 @@ GENERAL
 body{
   font-family: 'Open Sans', sans-serif;
   background-color:$light-gray;
+  padding-top: 70px !important;
+}
 
+@media screen and (max-width: 768px) {
+    body {
+      padding-top: 0px;
+      height:100vh;
+    }
 }
 
 hr{
@@ -290,7 +297,7 @@ PAGE containers
 
 #main-container{
   padding: 0px 0% 0px 0px;
-  min-height:100vh - $navbar-height;
+  min-height:100vh;
   background-color:$light-blue;
 }
 
