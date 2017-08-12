@@ -11,7 +11,6 @@ export function formatNumber([value, numberType, showDecimals]) {
     if(showDecimals){
       value = Number(dollars) + Number(cents);
       const total = value.toFixed(showDecimals).toLocaleString("en")
-
       return `${sign}${total}`
 
     } else{

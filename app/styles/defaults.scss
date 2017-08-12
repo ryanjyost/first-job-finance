@@ -95,15 +95,15 @@ GENERAL
 
 
 body{
-  font-family: 'Open Sans', sans-serif;
   background-color:$light-gray;
-  padding-top: 70px !important;
+  padding-top: 50px !important;
 }
 
-@media screen and (max-width: 768px) {
+@media(min-width: 991px) {
     body {
       padding-top: 0px;
       height:100vh;
+      overflow:hidden;
     }
 }
 
@@ -124,117 +124,11 @@ main{
   background-color: $light-blue;
 }
 
-
-
-
-/*=======================================================
-TEXT/FONTS
-=======================================================*/
-.playfair{
-  font-family: 'Playfair Display', serif !important;
+.hide{
+  display:none !important;
 }
 
-$playfair: 'Playfair Display', serif !important;
 
-.roboto{
-  font-family: 'Roboto', sans-serif;
-}
-
-$roboto:'Roboto', sans-serif;
-
-.open-sans{
-  font-family: 'Open Sans', sans-serif;
-}
-
-$open-sans:'Open Sans', sans-serif;
-
-.bold{
-  font-weight:900 !important;
-  color: $black;
-}
-
-.text--white{
-  color: $light-gray;
-  font-weight:300;
-}
-
-.text--bold-gray{
-  font-weight:700;
-  color: $medium-gray !important;
-}
-
-.text-align--right{
-  text-align:right !important
-}
-
-.text-align--left{
-  text-align:left !important
-}
-
-.text-align--center{
-  text-align:center !important
-}
-
-.text--blue-gray{
-  color:$blue-grayer !important;
-}
-
-.text--red{
-  color: $red !important;
-}
-
-@mixin text-number-big{
-  display:inline-block;
-  color:$blue;
-  font-weight:700;
-  font-size:40px;
-  margin:0px;
-}
-
-h1, h4, h6 {font-family: 'Open Sans', sans-serif;}
-h2, h5{font-family: 'Playfair Display', serif;}
-h3, p {font-family: 'Roboto', sans-serif; font-weight:700;}
-
-p {
-  font-size: 20px;
-   font-weight:100 !important;
-   color:$medium-black;
-   display:inline;
-   letter-spacing: 0.03em;
-}
-
-h1{
-  letter-spacing: 0.03em;
-}
-
-h2{
-  font-weight:400;
-  font-size:36px;
-}
-
-h3{
-  font-size:28px;
-  line-height:1.2;
-  font-weight:700;
-  margin:0px;
-
-}
-
-h4{
-  font-size:20px;
-  color:$light-black;
-}
-
-h5{font-size:24px;}
-
-
-h6{
-  font-size:13px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  line-height:1.2;
-  font-weight:700;
-}
 
 
 /*=======================================================

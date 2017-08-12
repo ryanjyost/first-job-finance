@@ -1,25 +1,33 @@
 import Ember from 'ember';
 
+const { computed } = Ember
+
 export default Ember.Component.extend({
 
 //===================
 //Variables
 
+//needed to calculate total expenses for percentOfTotal
+_amountStringArray: null,
+amountArray: null,
+totalExpenses: null,
+
 name: '',
 amount: 0,
-infoLink: '',
+percentOfTotal: 0,
 currentHover: false,
 
-name: Ember.computed('expense', function(){
+
+name: computed('expense', function(){
   return this.get('expense').name;
 }),
 
-amount: Ember.computed('expense', function(){
+amount: computed('expense', function(){
   return this.get('expense').amount;
 }),
 
-infoLink: Ember.computed('expense', function(){
-  return this.get('expense').infoLink;
+percentOfTotal: computed('amount', 'totalExpenses', function(){
+  return (this.get('amount')/this.get('totalExpenses')) || 0;
 }),
 
 
@@ -32,6 +40,9 @@ init(){
 
 mouseEnter(){
   this.set('currentHover', true)
+
+  const expenses = this.get('model');
+  this.set('expenses', expenses);
 },
 
 focusIn(){
@@ -47,7 +58,9 @@ actions: {
     const passUpEditedExpense = this.get('passUpEditedExpense');
     const expense = this.get('expense');
 
-    passUpEditedExpense(expense); //
+    this.set('amount', expense.amount);
+
+    passUpEditedExpense(expense);
   },
 
   handleDeleteExpense(){

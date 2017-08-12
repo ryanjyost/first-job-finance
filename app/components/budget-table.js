@@ -48,7 +48,7 @@ export default Component.extend({
   totalFixedExpenses: computed.sum('fixedAmountArray'),
 
   percentFixed: computed('totalExpenses', 'totalFixedExpenses', function() {
-    return Math.round(this.get('totalFixedExpenses')/this.get('totalExpenses')*100) || 0;
+    return (this.get('totalFixedExpenses')/this.get('totalExpenses')) || 0;
   }),
 
   //=================================
@@ -67,7 +67,7 @@ export default Component.extend({
   totalSavings: computed.sum('savingsAmountArray'),
 
   percentSavings: computed('totalExpenses', 'totalSavings', function() {
-    return Math.round(this.get('totalSavings')/this.get('totalExpenses')*100) || 0;
+    return (this.get('totalSavings')/this.get('totalExpenses')) || 0;
   }),
 
   //=================================
@@ -86,7 +86,7 @@ export default Component.extend({
   totalVariableExpenses: computed.sum('variableAmountArray'),
 
   percentVariable: computed('totalExpenses', 'totalVariableExpenses', function(){
-    return Math.round(this.get('totalVariableExpenses')/this.get('totalExpenses')*100) || 0;
+    return (this.get('totalVariableExpenses')/this.get('totalExpenses')) || 0;
   }),
 
   //===================

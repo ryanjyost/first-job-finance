@@ -1,7 +1,5 @@
-{{log fixedAndVariableAmountArray}}
-
 <div id="budget_container" class="container-fluid">
-      <div id="budget_input" class="col-sm-6">
+      <div id="budget_input" class="col-md-7">
         {{budget-table
           model=model.expenses
           createExpense=(action 'createExpense')
@@ -9,16 +7,16 @@
           deleteExpense=(action 'deleteExpense')
         }}
 
-         <div class="row">
+         {{!-- <div class="row">
           <h4 class="text-align--center">
             Input your monthly expenses and savings
           </h4>
-        </div>
+        </div> --}}
       </div>
 
 
 
-      <div id="budget_output" class="col-sm-6">
+     {{!--  <div id="budget_output" class="col-md-5">
 
         <!-- Take Home Pay -->
         <div class="row">
@@ -76,15 +74,8 @@
 
         </div>
 
-
-
-
-
-
-
-
       </div>
-
+ --}}
 
 
 </div>

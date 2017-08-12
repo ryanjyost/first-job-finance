@@ -1,11 +1,16 @@
+$row-height: 40px;
+$expenseNameWidth: 250px;
+$expenseAmountWidth: 150px;
+$expensePercentWidth: 130px;
+$tableGap: 30px;
+
 
 #budget_container{
   background-color: $white;
-  font-family: $roboto;
 
 }
 
-@media(min-width: 768px){
+@media(min-width: 991px){
     #budget_container{
       overflow:hidden;
       height:100vh - $navbar-height;
@@ -15,7 +20,6 @@
       overflow:scroll;
       float:left;
       height:100%;
-      padding:5vh 0px 20vh 0px;
     }
 }
 
@@ -26,6 +30,9 @@
   display:block;
   margin:auto;
   border-collapse: collapse;
+  width:610px;
+  overflow:scroll;
+  padding:20px 0px 40px 0px;
 
   #budget-header{
     text-transform: capitalize;
@@ -39,7 +46,7 @@
 
   #budget-column-labels{
     background-color:$gray;
-    height:40px;
+    height:$row-height;
 
     th{
       font-size:10px;
@@ -48,17 +55,62 @@
       color:$gray;
       letter-spacing:0.05em;
       background-color:$light-gray;
-      border-bottom:1px solid $gray;
+      border-bottom:1px solid $medium-gray;
       text-align:right;
+    }
+
+  }
+
+  .budget__column--icon{
+    width:50px;
+    padding-left:5px;
+
+    &:focus{
+      @include focus-no-style
+    }
+
+    a{
+      text-decoration: none;
+    }
+  }
+
+  .budget__column--expense-name{
+    width:$expenseNameWidth;
+    text-align:left !important;
+  }
+
+  .budget__column--expense-amount{
+    width:$expenseAmountWidth;
+    text-align:right;
+    padding-right:25px !important;
+    letter-spacing:0.05em;
+  }
+
+  .budget__column--expense-percent{
+    width:$expensePercentWidth;
+    text-align:right;
+  }
+
+  .budget__column--gap{
+    width:$tableGap;
+    text-align:right;
+  }
+
+  .budget__section-total{
+    td{
+      font-weight:700;
+      color:$medium-black;
+      background-color: $light-gray;
+      border-top:1px solid $medium-gray;
     }
   }
 
 
   .fa {
-    color:$dark-gray;
+    color:$gray;
 
     &:hover{
-      color: $light-black;
+      color: $dark-gray;
       cursor:pointer;
       text-decoration: none;
     }
@@ -70,6 +122,12 @@
     &:active{
       @include focus-no-style
     }
+  }
+
+
+  td {
+    border-bottom:1px dotted $gray;
+    height:$row-height;
   }
 
   button{
@@ -90,104 +148,69 @@
     }
   }
 
-  td{
-    border-bottom:1px dotted $gray;
-  }
+  .budget__expense {
+      td{
+        padding:0px 0px 0px 10px;
+        height:$row-height - 13px;
+      }
 
-
-  input{
-    border:none;
-
-    &:focus{
-      @include focus-no-style
-      background-color: $light-gray;
-    }
-  }
-
-
-
-  .budget__section-total{
-    th{
-
-    }
-  }
-
-  .budget-section-percent{
-
-  }
-
-  tr{
-
-  }
-
-    #fixed-expenses-total{
-      border-bottom: 3px solid $budget-blue !important;
-      color: $budget-blue;
-    }
-
-    #savings-total{
-      border-bottom: 3px solid $green !important;
-      color: $green;
-    }
-
-    #variable-expenses-total{
-      border-bottom: 3px solid $red !important;
-      color: $red;
-    }
-
-
-
-  .table-desc{
-
-
-    input{
-
-
-
-
-    }
-  }
-  .table-currency{
-
-
-    .dollar-sign{
-
-    }
-
-    input{
+      input{
+        border:none;
+        height:$row-height - 6px;
+        padding:0px 10px;
+        color: $light-black;
+        font-weight:700;
+        letter-spacing:0.03em;
+        border-radius:3px;
 
 
         &:focus{
-          @include focus-no-style
-          background-color: $light-gray;
+          @include input-focus;
         }
+      }
+
+      .dollar-sign{
+        color: $gray;
+      }
+
+      .budget__expense-name{
+        width:$expenseNameWidth;
+
+        input{
+          width: 95%;
+        }
+      }
+
+      .budget__expense-amount{
+        width:$expenseAmountWidth;
+        text-align:right;
+        input{
+          width: 50%;
+          font-weight: 700;
+          text-align:right;
+        }
+      }
+
+      .budget__expense-percent{
+        width:$expensePercentWidth;
+        text-align:right;
+        color: $light-black;
+        font-weight:700;
+      }
+  }
+
+  .budget__add-expense{
+    text-align:center;
+    width:100%;
+
+
+    button{
+      width:100%;
     }
   }
 
-  .table-icon{
 
 
-
-    &:focus{
-      @include focus-no-style
-    }
-
-    a{
-      text-decoration: none;
-    }
-  }
-
-  .table-gap{
-
-  }
-
-  .table-gap-small{
-
-  }
-
-  .table-gap-row{
-
-  }
 
 }
 

@@ -1,4 +1,4 @@
-<tr>
+{{!-- <tr>
   <td class="table-icon budget-remove-expense">
     {{#if currentHover}}
       <button {{action 'handleDeleteExpense'}}>{{fa-icon "minus-circle" fixedWidth=true}}</button>
@@ -13,5 +13,31 @@
 
   <td class="table-gap-small"></td>
 
-</tr>
+</tr> --}}
 
+{{!-- {{log "===================="}}
+{{log totalExpenses}}
+{{log percentOfTotal}}
+{{log percentOfTotal}} --}}
+
+<tr class="budget__expense">
+  <td class="budget__column--icon">
+    {{#if currentHover}}
+      <button {{action 'handleDeleteExpense'}}>{{fa-icon "minus-square" fixedWidth=true}}</button>
+    {{else}}
+      <button class="hide"  {{action 'handleDeleteExpense'}}>{{fa-icon "minus-circle" fixedWidth=true}}</button>
+    {{/if}}
+  </td>
+
+  <td class="budget__expense-name">
+    {{input class="budget__input--name" key-up="handleEditExpense" value=expense.name}}
+  </td>
+  <td class="budget__expense-amount">
+    <span class="dollar-sign">$</span>
+    {{input type='number' class="budget__input--amount"  value=expense.amount key-up="handleEditExpense" focus-out="handleEditExpense"}}
+  </td>
+  <td class="budget__expense-percent">
+    {{format-number percentOfTotal "percent" 1}}
+  </td>
+  <td class="budget__column--gap"></td>
+</tr>
