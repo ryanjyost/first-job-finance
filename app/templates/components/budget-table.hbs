@@ -15,8 +15,6 @@
     <th class="budget__column--gap"></th>
   </tr>
 
-
-
     <!-- ============ Fixed Expenses ============ -->
     <tr class="budget__section-total">
       <td class="budget__column--icon toggle-expense-list">
@@ -140,6 +138,22 @@
       </div>
     {{/if}}
     <!-- ============ Variable Expenses ============ -->
+
+
+    <!-- ============ Total Budget ============ -->
+    <tr id="budget-total">
+      <td class="budget__column--icon toggle-expense-list">
+      </td>
+
+      <td class="budget__column--expense-name">Total</td>
+      <td class="budget__column--expense-amount">
+        {{format-number totalExpenses "currency"}}
+      </td>
+      <td class="budget__column--expense-percent">
+         {{format-number 1 "percent"}}
+      </td>
+      <td class="budget__column--gap"></td>
+    </tr>
 
 
 

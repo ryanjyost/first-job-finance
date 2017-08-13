@@ -18,6 +18,7 @@
     "broccoli-asset-rev": "^2.4.5",
     "ember-ajax": "^2.5.6",
     "ember-basic-dropdown": "^0.33.1",
+    "ember-charts": "^1.2.1",
     "ember-cli": "2.12.1",
     "ember-cli-active-link-wrapper": "^0.3.2",
     "ember-cli-app-version": "^2.0.0",

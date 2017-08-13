@@ -1,25 +1,49 @@
-<div id="budget_container" class="container-fluid">
-      <div id="budget_input" class="col-md-7">
-        {{budget-table
-          model=model.expenses
-          createExpense=(action 'createExpense')
-          editExpense=(action 'editExpense')
-          deleteExpense=(action 'deleteExpense')
+<div id="budget-container" class="container-fluid">
+  <div id="budget-input" class="col-md-7">
+    {{budget-table
+      model=model.expenses
+      createExpense=(action 'createExpense')
+      editExpense=(action 'editExpense')
+      deleteExpense=(action 'deleteExpense')
+    }}
+  </div> {{!-- end budget input --}}
+
+  <div id="budget-output" class="col-md-5">
+
+    <br>
+    <section>
+      {{button-group
+        currentSelected=currentOutputOption
+        updateSelect=updateOutputOption
+        buttons=budgetOutputOptions
+      }}
+    </section>
+
+    {{#if (eq currentOutputOption 'pieCharts')}}
+     {{!-- Pie Charts --}}
+     <section>
+        <h6 class="section__title">Current Breakdown</h6>
+        {{pie-chart
+          data=actualPieChartData
+          selectSeedColor="rgb(0,192,243)"
         }}
+     </section>
 
-         {{!-- <div class="row">
-          <h4 class="text-align--center">
-            Input your monthly expenses and savings
-          </h4>
-        </div> --}}
-      </div>
+     <section>
+        <h6 class="section__title">Target Breakdown using 50/20/30 budget methodology</h6>
+        {{pie-chart
+          data=targetPieChartData
+          selectSeedColor="rgb(0,192,243)"
+        }}
+     </section> {{!-- end Pie Charts --}}
 
+    {{else}}
 
+      {{!-- 1. Take Home Pay --}}
+      <section>
+        <h6 class="section__title">1. Determine your monthly take-home pay</h6>
 
-     {{!--  <div id="budget_output" class="col-md-5">
-
-        <!-- Take Home Pay -->
-        <div class="row">
+        <div class="section__inner-cont">
           {{slider-range
             label_1="My take-home pay is"
             label_2="a month"
@@ -31,51 +55,46 @@
             numberType="currency"
           }}
 
-          <span class="text_input-helper"><i>
+          <span class="text--helper"><i>
             Use the slider or the
             {{#link-to 'calculators.estimate-take-home-pay'}}
               Estimate Take-Home Pay Calculator
             {{/link-to}}
           </i></span>
         </div>
+      </section>
 
-        <br>
-        <div class="row">
-          <h1>{{format-number totalMonthlyExpenses "currency"}}</h1>
-          <h4>
+
+      {{!-- 2. Monthly Spending --}}
+      <section>
+        <h6 class="section__title">2. Add up your monthly expenses and saving</h6>
+        <div class="section__inner-cont">
+          <h3>{{format-number totalMonthlyExpenses "currency"}}</h3><br>
+          <p>
             is how much I spend and save a month <br>
             <i>(essential + savings + variable)</i>
-          </h4>
+          </p>
         </div>
+      </section>
 
-
-
-
-
-        <div class="row">
+      {{!-- 3. Surplus/Deficit --}}
+      <section>
+        <h6 class="section__title">3. Take-home pay - (expenses + savings) = budget surplus/deficit  </h6>
           <h4>
             My budget
-
             {{#if (lt budgetSurplus 0)}}
               <span class="bold text--red">deficit</span>
             {{else}}
               <span class="bold text--blue-gray">surplus</span>
-            {{/if}}
-
-            is
-
+            {{/if}} is
           </h4>
+          {{#if (lt budgetSurplus 0)}}
+             <h3 class="text--red">{{format-number budgetSurplus "currency"}}</h3>
+          {{else}}
+             <h3>{{format-number budgetSurplus "currency"}}</h3>
+          {{/if}}
+      </section>
+    {{/if}}
 
-            {{#if (lt budgetSurplus 0)}}
-               <h1 class="text--red">{{format-number budgetSurplus "currency"}}</h1>
-            {{else}}
-               <h1>{{format-number budgetSurplus "currency"}}</h1>
-            {{/if}}
-
-        </div>
-
-      </div>
- --}}
-
-
-</div>
+  </div>{{!-- end budget output--}}
+</div>{{!-- end budget container--}}

@@ -5,18 +5,26 @@ $expensePercentWidth: 130px;
 $tableGap: 30px;
 
 
-#budget_container{
+#budget-container{
   background-color: $white;
+
+  svg{
+    height:300px;
+  }
+
+  g{
+    height:100px;
+  }
 
 }
 
 @media(min-width: 991px){
-    #budget_container{
+    #budget-container{
       overflow:hidden;
       height:100vh - $navbar-height;
     }
 
-    #budget_input, #budget_output{
+    #budget-input, #budget-output{
       overflow:scroll;
       float:left;
       height:100%;
@@ -94,6 +102,14 @@ $tableGap: 30px;
   .budget__column--gap{
     width:$tableGap;
     text-align:right;
+  }
+
+
+  #budget-total{
+    font-weight:700;
+    color:$medium-black;
+    background-color: $light-blue;
+    border-top:1px solid $medium-gray;
   }
 
   .budget__section-total{
@@ -217,10 +233,10 @@ $tableGap: 30px;
 //=========================
 //BUDGET OUTPUT
 
-#budget_output{
+#budget-output{
 
 
-  h1{
+  h3{
     @include text-number-big;
   }
 
@@ -228,8 +244,13 @@ $tableGap: 30px;
     line-height:1.4;
   }
 
-  .row{
-    @include row--text-center
+  h5{
+    font-size:18px;
+    color:$medium-black;
+  }
+
+  section {
+    @include text-center
   }
 }
 

@@ -72,7 +72,7 @@
     }
 
     .row{
-      @include row--text-center
+      @include text-center
        display: table;
     }
 

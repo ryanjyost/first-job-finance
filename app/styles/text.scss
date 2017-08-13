@@ -1,6 +1,55 @@
+
+
+h1, h4, h6 {font-family: 'Open Sans', sans-serif;}
+h2, h5{font-family: 'Playfair Display', serif;}
+h3, p {font-family: 'Roboto', sans-serif; font-weight:700;}
+
+p {
+  font-size: 18px;
+  font-weight:400 !important;
+   color:$light-black;
+   display:inline;
+   letter-spacing: 0.03em;
+}
+
+h1{
+  letter-spacing: 0.03em;
+}
+
+h2{
+  font-weight:400;
+  font-size:36px;
+}
+
+h3{
+  font-size:28px;
+  line-height:1.2;
+  font-weight:700;
+  margin:0px;
+
+}
+
+h4{
+  font-size:18px;
+  color:$light-black;
+}
+
+h5{font-size:24px;}
+
+
+h6{
+  font-size:13px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height:1.2;
+  font-weight:700;
+}
+
+
 /*=======================================================
 TEXT/FONTS
 =======================================================*/
+
 .playfair{
   font-family: 'Playfair Display', serif !important;
 }
@@ -54,58 +103,36 @@ $open-sans:'Open Sans', sans-serif;
   color: $red !important;
 }
 
+.text--helper{
+  color:$gray;
+  font-size:12px;
+  text-align:center;
+  display:block;
+
+  a{
+    color:$gray;
+    text-decoration:underline;
+  }
+}
+
 @mixin text-number-big{
   display:inline-block;
   color:$blue;
   font-weight:700;
-  font-size:40px;
   margin:0px;
 }
 
-h1, h4, h6 {font-family: 'Open Sans', sans-serif;}
-h2, h5{font-family: 'Playfair Display', serif;}
-h3, p {font-family: 'Roboto', sans-serif; font-weight:700;}
-
-p {
-  font-size: 20px;
-   font-weight:100 !important;
-   color:$medium-black;
-   display:inline;
-   letter-spacing: 0.03em;
+@mixin text-center{
+  display:block;
+  margin:auto;
+  text-align:center;
+  margin-bottom:10px;
+  margin-top:10px;
+  width:95%;
+  padding:10px 0px;
 }
 
-h1{
-  letter-spacing: 0.03em;
-}
 
-h2{
-  font-weight:400;
-  font-size:36px;
-}
-
-h3{
-  font-size:28px;
-  line-height:1.2;
-  font-weight:700;
-  margin:0px;
-
-}
-
-h4{
-  font-size:20px;
-  color:$light-black;
-}
-
-h5{font-size:24px;}
-
-
-h6{
-  font-size:13px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  line-height:1.2;
-  font-weight:700;
-}
 
 
 

@@ -147,7 +147,10 @@ export default Component.extend({
       if(type ==='variable'){
         this.toggleProperty('showVariableExpenses')
       }
-    }
+    },
   }, //close actions object
+
+
+
 
 });
