@@ -10,9 +10,22 @@ $card-width: 85%;
   margin:auto;
 }
 
-.card_container{
+.card__container{
   padding:20px 5%;
-  background-color:$light-blue;
+
+  @media(max-width: 768px){
+    .button-group{
+      display:block;
+      overflow:auto;
+      white-space:nowrap;
+    }
+  }
+
+
+}
+
+.card__container__inner{
+
 }
 
 

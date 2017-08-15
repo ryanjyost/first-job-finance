@@ -31,14 +31,20 @@ $tableGap: 30px;
     }
 }
 
+@media(min-width:500px){
+  #budget-table{
+      display:block !important;
+  }
+}
+
 //=========================
 //BUDGET INPUT
 
 #budget-table {
-  display:block;
+  display:none;
   margin:auto;
   border-collapse: collapse;
-  width:610px;
+  max-width:610px;
   overflow:scroll;
   padding:20px 0px 40px 0px;
 
@@ -126,7 +132,7 @@ $tableGap: 30px;
     color:$gray;
 
     &:hover{
-      color: $dark-gray;
+      color:$light-black;
       cursor:pointer;
       text-decoration: none;
     }
@@ -219,6 +225,11 @@ $tableGap: 30px;
     text-align:center;
     width:100%;
 
+    &:hover{
+      .fa{
+        color:$light-black;
+      }
+    }
 
     button{
       width:100%;

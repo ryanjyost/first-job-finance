@@ -3,6 +3,7 @@ import Ember from 'ember';
 let { computed, inject } = Ember
 
 export default Ember.Controller.extend({
+  expenses: null,
   monthlyTakeHomePay: null,
   budgetSurplus: null,
   repo: inject.service(),
@@ -21,16 +22,16 @@ export default Ember.Controller.extend({
       label: 'Essential'
     },
   ],
+  defaultExpenses: [
+    {id:"exp_1", expenseType:"fixed", name: 'Skoosh', amount: 1000},
+  ],
 
 
   //=================================
   // Output view toggling
 
-  currentOutputOption: 'pieCharts',
-  budgetOutputOptions: [{label: 'Pie Charts', value: 'pieCharts'},{label: 'Surplus / Deficit', value: 'surplus'}],
-
-
-
+  currentOutputOption: 'breakdown',
+  budgetOutputOptions: [{label: 'breakdown', value: 'breakdown'},{label: 'Surplus / Deficit', value: 'surplus'}],
 
   //=================================
   //Calculate budget breakdowns for pie charts
@@ -134,27 +135,24 @@ export default Ember.Controller.extend({
   }),
 
 
-
   actions: {
-    createExpense(type){
+    createExpense(expenseType, name, amount){
        const updatedExpenses = new Promise((resolve, reject) => {
 
-        if(!type){
+        if(!expenseType){
           reject('no type specified')
         } else{
           const newExpense = Ember.Object.create(
             {
-              expenseType: type,
-              name: '',
-              amount: 0,
-              infoLink: ''
+              expenseType: expenseType,
+              name: name || '',
+              amount: amount || 0,
             }
           )
 
           this.get('repo').addExpense(newExpense);
           resolve(this.get('repo').findAll('expenses'));
         }
-
       })
 
       return updatedExpenses

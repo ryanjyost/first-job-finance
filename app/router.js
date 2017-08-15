@@ -33,6 +33,7 @@ Router.map(function() {
   this.route('tools', function() {
     this.route('budget');
   });
+  this.route('portals');
 });
 
 export default Router;

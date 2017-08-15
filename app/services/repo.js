@@ -30,7 +30,7 @@ export default Ember.Service.extend({
       "payPeriod":'"semi-monthly"',
       "employerPlanDeferralRate": 0.05,
       "stateName": '"Illinois"',
-      monthlyTakeHomePay: 0,
+      "monthlyTakeHomePay": 2500,
     }
 
     let defaultValue = 'null'

@@ -45,7 +45,7 @@ MEASUREMENTS
 
 $navbar-height: 8vh;
 $main-padding:2vh;
-$max-width:1300px;
+$max-width:1200px;
 
 @mixin max-width{
   max-width:$max-width;
@@ -95,8 +95,13 @@ GENERAL
 
 
 body{
-  background-color:$light-gray;
+  background-color:$white;
   padding-top: 50px !important;
+}
+
+.scrollable{
+  overflow:scroll;
+  height:auto;
 }
 
 @media(min-width: 991px) {
@@ -121,7 +126,6 @@ hr{
 
 main{
   padding:0px !important;
-  background-color: $light-blue;
 }
 
 .hide{
@@ -139,6 +143,7 @@ GENERAL BLOCKS
   @include max-width;
   display:block;
   margin:auto;
+
 }
 
 .block--padded{
@@ -160,6 +165,7 @@ SECTION
 =======================================================*/
 
 section{
+  max-width:700px;
 
   .section__title{
     width:100%;
@@ -205,7 +211,7 @@ PAGE containers
 #main-container{
   padding: 0px 0% 0px 0px;
   min-height:100vh;
-  background-color:$light-blue;
+  background-color:$white;
   max-width:$max-width;
 }
 

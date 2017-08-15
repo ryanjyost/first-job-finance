@@ -19,13 +19,13 @@
       }}
     </section>
 
-    {{#if (eq currentOutputOption 'pieCharts')}}
+    {{#if (eq currentOutputOption 'breakdown')}}
      {{!-- Pie Charts --}}
      <section>
         <h6 class="section__title">Current Breakdown</h6>
         {{pie-chart
           data=actualPieChartData
-          selectSeedColor="rgb(0,192,243)"
+          selectedSeedColor="rgb(0,192,243)"
         }}
      </section>
 
@@ -33,7 +33,7 @@
         <h6 class="section__title">Target Breakdown using 50/20/30 budget methodology</h6>
         {{pie-chart
           data=targetPieChartData
-          selectSeedColor="rgb(0,192,243)"
+          selectedSeedColor="rgb(0,192,243)"
         }}
      </section> {{!-- end Pie Charts --}}
 
@@ -95,6 +95,7 @@
           {{/if}}
       </section>
     {{/if}}
+    <br>
 
   </div>{{!-- end budget output--}}
 </div>{{!-- end budget container--}}

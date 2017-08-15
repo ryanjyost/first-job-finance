@@ -3,6 +3,10 @@
   display:flex;
   align-items: center;
   justify-content: center;
+  overflow-x: scroll;
+  max-width:90%;
+  margin:auto;
+  padding:0px 20px;
 }
 
 @mixin button-hover{

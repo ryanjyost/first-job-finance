@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   repo: Ember.inject.service(),
 
-  filterButtons: [{label: 'Everything', value: null},{label: 'Calculators', value: 'calculator'},{label: 'Guides', value: 'guide'},{label: 'Tools', value: 'tool'},],
+  filterButtons: [{label: 'Everything', value: null},{label: 'Calculators', value: 'calculator'},{label: 'Guides', value: 'guide'},{label: 'Tools', value: 'tool'},{label: 'Links', value: 'links'},],
 
   cards: [
           {

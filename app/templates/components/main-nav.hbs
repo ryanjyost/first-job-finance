@@ -9,24 +9,33 @@
         <span class="icon-bar"></span>
       </button>
 
-      <a class="navbar-brand" href="/">
+      {{#link-to 'index' class="navbar-brand"}}
         <img src="/assets/images/fjf-logo.png" width="40" height="40" alt="text"/>
-      </a>
+      {{/link-to}}
+      FLOATING CARDS LIKE MINT
     </div> <!-- navbar-header -->
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="navbar-nav">
+        <li class="nav-item">
+         {{#link-to 'portals' class="nav-link"}}
+            Portals
+          {{/link-to}}
+        </li>
         <li class="nav-item active">
-          <a class="nav-link" href="#">Details <span class="sr-only">(current)</span></a>
+          {{#link-to 'tools.budget' class="nav-link"}}
+            Budget
+          {{/link-to}}
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Analysis</a>
+          {{#link-to 'tools.budget' class="nav-link"}}
+            Resources
+          {{/link-to}}
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Transactions</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Reports</a>
+          {{#link-to 'tools.budget' class="nav-link"}}
+            Files
+          {{/link-to}}
         </li>
       </ul>
 

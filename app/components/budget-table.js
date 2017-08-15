@@ -6,6 +6,34 @@ export default Component.extend({
 
   //===================
   //Variables
+  defaultExpenses: [
+    {id:"exp_1", expenseType:"fixed", name: 'Rent', amount: 600},
+    {id:"exp_2", expenseType:"fixed", name: 'Electric Bill', amount: 75},
+    {id:"exp_3", expenseType:"fixed", name: 'Gas Bill', amount: 40},
+    {id:"exp_4", expenseType:"fixed", name: 'Cable & Internet', amount: 100},
+    {id:"exp_5", expenseType:"fixed", name: 'Phone', amount: 30},
+    {id:"exp_6", expenseType:"fixed", name: 'Student Loan Payment', amount: 190},
+    {id:"exp_7", expenseType:"fixed", name: 'Health Insurance Premium', amount: 0},
+    {id:"exp_8", expenseType:"fixed", name: 'Cable Payment & Insurance', amount: 75},
+    {id:"exp_9", expenseType:"fixed", name: 'Renter\'s Insurance', amount: 16},
+    {id:"exp_10", expenseType:"fixed", name: 'Parking/Train', amount: 100},
+    {id:"exp_11", expenseType:"fixed", name: 'Identity Theft Protection', amount: 12},
+    {id:"exp_12", expenseType:"fixed", name: 'Disability Insurance', amount: 12},
+    {id:"exp_13", expenseType:"saving", name: 'Emergency Fund', amount: 250},
+    {id:"exp_14", expenseType:"saving", name: 'IRA Contribution', amount: 150},
+    {id:"exp_15", expenseType:"saving", name: 'General Savings', amount: 100},
+    {id:"exp_17", expenseType:"variable", name: 'Groceries', amount: 150},
+    {id:"exp_18", expenseType:"variable", name: 'Gym Membership', amount: 50},
+    {id:"exp_19", expenseType:"variable", name: 'Netflix', amount: 9},
+    {id:"exp_20", expenseType:"variable", name: 'Amazon Prime', amount: 8},
+    {id:"exp_21", expenseType:"variable", name: 'Entertainment', amount: 150},
+    {id:"exp_22", expenseType:"variable", name: 'Social Events', amount: 150},
+    {id:"exp_23", expenseType:"variable", name: 'Medicine/Self-Care', amount: 50},
+    {id:"exp_24", expenseType:"variable", name: 'Clothes', amount: 75},
+    {id:"exp_25", expenseType:"variable", name: 'Cleaning Products', amount: 25},
+    {id:"exp_26", expenseType:"variable", name: 'Subscriptions', amount: 50},
+    {id:"exp_27", expenseType:"variable", name: 'Random', amount: 33},
+  ],
   amountArray: [],
   totalExpenses: 0,
   fixedExpenses: 0,
@@ -94,12 +122,26 @@ export default Component.extend({
 
   init(){
     this._super(...arguments);
+
+    const defaultExpenses = this.get('defaultExpenses'),
+          expensesFromRepo = this.get('model'),
+          createExpenseAction = this.get('createExpense');
+
+    if(expensesFromRepo.length < 1 || !expensesFromRepo){
+      for(let expense of defaultExpenses){
+        const { expenseType, name, amount } = expense;
+
+        createExpenseAction(expenseType, name, amount).then((newExpenseList) => {
+          this.set('expenses', newExpenseList);
+        })
+      }
+    }
   },
 
   didReceiveAttrs(){
     this._super(...arguments);
 
-    const expenses = this.get('model');
+    const expenses = this.get('model')
     this.set('expenses', expenses);
   },
 
@@ -149,8 +191,5 @@ export default Component.extend({
       }
     },
   }, //close actions object
-
-
-
 
 });

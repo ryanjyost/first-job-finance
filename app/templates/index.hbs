@@ -1,16 +1,17 @@
 <main>
   <div id="main-container" class="container-fluid">
-    <div class="block--max-width block--padded row">
+    <div class="block--max-width row">
 
-      <div class="col-md-8">
-        {{card-container
-          filterButtons=filterButtons
-          cards=cards
-        }}
-      </div>
+    <div class="row card__container col-md-10 col-md-offset-1">
+      {{card-container
+        filterButtons=filterButtons
+        cards=cards
+      }}
       {{!-- <div class="col-md-4">
         Sign Up
       </div> --}}
+    </div>
+
 
     </div>
   </div>
