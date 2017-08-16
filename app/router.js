@@ -34,6 +34,7 @@ Router.map(function() {
     this.route('budget');
   });
   this.route('portals');
+  this.route('checklists');
 });
 
 export default Router;
