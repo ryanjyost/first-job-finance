@@ -1,7 +1,7 @@
 $row-height: 40px;
-$expenseNameWidth: 250px;
+$expenseNameWidth: 300px;
 $expenseAmountWidth: 150px;
-$expensePercentWidth: 130px;
+$expensePercentWidth: 110px;
 $tableGap: 30px;
 
 
@@ -29,6 +29,14 @@ $tableGap: 30px;
       float:left;
       height:100%;
     }
+
+    #budget-input{
+      padding-top:15px;
+    }
+
+    #budget-output{
+      padding-top: 25px;
+    }
 }
 
 @media(min-width:500px){
@@ -44,9 +52,9 @@ $tableGap: 30px;
   display:none;
   margin:auto;
   border-collapse: collapse;
-  max-width:610px;
+  width:$expenseNameWidth + $expenseAmountWidth + $expensePercentWidth + $tableGap;
   overflow:scroll;
-  padding:20px 0px 40px 0px;
+  padding:50px 0px 40px 0px;
 
   #budget-header{
     text-transform: capitalize;

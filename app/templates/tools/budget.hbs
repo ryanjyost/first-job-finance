@@ -10,14 +10,12 @@
 
   <div id="budget-output" class="col-md-5">
 
-    <br>
-    <section>
       {{button-group
         currentSelected=currentOutputOption
         updateSelect=updateOutputOption
         buttons=budgetOutputOptions
       }}
-    </section>
+
 
     {{#if (eq currentOutputOption 'breakdown')}}
      {{!-- Pie Charts --}}
