@@ -2,7 +2,7 @@
 Cards
 =======================================================*/
 
-$card-width-inner: 90%;
+$card-width-inner: 85%;
 $card-max-width: 350px;
 $card-height: 160px;
 $card-padding-vertical: 10px;
@@ -17,7 +17,6 @@ $card-padding-vertical: 10px;
   padding:20px 1%;
   background-color: $light-blue;
   width:100%;
-
 
   @media(max-width: 768px){
     .button-group{
@@ -35,6 +34,12 @@ $card-padding-vertical: 10px;
   margin:auto;
   height:$card-height;
 
+  a{
+    height: $card-height - 20px;
+    width:100%;
+    display:block;
+  }
+
   a:hover{
     text-decoration: none!important
   }
@@ -47,6 +52,10 @@ $card-padding-vertical: 10px;
     font-weight:700;
     letter-spacing: 0.02em;
   }
+
+  h6{
+    text-transform:none;
+  }
 }
 
 .card__inner-cont{
@@ -57,6 +66,9 @@ $card-padding-vertical: 10px;
   height:$card-height - $card-padding-vertical*2;
   position:relative;
   max-width: $card-max-width;
+  display:block;
+  margin:auto;
+  padding-bottom:20px;
 
    &:hover{
     -webkit-box-shadow: 0px 3px 11px 0px rgba(164,164,164,1);
@@ -93,6 +105,26 @@ $card-padding-vertical: 10px;
   color:$dark-gray;
   font-weight:300;
   padding-top:20px;
+}
+
+
+.card__button--delete{
+  border:none;
+  background-color: transparent;
+  @include button-no-focus;
+  margin-top:10px;
+  float:right;
+  display:inline-block;
+  padding:0px 30px;
+  color:$gray;
+  position:absolute;
+  right:0;
+  bottom:0;
+  margin-bottom:15px;
+
+  &:hover{
+    color:$light-black;
+  }
 }
 
 // .checkbox__container{
@@ -137,16 +169,61 @@ $card-padding-vertical: 10px;
   position:absolute;
 }
 
-.card--add{
-  label{
-    display:block;
+.card--add {
+  font-family:$open-sans;
+
+  .card__inner-cont{
+    padding-top:25px;
+    color:$blue;
+    font-size:20px;
+
+    &:hover{
+      box-shadow:none !important;
+    }
   }
+
+
+  #inputPortalName{
+    border-bottom:1px dotted $medium-gray;
+    font-weight:700;
+    letter-spacing: 0.02em;
+    padding-bottom:5px;
+  }
+
+  #inputPortalLink{
+    font-size:14px;
+    font-style: italic;
+    padding-top:5px;
+    color:$dark-gray;
+  }
+
 
   input{
-    display:block;
+    @include card-text;
+    border:none;
+
+    &:focus, &:hover{
+      outline:none;
+    }
   }
 
-  button{
-    display:block;
+  .card__button--add{
+     border:none;
+     background-color: transparent;
+     @include button-no-focus;
+     margin-top:10px;
+     float:right;
+     display:inline-block;
+     padding:0px 30px;
+     color:$medium-blue;
+
+
+     .fa:hover{
+       color:$blue;
+      }
+  }
+
+  #addPortalHelperInfo{
+    @include card-text;
   }
 }

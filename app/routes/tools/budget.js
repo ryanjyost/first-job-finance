@@ -8,7 +8,7 @@ export default Ember.Route.extend({
 
   actions: {
 
-    createExpense(type){
+    createExpense(type, name, amount){
        const updatedExpenses = new Promise((resolve, reject) => {
 
         if(!type){
@@ -16,9 +16,9 @@ export default Ember.Route.extend({
         } else {
           const newExpense = Ember.Object.create(
             { expenseType: type,
-              name: '',
-              amount: 0,
-              infoLink: ''}
+              name: name || '',
+              amount: amount || 0,
+            }
           )
 
           this.get('repo').addExpense(newExpense);

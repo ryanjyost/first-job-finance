@@ -30,9 +30,14 @@ export default Ember.Component.extend({
   },
 
   handleAddPortal(){
-    const newPortalName =  this.$('#inputPortalName').val(),
-          newPortalLink = this.$('#inputPortalLink').val();
-    alert(hey);
+    const name =  this.$('#inputPortalName').val(),
+          link = this.$('#inputPortalLink').val();
+
+    const newPortalData = {name, link};
+    this.get('addCard')(newPortalData);
+
+    this.$('#inputPortalName').val('');
+    this.$('#inputPortalLink').val('');
   }
 
 });

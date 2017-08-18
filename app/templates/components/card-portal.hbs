@@ -1,12 +1,18 @@
-<div class="col-lg-4 col-md-6 col-sm-12 card">
-  <a href={{link}} target="_blank">
-    <div class="card__inner-cont">
+<div class="col-md-4 col-sm-6 col-xs-12 col-centered card">
+
+  <div class="card__inner-cont">
+    <a href={{link}} target="_blank">
       <h6 class="card__title">
         {{name}}
       </h6>
       <h6 class="card__type">
-        Last visited <strong>{{lastVisited}}</strong>
+        Last visited <strong>{{moment-from-now lastVisited}}</strong>
       </h6>
-    </div>
-  </a>
+
+      <button {{action "deletePortal" id}} class="card__button--delete">
+        {{fa-icon "times"}}
+      </button>
+
+    </a>
+  </div>
 </div>

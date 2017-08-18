@@ -1,9 +1,9 @@
-<div class="container--main card-container">
+<div class="container container--main card-container">
   <div class="col-md-12 block--scrollable block--max-width">
     {{card-container
-      cards=model.cards
+      cards=model
       cardComponentType="portal"
-      addCard=(action 'addPortal')
+      addCard=(route-action 'addPortal')
     }}
   </div>
 </div>

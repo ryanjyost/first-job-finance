@@ -7,7 +7,7 @@
   {{/if}}
 
 
-  <div>
+  <div class="row row-centered">
     {{#each filteredCardList as |card|}}
       {{#if (eq cardComponentType "portal")}}
         {{card-portal
@@ -19,6 +19,7 @@
         }}
       {{else}}
         {{card-single
+          id=card.id
           title=card.title
           description=card.description
           comingSoon=card.comingSoon
@@ -29,23 +30,23 @@
     {{/each}}
 
     {{!-- Add a portal --}}
-    <div class="col-lg-4 col-sm-6 col-xs-12 card card--add">
+    <div class="col-md-4 col-sm-6 col-xs-12 col-centered card card--add">
         <div class="card__inner-cont">
+          <input type="text" id="inputPortalName" name="portalName" placeholder="e.g., Chase Checking" required/>
+          <input type="text" id="inputPortalLink" name="portalLink" placeholder="paste the website link here" required/>
 
+          <button class="card__button--add" {{action handleAddPortal}}>
+            {{fa-icon "plus"}}
+          </button>
 
+        </div>
+    </div>
 
-
-        <input type="text" id="inputPortalName" name="portalName" placeholder="e.g., Chase Checking, Verizon, 401k" required/>
-
-        <input type="text" id="inputPortalLink" name="portalLink" placeholder="http://.." required/>
-
-        <button {{action handleAddPortal}}>
-          {{fa-icon "plus"
-            width='40px'
-            fixedWidth=true
-          }}
-        </button>
-
+    {{!-- Helper Info --}}
+    <div class="col-md-4 col-sm-6 col-xs-12 col-centered card card--add">
+        <div class="card__inner-cont">
+          <h5 id="addPortalHelperInfo">Keep all of your important websites in one place,</h5>
+          <p class="card__desc">And remember to check on them.</p>
         </div>
     </div>
 

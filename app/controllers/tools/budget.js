@@ -23,10 +23,6 @@ export default Ember.Controller.extend({
       label: 'Essential'
     },
   ],
-  defaultExpenses: [
-    {id:"exp_1", expenseType:"fixed", name: 'Skoosh', amount: 1000},
-  ],
-
 
   //=================================
   // Output view toggling

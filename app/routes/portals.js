@@ -1,6 +1,10 @@
 import Ember from 'ember';
 
+const { inject } = Ember;
+
 export default Ember.Route.extend({
+  repo: inject.service(),
+
   cards: [
           {
             name: 'Chase Checking Account',
@@ -47,15 +51,17 @@ export default Ember.Route.extend({
   ],
 
   actions: {
-    addPortal(){
-      alert('hey there')
-      return 2;
+    addPortal(newPortalObj){ //name, link
+      this.get('repo').addPortal(newPortalObj)
+    },
+
+    deletePortal(portalId){
+      alert(portalId)
     }
   },
 
   model(){
-    return Ember.RSVP.hash({
-      cards: this.get('cards')
-    })
+    return this.get('repo').findAll('portals');
+
   }
 });

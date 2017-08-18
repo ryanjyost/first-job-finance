@@ -9,3 +9,10 @@ Form Fields
   border-top: none;
   border-bottom: 1px solid #DDD;
 }
+
+@mixin button-no-focus{
+    &:focus, &:hover, &:active{
+      outline:none;
+      border:none;
+    }
+}

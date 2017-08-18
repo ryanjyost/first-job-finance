@@ -83,11 +83,21 @@ export default Ember.Service.extend({
     this.persist('expenses');
   },
 
-
   //=================
   //PORTALS
   //=================
 
+
+  addPortal(attrs) {
+    let portal = Object.assign(
+      { id: `portal_${Date.now()}`,
+        lastVisited: Date.now(),
+      }, attrs);
+
+    this.get('portals').pushObject(portal);
+    this.persist('portals');
+    return portal;
+  },
 
 
 });
