@@ -1,1 +1,11 @@
-{{outlet}}
+<div class="container--main card-container">
+  <div class="col-md-12 block--scrollable block--max-width">
+    {{card-container
+      cards=model.cards
+      cardComponentType="portal"
+      addCard=(action 'addPortal')
+    }}
+  </div>
+</div>
+
+

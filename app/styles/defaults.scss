@@ -92,17 +92,11 @@ GENERAL MIXINS
 /*=======================================================
 GENERAL
 =======================================================*/
-
-
 body{
   background-color:$white;
   padding-top: 50px !important;
 }
 
-.scrollable{
-  overflow:scroll;
-  height:auto;
-}
 
 @media(min-width: 991px) {
     body {
@@ -124,12 +118,18 @@ hr{
     margin-bottom:10px;
   }
 
-main{
-  padding:0px !important;
-}
 
 .hide{
   display:none !important;
+}
+
+
+svg{
+  height:300px;
+}
+
+g{
+  height:100px;
 }
 
 
@@ -139,21 +139,26 @@ main{
 GENERAL BLOCKS
 =======================================================*/
 
-.block--max-width{
-  @include max-width;
-  display:block;
-  margin:auto;
+@media(min-width: 991px){
+    .container--main{
+      overflow:hidden;
+      height:100vh - $navbar-height;
+    }
 
+    .block--scrollable{
+      overflow:scroll;
+      float:left;
+      height:100%;
+    }
 }
 
-.block--padded{
-  padding: 50px 0px 0px 0px;
+.block--max-width{
+  @include max-width;
 }
 
 .no-padding{
   padding: 0px !important;
 }
-
 
 @mixin block-center{
   display:block;

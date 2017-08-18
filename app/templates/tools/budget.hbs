@@ -1,21 +1,19 @@
-<div id="budget-container" class="container-fluid">
-  <div id="budget-input" class="col-md-7">
+
+  <div id="budget-input" class="col-md-7 block--scrollable">
     {{budget-table
       model=model.expenses
-      createExpense=(action 'createExpense')
-      editExpense=(action 'editExpense')
-      deleteExpense=(action 'deleteExpense')
+      createExpense=(route-action 'createExpense')
+      editExpense=(route-action 'editExpense')
+      deleteExpense=(route-action 'deleteExpense')
     }}
   </div> {{!-- end budget input --}}
 
-  <div id="budget-output" class="col-md-5">
-
-      {{button-group
-        currentSelected=currentOutputOption
-        updateSelect=updateOutputOption
-        buttons=budgetOutputOptions
-      }}
-
+  <div id="budget-output" class="col-md-5 block--scrollable">
+    {{button-group
+      currentSelected=currentOutputOption
+      updateSelect=updateOutputOption
+      buttons=budgetOutputOptions
+    }}
 
     {{#if (eq currentOutputOption 'breakdown')}}
      {{!-- Pie Charts --}}
@@ -62,7 +60,6 @@
         </div>
       </section>
 
-
       {{!-- 2. Monthly Spending --}}
       <section>
         <h6 class="section__title">2. Add up your monthly expenses and saving</h6>
@@ -96,4 +93,3 @@
     <br>
 
   </div>{{!-- end budget output--}}
-</div>{{!-- end budget container--}}

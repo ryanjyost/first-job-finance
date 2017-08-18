@@ -1,17 +1,53 @@
-{{card-filter
-  filterButtons=filterButtons
-  updateCardList=(action filterCards)
-}}
-
-
-<div class="scrollable card__container__inner">
-  {{#each filteredCardList as |card|}}
-    {{card-single
-      title=card.title
-      description=card.description
-      comingSoon=card.comingSoon
-      link=card.link
-      type=card.type
+<div class="card-container">
+  {{#if filterButtons}}
+    {{card-filter
+      filterButtons=filterButtons
+      updateCardList=(action filterCards)
     }}
-  {{/each}}
+  {{/if}}
+
+
+  <div>
+    {{#each filteredCardList as |card|}}
+      {{#if (eq cardComponentType "portal")}}
+        {{card-portal
+          name=card.name
+          notes=card.notes
+          lastVisited=card.lastVisited
+          link=card.link
+          autoPay=card.autoPay
+        }}
+      {{else}}
+        {{card-single
+          title=card.title
+          description=card.description
+          comingSoon=card.comingSoon
+          link=card.link
+          type=card.type
+        }}
+      {{/if}}
+    {{/each}}
+
+    {{!-- Add a portal --}}
+    <div class="col-lg-4 col-sm-6 col-xs-12 card card--add">
+        <div class="card__inner-cont">
+
+
+
+
+        <input type="text" id="inputPortalName" name="portalName" placeholder="e.g., Chase Checking, Verizon, 401k" required/>
+
+        <input type="text" id="inputPortalLink" name="portalLink" placeholder="http://.." required/>
+
+        <button {{action handleAddPortal}}>
+          {{fa-icon "plus"
+            width='40px'
+            fixedWidth=true
+          }}
+        </button>
+
+        </div>
+    </div>
+
+  </div>
 </div>

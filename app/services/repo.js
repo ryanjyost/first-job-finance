@@ -12,6 +12,7 @@ export default Ember.Service.extend({
   employerPlanDeferralRate: null,
   stateName: null,
   monthlyTakeHomePay: null,
+  portals: null,
 
   findAll(resource){
     return this.get(resource) ||
@@ -63,7 +64,6 @@ export default Ember.Service.extend({
 
     for(let i = 0; i<expenses.length; i++){
       if(expenses[i].id === id){
-        console.log('expense', expenses[i])
         expense = expenses[i];
       }
     }
@@ -82,6 +82,11 @@ export default Ember.Service.extend({
     this.get('expenses').removeObject(expense);
     this.persist('expenses');
   },
+
+
+  //=================
+  //PORTALS
+  //=================
 
 
 

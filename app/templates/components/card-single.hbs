@@ -1,18 +1,18 @@
-<div class="col-xl-12 card_single">
+<div class="col-lg-4 col-md-6 col-sm-12 card__single">
   {{#link-to link}}
-    <div class="card_single_inner-cont">
-
-      {{#if comingSoon}}
-        <h6 class="card_coming-soon">Coming Soon</h6>
-      {{/if}}
-
-      <h3 class="card_title">
+    <div class="card__single__inner-cont">
+      <h3 class="card__title">
         {{title}}
       </h3>
       <hr>
-      <p class="card_desc">{{description}}</p>
-      <h6 class="card_type">{{type}}</h6>
+      <p class="card__desc">{{description}}</p>
 
+
+      <h6 class="card__type">{{type}}</h6>
+
+      {{#if comingSoon}}
+        <h6 class="card__coming-soon">Coming Soon</h6>
+      {{/if}}
 
     </div>
   {{/link-to}}

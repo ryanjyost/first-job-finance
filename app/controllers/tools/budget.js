@@ -3,10 +3,11 @@ import Ember from 'ember';
 let { computed, inject } = Ember
 
 export default Ember.Controller.extend({
+  repo: inject.service(),
+
   expenses: null,
   monthlyTakeHomePay: null,
   budgetSurplus: null,
-  repo: inject.service(),
   actualPieChartData: null,
   targetPieChartData: [
     {
@@ -136,36 +137,6 @@ export default Ember.Controller.extend({
 
 
   actions: {
-    createExpense(expenseType, name, amount){
-       const updatedExpenses = new Promise((resolve, reject) => {
-
-        if(!expenseType){
-          reject('no type specified')
-        } else{
-          const newExpense = Ember.Object.create(
-            {
-              expenseType: expenseType,
-              name: name || '',
-              amount: amount || 0,
-            }
-          )
-
-          this.get('repo').addExpense(newExpense);
-          resolve(this.get('repo').findAll('expenses'));
-        }
-      })
-
-      return updatedExpenses
-    },
-
-    editExpense(expense){
-      this.get('repo').persist('expenses')
-    },
-
-    deleteExpense(expense){
-      this.get('repo').deleteExpense(expense);
-    },
-
     updateOutputOption(option){
       this.set('currentOutputOption', option);
     }

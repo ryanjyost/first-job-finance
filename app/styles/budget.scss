@@ -6,29 +6,11 @@ $tableGap: 30px;
 
 
 #budget-container{
-  background-color: $white;
 
-  svg{
-    height:300px;
-  }
-
-  g{
-    height:100px;
-  }
 
 }
 
 @media(min-width: 991px){
-    #budget-container{
-      overflow:hidden;
-      height:100vh - $navbar-height;
-    }
-
-    #budget-input, #budget-output{
-      overflow:scroll;
-      float:left;
-      height:100%;
-    }
 
     #budget-input{
       padding-top:15px;
@@ -233,9 +215,14 @@ $tableGap: 30px;
     text-align:center;
     width:100%;
 
+    .fa{
+      color:$medium-blue;
+    }
+
+
     &:hover{
       .fa{
-        color:$light-black;
+        color:$blue;
       }
     }
 
@@ -253,8 +240,6 @@ $tableGap: 30px;
 //BUDGET OUTPUT
 
 #budget-output{
-
-
   h3{
     @include text-number-big;
   }

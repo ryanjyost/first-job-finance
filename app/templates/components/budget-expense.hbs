@@ -1,25 +1,3 @@
-{{!-- <tr>
-  <td class="table-icon budget-remove-expense">
-    {{#if currentHover}}
-      <button {{action 'handleDeleteExpense'}}>{{fa-icon "minus-circle" fixedWidth=true}}</button>
-    {{/if}}
-  </td>
-
-  <td class="table-desc">{{input name key-up="handleEditExpense" value=expense.name}}</td>
-
-  <td class="table-gap"></td>
-
-  <td class="table-currency"><span class="dollar-sign">$</span>{{input type='number' value=expense.amount key-up="handleEditExpense" focus-out="handleEditExpense"}}</td>
-
-  <td class="table-gap-small"></td>
-
-</tr> --}}
-
-{{!-- {{log "===================="}}
-{{log totalExpenses}}
-{{log percentOfTotal}}
-{{log percentOfTotal}} --}}
-
 <tr class="budget__expense">
   <td class="budget__column--icon">
     {{#if currentHover}}

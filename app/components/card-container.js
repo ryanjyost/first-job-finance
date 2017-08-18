@@ -27,7 +27,12 @@ export default Ember.Component.extend({
     }
 
     this.set('filteredCardList', filteredCardList);
-
   },
+
+  handleAddPortal(){
+    const newPortalName =  this.$('#inputPortalName').val(),
+          newPortalLink = this.$('#inputPortalLink').val();
+    alert(hey);
+  }
 
 });
