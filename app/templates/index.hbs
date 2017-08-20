@@ -1,18 +1,39 @@
-<div class="container--main">
+<div class="container--main home">
+  <div id="home-container" class="block--max-width">
 
-  <div class="block--max-width row">
+    <div id="home-banner" class="row">
+      <h1>Manage your financial stress with
+        <span class="text--blue-grayer">First Job Finance</span>
+      </h1>
+    </div>
 
-  <div class="row card__container col-md-10 col-md-offset-1">
-    {{card-container
-      filterButtons=filterButtons
-      cards=cards
-    }}
-    {{!-- <div class="col-md-4">
-      Sign Up
-    </div> --}}
-  </div>
+    <div class="row">
+      <div id="home-form" class="col-md-4">
+        <form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbzjogAgxhOPc83PU2IWLznCHD7jOgpkurkU_GxBMfrQ_wC-PwI/exec">
+          <button>Submit</button>
+          <fieldset class="pure-group">
+            <textarea name="message" class="home__textarea" rows="5" placeholder="I'd have less financial stress if...."/>
+          </fieldset>
+          <fieldset class="pure-group">
+            <input name="email" type="email" placeholder="Enter your email" class="home__email-input" required>
+          </fieldset>
+        </form>
 
+         <!-- Customise the Thankyou Message People See when they submit the form: -->
+        <div style="display:none;" id="thankyou_message">
+          <h2><em>Thanks</em> for contacting us!
+            We will get back to you soon!</h2>
+        </div>
+      </div>
 
-  </div>
+      <div class="col-md-8">
+        <video autoplay>
+          <source src="/assets/images/rainy-day-fund-preview.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+   </div>
 </div>
+
+
 

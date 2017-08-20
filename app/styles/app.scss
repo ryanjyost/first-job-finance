@@ -2,9 +2,7 @@
 @import "defaults";
 @import "text";
 @import "form";
-
-
-
+@import "home";
 
 @import "budget";
 @import "charts";
@@ -13,8 +11,8 @@
 /*=======================================================
 COMPONENTS
 =======================================================*/
-@import "components/guide-sidebar";
-@import "components/guide-container";
+@import "components/main-sidebar";
+@import "components/main-container";
 @import "components/simple-sidebar";
 @import "components/dropdown-select";
 @import "components/card";

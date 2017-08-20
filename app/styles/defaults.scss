@@ -3,10 +3,10 @@ COLORS
 =======================================================*/
 $white: #fff;
 $light-gray: #fcfcfc;
-$gray: #D8D8D8;
+$gray: #E5E5E5;
 $medium-gray: #F2F2F2;
 $dark-gray: #bdbdbd;
-$light-black: #a4a4a4;
+$light-black: #9F9F9F;
 $medium-black: #6E6E6E;
 $dark-black: #414141;
 $black: #2E2E2E;
@@ -45,7 +45,7 @@ MEASUREMENTS
 
 $navbar-height: 8vh;
 $main-padding:2vh;
-$max-width:1200px;
+$max-width:1300px;
 
 @mixin max-width{
   max-width:$max-width;

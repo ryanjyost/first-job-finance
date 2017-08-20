@@ -86,8 +86,6 @@ export default Ember.Service.extend({
   //=================
   //PORTALS
   //=================
-
-
   addPortal(attrs) {
     let portal = Object.assign(
       { id: `portal_${Date.now()}`,
@@ -99,5 +97,30 @@ export default Ember.Service.extend({
     return portal;
   },
 
+  updateTimeLastVisited(portalId){
+    let portal = this.get('portals').findBy('id', portalId);
 
+    this.get('portals').removeObject(portal);
+
+    let newPortal = Object.assign({
+      id: portal.id,
+      lastVisited: Date.now(),
+      name: portal.name,
+      link: portal.link
+    })
+
+    this.get('portals').pushObject(newPortal);
+    this.get('portals').sort((a,b) => {
+      return a.id.slice(7) > b.id.slice(7) ? 1 : -1;
+    });
+
+    this.persist('portals');
+
+  },
+
+  deletePortal(portalId){
+    const portal = this.get('portals').findBy('id', portalId);
+    this.get('portals').removeObject(portal);
+    this.persist('portals');
+  }
 });

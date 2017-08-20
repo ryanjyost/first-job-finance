@@ -1,0 +1,77 @@
+$height: 45px;
+$height-item:40px;
+
+.sidebar__toggle{
+  background-color: transparent;
+  border:none;
+  margin-top:20px;
+  color:$light-black;
+  @include focus-no-style;
+}
+
+#sidebar-wrapper{
+  background-color: $gray;
+  color:$light-black;
+
+  .sidebar__title{
+    min-width:100%;
+    padding:0px 20px;
+    height:$height;
+    line-height:$height;
+    margin:0px;
+    @include line-limit(1);
+    text-align:left;
+  }
+
+  ul{
+    list-style: none;
+    padding:0px;
+  }
+
+  li{
+    @extend .sidebar__title;
+    @extend h6;
+    line-height:$height-item;
+    margin:0px;
+    min-width:100%;
+    @include line-limit(1);
+    height:$height-item;
+    letter-spacing:0.0em;
+
+    &:hover{
+      cursor:pointer;
+      color:$medium-black;
+    }
+  }
+
+  .sidebar__module{
+   @extend .sidebar__title;
+    @extend h6;
+    text-transform: uppercase;
+    background-color: $light-gray;
+    color:$light-black;
+    @include line-limit(1);
+    height:$height;
+    line-height:$height;
+    border:none;
+    border-bottom:1px solid $medium-gray;
+
+    &:active, &:focus{
+      border:none;
+      border-bottom:1px solid $medium-gray;
+      outline:none
+    }
+
+    .fa{
+      float:right;
+      margin-top:15px;
+      color:$dark-gray;
+    }
+
+  }
+
+  .sidebar__section--selected{
+    color:$medium-black;
+  }
+
+}

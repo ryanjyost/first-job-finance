@@ -7,6 +7,9 @@
   max-width:90%;
   margin:auto;
   padding:0px 20px;
+  h6{
+    text-transform: uppercase;
+  }
 }
 
 @mixin button-hover{

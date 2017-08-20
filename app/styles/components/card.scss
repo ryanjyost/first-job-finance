@@ -107,6 +107,11 @@ $card-padding-vertical: 10px;
   padding-top:20px;
 }
 
+.card__link{
+  display:none;
+  height:0px !important;
+}
+
 
 .card__button--delete{
   border:none;
@@ -187,13 +192,13 @@ $card-padding-vertical: 10px;
     border-bottom:1px dotted $medium-gray;
     font-weight:700;
     letter-spacing: 0.02em;
-    padding-bottom:5px;
+    padding:0px 0px 5px 5px;
   }
 
   #inputPortalLink{
     font-size:14px;
     font-style: italic;
-    padding-top:5px;
+    padding:5px 0px 0px 5px;
     color:$dark-gray;
   }
 

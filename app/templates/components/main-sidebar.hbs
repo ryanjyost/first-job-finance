@@ -1,0 +1,13 @@
+<div id="sidebar-wrapper">
+  <h6 class="sidebar__title">My Checklists</h6>
+  <ul>
+    {{#each model as |module| }}
+      {{sidebar-module
+        module=module
+        passUpCurrentSection=(action 'handleUpdateCurrentSection')
+        currentSection=currentSection
+      }}
+    {{/each}}
+  </ul>
+</div>
+

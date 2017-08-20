@@ -1,0 +1,42 @@
+ <div class="{{if sidebarOpen "toggled"}}"  id="wrapper">
+
+    {{main-sidebar
+      model=model
+      updateCurrentSection=(action 'updateCurrentSection')
+      currentSection=currentSection
+    }}
+
+    <div id="page-content-wrapper">
+      <div class="container-fluid">
+
+        <button class="sidebar__toggle" {{action 'toggleSidebar'}}>
+          {{#if sidebarOpen}}
+            {{fa-icon "angle-double-left"
+              class="fa"
+            }}
+          {{else}}
+            {{fa-icon "angle-double-right"
+              class="fa"
+            }}
+          {{/if}}
+        </button>
+
+        <!-- child route template (outlet)  -->
+        <div class="row">
+          <div class="col-lg-12">
+            <h1>{{currentSection}}</h1>
+            {{#if childRoutes}}
+
+            {{else}}
+
+            {{/if}}
+
+          </div>
+        </div>
+        <!-- #/child route template  -->
+
+      </div>
+    </div>
+    <!-- /#page-content-wrapper  -->
+
+  </div>

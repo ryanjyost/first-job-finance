@@ -11,11 +11,7 @@
     {{#each filteredCardList as |card|}}
       {{#if (eq cardComponentType "portal")}}
         {{card-portal
-          name=card.name
-          notes=card.notes
-          lastVisited=card.lastVisited
-          link=card.link
-          autoPay=card.autoPay
+          portal=card
         }}
       {{else}}
         {{card-single

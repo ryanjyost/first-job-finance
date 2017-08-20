@@ -24,22 +24,16 @@ h2{
 h3{
   font-size:28px;
   line-height:1.2;
-  font-weight:700;
   margin:0px;
 
 }
 
-h4{
-  font-size:18px;
-  color:$light-black;
-}
 
 h5{font-size:24px;}
 
 
 h6{
-  font-size:13px;
-  text-transform: uppercase;
+  font-size:14px;
   letter-spacing: 0.02em;
   line-height:1.2;
   font-weight:700;
@@ -75,7 +69,6 @@ $open-sans:'Open Sans', sans-serif;
 
 .text--white{
   color: $light-gray;
-  font-weight:300;
 }
 
 .text--bold-gray{
@@ -96,7 +89,15 @@ $open-sans:'Open Sans', sans-serif;
 }
 
 .text--blue-gray{
+  color:$blue-gray !important;
+}
+
+.text--blue-grayer{
   color:$blue-grayer !important;
+}
+
+.text--light-blue{
+  color:$light-blue !important;
 }
 
 .text--red{
@@ -130,6 +131,13 @@ $open-sans:'Open Sans', sans-serif;
   margin-top:10px;
   width:95%;
   padding:10px 0px;
+}
+
+@mixin line-limit($lines){
+  display: -webkit-box !important;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow:hidden;
 }
 
 

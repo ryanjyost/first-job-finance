@@ -1,0 +1,21 @@
+<button {{action 'toggleShowSections'}} class="sidebar__module">
+  {{module.title}} {{module._id}}
+
+  {{#if showSections}}
+    {{fa-icon "caret-down" fixedWidth=true}}
+  {{else}}
+    {{fa-icon "caret-left" fixedWidth=true}}
+  {{/if}}
+</button>
+
+{{#if showSections}}
+  {{#each module.sections as |section| }}
+    {{sidebar-section
+      module=module._id
+      section=section
+      passUpCurrentSection=(action 'handleUpdateCurrentSection')
+      currentSection=currentSection
+    }}
+  {{/each}}
+{{/if}}
+

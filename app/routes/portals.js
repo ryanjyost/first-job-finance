@@ -52,16 +52,20 @@ export default Ember.Route.extend({
 
   actions: {
     addPortal(newPortalObj){ //name, link
-      this.get('repo').addPortal(newPortalObj)
+      this.get('repo').addPortal(newPortalObj);
     },
 
-    deletePortal(portalId){
-      alert(portalId)
-    }
   },
 
   model(){
-    return this.get('repo').findAll('portals');
+    const portals = this.get('repo').findAll('portals');
+
+    const portalsSortedByID = portals.sort((a,b) => {
+      return a.id.slice(7) > b.id.slice(7) ? 1 : -1;
+    });
+
+
+    return portalsSortedByID;
 
   }
 });
