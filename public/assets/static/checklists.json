@@ -1,105 +1,132 @@
 [
 
   {
-    "_id": 1,
-    "title": "Module Title",
+    "id": 1,
+    "title": "Still in school",
     "sections": [
       {
-        "_id": 1,
+        "id": 1,
+        "title": "Big Picture",
+        "items": [
+          { "id": 1,
+            "title": "Title",
+            "description": "Description",
+            "completed": false
+          },
+          { "id": 2,
+            "title": "Title",
+            "description": "Description",
+            "completed": false
+          },
+          { "id": 3,
+            "title": "Title",
+            "description": "Description",
+            "completed": false
+          },
+          { "id": 4,
+            "title": "Title",
+            "description": "Description",
+            "completed": false
+          },
+          { "id": 5,
+            "title": "Title",
+            "description": "Description",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "id": 2,
         "title": "Section Title "
       },
       {
-        "_id": 2,
+        "id": 3,
         "title": "Section Title "
       },
       {
-        "_id": 3,
+        "id": 4,
         "title": "Section Title "
       },
       {
-        "_id": 4,
-        "title": "Section Title "
-      },
-      {
-        "_id": 5,
+        "id": 5,
         "title": "Section Title "
       }
     ]
   },
-  {
-    "_id": 2,
+
+  { "id": 2,
     "title": "Module Title",
     "sections": [
       {
-        "_id": 1,
+        "id": 1,
         "title": "Section Title "
       },
       {
-        "_id": 2,
+        "id": 2,
         "title": "Section Title "
       },
       {
-        "_id": 3,
+        "id": 3,
         "title": "Section Title "
       },
       {
-        "_id": 4,
+        "id": 4,
         "title": "Section Title "
       },
       {
-        "_id": 5,
+        "id": 5,
         "title": "Section Title "
       }
     ]
   },
-  {
-    "_id": 3,
+
+  { "id": 3,
     "title": "Module Title",
     "sections": [
       {
-        "_id": 1,
+        "id": 1,
         "title": "Section Title "
       },
       {
-        "_id": 2,
+        "id": 2,
         "title": "Section Title "
       },
       {
-        "_id": 3,
+        "id": 3,
         "title": "Section Title "
       },
       {
-        "_id": 4,
+        "id": 4,
         "title": "Section Title "
       },
       {
-        "_id": 5,
+        "id": 5,
         "title": "Section Title "
       }
     ]
   },
-  {
-    "_id": 4,
+
+  { "id": 4,
     "title": "Module Title",
     "sections": [
       {
-        "_id": 1,
+        "id": 1,
         "title": "Section Title "
       },
       {
-        "_id": 2,
+        "id": 2,
         "title": "Section Title "
       },
       {
-        "_id": 3,
+        "id": 3,
         "title": "Section Title "
       },
       {
-        "_id": 4,
+        "id": 4,
         "title": "Section Title "
       },
       {
-        "_id": 5,
+        "id": 5,
         "title": "Section Title "
       }
     ]

@@ -1,0 +1,6 @@
+{{!-- {{log checklist}} --}}
+<h1>{{checklist.title}}</h1>
+
+{{#each checklist.items as |item|}}
+  {{checklist-item item=item}}
+{{/each}}
