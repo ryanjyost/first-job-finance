@@ -95,14 +95,14 @@ GENERAL
 body{
   background-color:$white;
   padding-top: 50px !important;
+  min-height:99vh;
 }
 
 
 @media(min-width: 991px) {
     body {
       padding-top: 0px;
-      height:100vh;
-      overflow:hidden;
+      height:99vh;
     }
 }
 
@@ -131,8 +131,6 @@ svg{
 g{
   height:100px;
 }
-
-
 
 
 /*=======================================================

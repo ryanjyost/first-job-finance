@@ -1,14 +1,14 @@
  <div class="{{if sidebarOpen "toggled"}}"  id="wrapper">
 
     {{main-sidebar
-      model=model
+      model=checklistsInfo
       updateCurrentSection=(action 'updateCurrentList')
       currentSection=currentList
     }}
 
+
     <div id="page-content-wrapper">
       <div class="container-fluid">
-
         <button class="sidebar__toggle" {{action 'toggleSidebar'}}>
           {{#if sidebarOpen}}
             {{fa-icon "angle-double-left"
@@ -20,17 +20,18 @@
             }}
           {{/if}}
         </button>
+{{!--
+        {{log "=========="}}
+        {{log checklistItemsCompleted}} --}}
 
-        <!-- child route template (outlet)  -->
-        <div class="row">
-          <div class="col-lg-12">
-          {{checklist-list checklist=currentListData}}
-          </div>
-        </div>
-        <!-- #/child route template  -->
+        {{checklist-list
+          checklistInfo=currentListInfo
+          itemsCompleted=checklistItemsCompleted
+        }}
+
+         {{!-- updateChecklistItemsCompleted=(action "updateChecklistItemsCompleted") --}}
 
       </div>
     </div>
     <!-- /#page-content-wrapper  -->
-
   </div>

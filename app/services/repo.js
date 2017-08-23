@@ -13,6 +13,7 @@ export default Ember.Service.extend({
   stateName: null,
   monthlyTakeHomePay: null,
   portals: null,
+  checklistItemsCompleted: null,
 
   findAll(resource){
     return this.get(resource) ||
@@ -115,12 +116,39 @@ export default Ember.Service.extend({
     });
 
     this.persist('portals');
-
   },
 
   deletePortal(portalId){
     const portal = this.get('portals').findBy('id', portalId);
     this.get('portals').removeObject(portal);
     this.persist('portals');
-  }
+  },
+
+
+  //=================
+  //CHECKLISTS
+  //=================
+  updateChecklistItemsCompleted(checklistItemID, isComplete){
+    if(isComplete){
+      this.get('checklistItemsCompleted').pushObject(checklistItemID);
+    } else{
+      this.get('checklistItemsCompleted').removeObject(checklistItemID);
+    }
+
+    this.persist('checklistItemsCompleted');
+    return;
+
+  },
+
+
+
+
+
+
+
+
+
+
+
 });
+

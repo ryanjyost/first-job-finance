@@ -1,6 +1,22 @@
-{{!-- {{log checklist}} --}}
-<h1>{{checklist.title}}</h1>
+<div class="checklist__list">
+  <h2 class="checklist__title">{{checklistInfo.title}}</h2>
+  <p>{{checklistInfo.description}}</p>
 
-{{#each checklist.items as |item|}}
-  {{checklist-item item=item}}
-{{/each}}
+  <div class="checklist__progress-bar">
+    <span class="progress-bar--left"></span>
+    <span class="progress-bar--right"></span>
+  </div>
+
+  <h4 class="checklist__percent-complete">{{format-number percentCompleted "percent"}} complete</h4>
+
+  {{#each checklistInfo.items as |item|}}
+    {{checklist-item
+      item=item
+      itemsCompleted=itemsCompleted
+      handleUpdateItem=(route-action "updateChecklistItemsCompleted")
+      passUpUpdateditem=(action 'updateProgressBar')
+    }}
+  {{/each}}
+</div>
+
+

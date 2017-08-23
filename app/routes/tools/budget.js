@@ -26,11 +26,11 @@ export default Ember.Route.extend({
         }
       })
 
-      return updatedExpenses
+      return updatedExpenses;
     },
 
     editExpense(expense){
-      this.get('repo').persist('expenses')
+      this.get('repo').persist('expenses');
     },
 
     deleteExpense(expense){
@@ -39,8 +39,7 @@ export default Ember.Route.extend({
   },
 
   model(){
-    let model = this.modelFor('application')
-    return model;
+    return this.modelFor('application');
   }
 
 });

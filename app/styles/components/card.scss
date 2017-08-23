@@ -231,4 +231,14 @@ $card-padding-vertical: 10px;
   #addPortalHelperInfo{
     @include card-text;
   }
+
+  #addPortalHelperInfoExtra{
+    display:none;
+  }
+
+  @media(min-width:991px){
+    #addPortalHelperInfoExtra{
+      display:block;
+    }
+  }
 }

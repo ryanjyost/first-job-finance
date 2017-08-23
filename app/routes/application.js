@@ -53,6 +53,8 @@ export default Ember.Route.extend({
       employerPlanDeferralRate: this.get('repo').find('employerPlanDeferralRate'),
       stateName: this.get('repo').find('stateName'),
       monthlyTakeHomePay: this.get('repo').find('monthlyTakeHomePay'),
+      checklistsInfo: Ember.$.getJSON("/assets/static/checklists.json"),
+      checklistItemsCompleted: this.get('repo').findAll('checklistItemsCompleted')
     })
   }
 });

@@ -1,37 +1,36 @@
 [
-
   {
     "id": 1,
-    "title": "Still in school",
+    "title": "Basics",
     "sections": [
       {
         "id": 1,
-        "title": "Big Picture",
+        "title": "Basics - The Big Picture",
+        "description": "You really want to make sure you have these basics covered before tackling other checklists.",
         "items": [
-          { "id": 1,
-            "title": "Title",
-            "description": "Description",
-            "completed": false
+          { "id": "m1s1_1",
+            "title": "Open a checking account",
+            "description": "Description"
           },
-          { "id": 2,
+          { "id": "m1s1_2",
             "title": "Title",
-            "description": "Description",
-            "completed": false
+            "description": "Description"
           },
-          { "id": 3,
+          { "id": "m1s1_3",
             "title": "Title",
-            "description": "Description",
-            "completed": false
+            "description": "Description"
           },
-          { "id": 4,
+          { "id": "m1s1_4",
             "title": "Title",
-            "description": "Description",
-            "completed": false
+            "description": "Description"
           },
-          { "id": 5,
+          { "id": "m1s1_5",
             "title": "Title",
-            "description": "Description",
-            "completed": false
+            "description": "Description"
+          },
+          { "id": "m1s1_6",
+            "title": "Title",
+            "description": "Description"
           }
         ]
       },
@@ -59,6 +58,7 @@
     "sections": [
       {
         "id": 1,
+        "description": "",
         "title": "Section Title "
       },
       {

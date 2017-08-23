@@ -64,7 +64,6 @@ export default Ember.Route.extend({
       return a.id.slice(7) > b.id.slice(7) ? 1 : -1;
     });
 
-
     return portalsSortedByID;
 
   }

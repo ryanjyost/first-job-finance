@@ -2,11 +2,11 @@
 
 @media(min-width: 991px){
   #home-container{
-    //  background: $light-gray; /* For browsers that do not support gradients */
-    // background: -webkit-linear-gradient(left, $medium-blue , $light-gray) !important; /* For Safari 5.1 to 6.0 */
-    // background: -o-linear-gradient(right, $medium-blue, $light-gray) !important; /* For Opera 11.1 to 12.0 */
-    // background: -moz-linear-gradient(right, $medium-blue, $light-gray) !important; /* For Firefox 3.6 to 15 */
-    // background: linear-gradient(to right, $medium-blue , $light-gray) !important; /* Standard syntax (must be last) */
+     background: $light-gray; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(top, $medium-blue , $light-gray) !important; /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom, $medium-blue, $light-gray) !important; /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom, $medium-blue, $light-gray) !important; /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom, $medium-blue , $light-gray) !important; /* Standard syntax (must be last) */
     height:101vh;
 
   }
@@ -28,11 +28,17 @@
 
 
   h1{
-    color:$light-blue;
+    color:$blue-grayer;
     font-size:32px;
     font-weight:700;
     line-height:1.2 !important;
     text-transform: capitalize;
+  }
+
+  h3{
+    color:$medium-black;
+    font-weight:400 !important;
+    letter-spacing:0.03em;
   }
 
   h4{
@@ -46,7 +52,7 @@
   }
 
   p{
-    color:$white;
+    color:$medium-black;
     display:block;
     line-height:1.5;
     padding:0px 0px 0px 3px;
@@ -64,7 +70,8 @@
   }
 
   video{
-    width:80%;
+    width:100%;
+    max-width:600px;
     display:block;
     margin:auto;
     margin-top:40px;

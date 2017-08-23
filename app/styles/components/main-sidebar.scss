@@ -55,6 +55,7 @@ $height-item:40px;
     line-height:$height;
     border:none;
     border-bottom:1px solid $medium-gray;
+    letter-spacing: 0.05em;
 
     &:active, &:focus{
       border:none;
