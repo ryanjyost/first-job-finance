@@ -11,7 +11,7 @@
   overflow:scroll;
   padding-bottom:5vh;
 
-  h2{
+  h5{
     display:block;
     margin-bottom:5px;
   }
@@ -19,7 +19,7 @@
   p{
     max-width:600px;
     display:block;
-    padding:5px;
+    padding:3px 1px;
   }
 
   .checklist__percent-complete{
@@ -65,6 +65,7 @@
 
 .item__title{
   font-size:20px;
+  line-height:1.2;
   color:$medium-black;
   margin:0px;
   display:inline-block;

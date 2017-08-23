@@ -3,10 +3,10 @@
 @media(min-width: 991px){
   #home-container{
      background: $light-gray; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(top, $medium-blue , $light-gray) !important; /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom, $medium-blue, $light-gray) !important; /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom, $medium-blue, $light-gray) !important; /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom, $medium-blue , $light-gray) !important; /* Standard syntax (must be last) */
+    // background: -webkit-linear-gradient(top, $blue-gray , $light-gray) !important; /* For Safari 5.1 to 6.0 */
+    // background: -o-linear-gradient(bottom, $blue-gray, $light-gray) !important; /* For Opera 11.1 to 12.0 */
+    // background: -moz-linear-gradient(bottom, $blue-gray, $light-gray) !important; /* For Firefox 3.6 to 15 */
+    // background: linear-gradient(to bottom, $blue-gray , $light-gray) !important; /* Standard syntax (must be last) */
     height:101vh;
 
   }

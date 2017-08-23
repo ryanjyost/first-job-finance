@@ -6,31 +6,23 @@
       {
         "id": 1,
         "title": "Basics - The Big Picture",
-        "description": "You really want to make sure you have these basics covered before tackling other checklists.",
+        "description": "Tackle these items before moving on to other checklists. By the way, you can find checklists for each item in this checklist. That's called checklist inception.",
         "items": [
           { "id": "m1s1_1",
             "title": "Open a checking account",
             "description": "Description"
           },
           { "id": "m1s1_2",
-            "title": "Title",
-            "description": "Description"
+            "title": "Open a savings account"
           },
           { "id": "m1s1_3",
-            "title": "Title",
-            "description": "Description"
+            "title": "Find, scan and save your important documents on Google Drive"
           },
           { "id": "m1s1_4",
-            "title": "Title",
-            "description": "Description"
+            "title": "Start establishing your credit history"
           },
           { "id": "m1s1_5",
-            "title": "Title",
-            "description": "Description"
-          },
-          { "id": "m1s1_6",
-            "title": "Title",
-            "description": "Description"
+            "title": "Make sure you have health insurance. If under 26, ask your parents - you're likely covered by their plan."
           }
         ]
       },
