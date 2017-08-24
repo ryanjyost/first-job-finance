@@ -94,7 +94,6 @@ GENERAL
 =======================================================*/
 body{
   background-color:$white;
-  padding-top: 50px !important;
   min-height:99vh;
 }
 
@@ -103,6 +102,7 @@ body{
     body {
       padding-top: 0px;
       height:99vh;
+      //overflow:hidden;
     }
 }
 

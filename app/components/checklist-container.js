@@ -1,33 +1,57 @@
 import Ember from 'ember';
 
+const { computed } = Ember;
+
 export default Ember.Component.extend({
   sidebarOpen: true,
   currentList: [1,1], //[module, section]
   currentListInfo: null,
-  listLength: null,
-  currentListPercentComplete: null,
+  percentComplete: null,
 
-  listLength: Ember.computed('checklistItemsCompleted', function(){
-    return this.get('checklistItemsCompleted').length;
-  }),
-
-  currentListInfo: Ember.computed('currentList', function(){
+  currentListInfo: computed('currentList', function(){
     //subract 1 because id always one more than index
     return this.get('checklistsInfo')[this.get('currentList')[0] - 1].sections[this.get('currentList')[1] - 1];
   }),
 
-  currentListPercentComplete: Ember.computed('currentListInfo', 'checklistItemsCompleted', function(){
-    // console.log("====>>>>", this.get('currentListInfo'))
-    return this.get('checklistItemsCompleted');
-  }),
+  _currentChecklistItemIDArray: computed.mapBy('currentListInfo.items', 'id'),
+  //_currentChecklistItemIDArrayLength: computed('_currentChecklistItemIDArray')
 
-  // didReceiveAttrs(){
-  //   this._super(...arguments);
 
-  //   const checklistItemsCompleted = this.get('model').checklistItemsCompleted;
-  //   this.set('checklistItemsCompleted', checklistItemsCompleted);
-  // },
 
+
+  // percentComplete: computed('currentList', 'currentListInfo', '_currentChecklistItemIDArray', 'checklistItemsCompleted', function(){
+  //   //subract 1 because id always one more than index
+  //   const updatedItemsCompleted = this.get('checklistItemsCompleted');
+  //   const currentChecklistItemIDArray = this.get('_currentChecklistItemIDArray');
+
+  //   //console.log(currentChecklistItemIDArray)
+
+  //   // const currentListItemsCompleted = updatedItemsCompleted.filter((itemID) =>{
+  //   //   return currentChecklistItemIDArray.includes(itemID);
+  //   // });
+
+  //   const currentListItemsCompleted = [];
+
+  //   for(let item of updatedItemsCompleted ){
+  //     if(currentChecklistItemIDArray.includes(item)){
+  //       currentListItemsCompleted.pushObject(item)
+  //     }
+  //   }
+
+  //   console.log(currentListItemsCompleted);
+
+  //   const percentComplete = currentListItemsCompleted.length / currentChecklistItemIDArray.length;
+
+  //   //console.log(percentComplete)
+
+  //   const progressBarLeft = this.$('.progress-bar--left');
+  //   progressBarLeft.css("width", `${(percentComplete)*100}%`);
+
+  //   const progressBarRight = this.$('.progress-bar--right');
+  //   progressBarRight.css("width", `${(1 - percentComplete)*100}%`)
+
+  //   return percentComplete;
+  // }),
 
   init(){
     this._super(...arguments);
@@ -43,6 +67,27 @@ export default Ember.Component.extend({
     this.set('checklistItemsCompleted', checklistItemsCompleted);
   },
 
+
+  // didInsertElement(){
+  //   this._super(...arguments);
+
+  //   const updatedItemsCompleted = this.get('checklistItemsCompleted');
+  //   const currentChecklistItemIDArray = this.get('_currentChecklistItemIDArray');
+
+  //   const currentListItemsCompleted = updatedItemsCompleted.filter((itemID) =>{
+  //     return currentChecklistItemIDArray.includes(itemID);
+  //   });
+
+  //   const percentComplete = currentListItemsCompleted.length / currentChecklistItemIDArray.length;
+
+  //   const progressBarLeft = this.$('.progress-bar--left');
+  //   progressBarLeft.css("width", `${(percentComplete)*100}%`);
+
+  //   const progressBarRight = this.$('.progress-bar--right');
+  //   progressBarRight.css("width", `${(1 - percentComplete)*100}%`)
+
+  // },
+
   actions: {
     toggleSidebar(){
       this.toggleProperty('sidebarOpen');
@@ -52,10 +97,23 @@ export default Ember.Component.extend({
       this.set('currentList', currentList)
     },
 
-    // updateChecklistItemsCompleted(itemID, isComplete){
-    //   this.get('updateChecklistItemsCompleted')(itemID, isComplete).then((newList) => {
-    //     this.set('checklistItemsCompleted', newList);
-    //   });
-    // }
+    updateProgressBar(){
+      // const updatedItemsCompleted = this.get('checklistItemsCompleted');
+      // const currentChecklistItemIDArray = this.get('_currentChecklistItemIDArray');
+
+      // const currentListItemsCompleted = updatedItemsCompleted.filter((itemID) =>{
+      //   return currentChecklistItemIDArray.includes(itemID);
+      // });
+
+      // const percentComplete = currentListItemsCompleted.length / currentChecklistItemIDArray.length;
+
+      // this.set('percentComplete', percentComplete);
+
+      // const progressBarLeft = this.$('.progress-bar--left');
+      // progressBarLeft.css("width", `${(percentComplete)*100}%`);
+
+      // const progressBarRight = this.$('.progress-bar--right');
+      // progressBarRight.css("width", `${(1 - percentComplete)*100}%`)
+    }
   }
 });

@@ -1,16 +1,15 @@
 [
   {
     "id": 1,
-    "title": "Basics",
+    "title": "During college",
     "sections": [
       {
         "id": 1,
-        "title": "Basics - The Big Picture",
+        "title": "During college - The Big Picture",
         "description": "Tackle these items before moving on to other checklists. By the way, you can find checklists for each item in this checklist. That's called checklist inception.",
         "items": [
           { "id": "m1s1_1",
-            "title": "Open a checking account",
-            "description": "Description"
+            "title": "Open a checking account"
           },
           { "id": "m1s1_2",
             "title": "Open a savings account"
@@ -28,98 +27,169 @@
       },
       {
         "id": 2,
-        "title": "Section Title "
+        "title": "Open a checking account",
+        "description": "I would be VERY surprised if an adult in the U.S. didn't have a checking account. It's like Grand Central Station for your money.",
+        "items": [
+          { "id": "m1s2_1",
+            "title": "Coming Soon!"
+          },
+          { "id": "m1s2_2",
+            "title": "Coming Soon!"
+          },
+          { "id": "m1s2_3",
+            "title": "Coming Soon!"
+          },
+          { "id": "m1s2_4",
+            "title": "Coming Soon!"
+          },
+          { "id": "m1s2_5",
+            "title": "Coming Soon!"
+          }
+        ]
       },
       {
         "id": 3,
-        "title": "Section Title "
+        "title": "Open a savings account",
+        "description": "Separating your savings from the spending money in your checking account will help keep you on track.",
+        "items": [
+          { "id": "m1s3_1",
+            "title": "Coming Soon!"
+          },
+          { "id": "m1s3_2",
+            "title": "Coming Soon!"
+          },
+          { "id": "m1s3_3",
+            "title": "Coming Soon!"
+          },
+          { "id": "m1s3_4",
+            "title": "Coming Soon!"
+          },
+          { "id": "m1s3_5",
+            "title": "Coming Soon!"
+          }
+        ]
       },
       {
         "id": 4,
-        "title": "Section Title "
+        "title": "Kickstart your credit history",
+        "description": "Not having any credit history in the \"real world\" is a pain in the ass (trust me). Fortunately, it's easy to get started.",
+        "items": [
+          { "id": "m1s4_1",
+            "title": "Coming Soon!"
+          },
+          { "id": "m1s4_2",
+            "title": "Coming Soon!"
+          },
+          { "id": "m1s4_3",
+            "title": "Coming Soon!"
+          },
+          { "id": "m1s4_4",
+            "title": "Coming Soon!"
+          },
+          { "id": "m1s4_5",
+            "title": "Coming Soon!"
+          }
+        ]
       },
       {
         "id": 5,
-        "title": "Section Title "
+        "title": "Make sure you have health insurance",
+        "description": "What do health insurance and Ron Burgandy have in common? They're both kind of a big deal.",
+        "items": [
+          { "id": "m1s5_1",
+            "title": "Coming Soon!"
+          },
+          { "id": "m1s5_2",
+            "title": "Coming Soon!"
+          },
+          { "id": "m1s5_3",
+            "title": "Coming Soon!"
+          },
+          { "id": "m1s5_4",
+            "title": "Coming Soon!"
+          },
+          { "id": "m1s5_5",
+            "title": "Coming Soon!"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Important docs to have at the ready",
+        "description": "There's certain stuff you just have to have.",
+        "items": [
+          { "id": "m1s6_1",
+            "title": "Coming Soon!"
+          },
+          { "id": "m1s6_2",
+            "title": "Coming Soon!"
+          },
+          { "id": "m1s6_3",
+            "title": "Coming Soon!"
+          },
+          { "id": "m1s6_4",
+            "title": "Coming Soon!"
+          },
+          { "id": "m1s6_5",
+            "title": "Coming Soon!"
+          }
+        ]
       }
     ]
   },
 
   { "id": 2,
-    "title": "Module Title",
+    "title": "Between college and job",
     "sections": [
-      {
+       {
         "id": 1,
-        "description": "",
-        "title": "Section Title "
-      },
-      {
-        "id": 2,
-        "title": "Section Title "
-      },
-      {
-        "id": 3,
-        "title": "Section Title "
-      },
-      {
-        "id": 4,
-        "title": "Section Title "
-      },
-      {
-        "id": 5,
-        "title": "Section Title "
+        "title": "Coming Soon!",
+        "description": "Have an idea for a checklist? Let me know!",
+        "items": [
+          { "id": "m2s1_1",
+            "title": "Coming Soon!"
+          },
+          { "id": "m2s1_2",
+            "title": "Coming Soon!"
+          },
+          { "id": "m2s1_3",
+            "title": "Coming Soon!"
+          },
+          { "id": "m2s1_4",
+            "title": "Coming Soon!"
+          },
+          { "id": "m2s1_5",
+            "title": "Coming Soon!"
+          }
+        ]
       }
     ]
   },
 
-  { "id": 3,
-    "title": "Module Title",
+  { "id": 2,
+    "title": "First week as a working stiff",
     "sections": [
-      {
+       {
         "id": 1,
-        "title": "Section Title "
-      },
-      {
-        "id": 2,
-        "title": "Section Title "
-      },
-      {
-        "id": 3,
-        "title": "Section Title "
-      },
-      {
-        "id": 4,
-        "title": "Section Title "
-      },
-      {
-        "id": 5,
-        "title": "Section Title "
-      }
-    ]
-  },
-
-  { "id": 4,
-    "title": "Module Title",
-    "sections": [
-      {
-        "id": 1,
-        "title": "Section Title "
-      },
-      {
-        "id": 2,
-        "title": "Section Title "
-      },
-      {
-        "id": 3,
-        "title": "Section Title "
-      },
-      {
-        "id": 4,
-        "title": "Section Title "
-      },
-      {
-        "id": 5,
-        "title": "Section Title "
+        "title": "Coming Soon!",
+        "description": "Have an idea for a checklist? Let me know!",
+        "items": [
+          { "id": "m2s1_1",
+            "title": "Coming Soon!"
+          },
+          { "id": "m2s1_2",
+            "title": "Coming Soon!"
+          },
+          { "id": "m2s1_3",
+            "title": "Coming Soon!"
+          },
+          { "id": "m2s1_4",
+            "title": "Coming Soon!"
+          },
+          { "id": "m2s1_5",
+            "title": "Coming Soon!"
+          }
+        ]
       }
     ]
   }

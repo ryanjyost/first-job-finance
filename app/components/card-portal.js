@@ -15,7 +15,7 @@ export default Ember.Component.extend({
 
   actions: {
     updateTimeLastVisited(){
-      this.$('.card__link')[0].click();
+      this.$('.portal__link')[0].click();
 
       const id = this.get('portal.id');
       this.get('repo').updateTimeLastVisited(id);

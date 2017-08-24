@@ -13,13 +13,17 @@
 
   h5{
     display:block;
-    margin-bottom:5px;
+    margin-bottom:10px;
+    color:$dark-black;
+    text-transform: capitalize;
   }
 
   p{
     max-width:600px;
     display:block;
     padding:3px 1px;
+    margin-bottom:20px;
+    font-size:16px;
   }
 
   .checklist__percent-complete{
@@ -32,7 +36,7 @@
 .checklist__progress-bar{
   width:100%;
   display:inline-block;
-  margin:0px 0px 0px 0px;
+  margin:0px 0px 20px 0px;
 
   .progress-bar--left{
     height:4px;
@@ -40,6 +44,7 @@
     background-color: $blue;
     margin:0px;
     float:left;
+    width:100%;
   }
   .progress-bar--right{
     height:4px;

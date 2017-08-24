@@ -1,18 +1,18 @@
-<div class="col-md-4 col-sm-6 col-xs-12 col-centered card">
+<div class="col-md-4 col-sm-6 col-xs-12 col-centered portal">
 
-  <a href={{portal.link}} target="_blank" class="card__link"></a>
+  <a href={{portal.link}} target="_blank" class="portal__link"></a>
 
-  <div class="card__inner-cont">
+  <div class="portal__inner-cont">
     <a href="" {{action "updateTimeLastVisited" }} >
       <div>
-        <h6 class="card__title">
+        <h6 class="portal__title">
           {{portal.name}}
         </h6>
-        <h6 class="card__type">
+        <h6 class="portal__lastVisited">
           Last visited <strong>{{moment-from-now portal.lastVisited}}</strong>
         </h6>
 
-        <button {{action "deletePortal"}} class="card__button--delete">
+        <button {{action "deletePortal"}} class="portal__button--delete">
           {{fa-icon "times"}}
         </button>
       </div>

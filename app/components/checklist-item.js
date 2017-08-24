@@ -18,7 +18,7 @@ export default Ember.Component.extend({
     this.set('isComplete', newStatus);
 
     this.get("handleUpdateItem")(this.get('item').id, newStatus);
-    this.get("passUpUpdateditem")(this.get('item').id, newStatus);
+    this.get("passUpUpdatedItem")(this.get('item').id, newStatus);
   },
 
 

@@ -36,7 +36,8 @@ $height-item:40px;
     min-width:100%;
     @include line-limit(1);
     height:$height-item;
-    letter-spacing:0.0em;
+    letter-spacing:0.01em;
+    text-transform: capitalize;
 
     &:hover{
       cursor:pointer;
