@@ -1,38 +1,42 @@
-{{!-- <form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbzjogAgxhOPc83PU2IWLznCHD7jOgpkurkU_GxBMfrQ_wC-PwI/exec" >
-  <button onClick={{action 'submitForm'}}>Submit</button>
-  <fieldset class="pure-group">
-    <textarea name="message" class="home__textarea" rows="5" placeholder="I'd have less financial stress if...."/>
-  </fieldset>
-  <fieldset class="pure-group">
-    <input name="email" type="email" placeholder="Enter your email" class="home__email-input" required>
-  </fieldset>
-</form>
-
- <!-- Customise the Thankyou Message People See when they submit the form: -->
-<div style="display:none;" id="thankyou_message">
-  <h2><em>Thanks</em> for contacting us!
-    We will get back to you soon!</h2>
-</div> --}}
-
 <!--Begin CTCT Sign-Up Form-->
 <!-- EFD 1.0.0 [Sun Aug 20 13:08:39 EDT 2017] -->
 <div class="ctct-embed-signup">
    <div>
+
+       {{!-- SUCCESS MESSAGE --}}
        <span id="success_message" style="display:none;">
            <div style="text-align:center;">Thanks for signing up!</div>
        </span>
+
+      {{!-- EMAIL SIGN UP FORM --}}
        <form data-id="embedded_signup:form" class="ctct-custom-form Form" name="embedded_signup" method="POST" action="https://visitor2.constantcontact.com/api/signup">
-           <h3>Sign up to stay in touch!</h3>
-           <p>Sign up to get interesting news and updates delivered to your inbox.</p>
+
            <!-- The following code must be included to ensure your sign-up form works properly. -->
            <input data-id="ca:input" type="hidden" name="ca" value="a33eedf2-023b-4cfd-8b1d-a7cea142e493">
            <input data-id="list:input" type="hidden" name="list" value="1736960362">
            <input data-id="source:input" type="hidden" name="source" value="EFD">
            <input data-id="required:input" type="hidden" name="required" value="list,email">
            <input data-id="url:input" type="hidden" name="url" value="">
-           <p data-id="Email Address:p" ><label data-id="Email Address:label" data-name="email" class="ctct-form-required">Email Address</label> <input data-id="Email Address:input" type="text" name="email" value="" maxlength="80"></p>
-           <button type="submit" class="Button ctct-button Button--block Button-secondary" data-enabled="enabled">Request a one-on-one</button>
-        <div><p class="ctct-form-footer">By submitting this form, you are granting: First Job Finance, , , , , , http://firstjobfinance.com permission to email you. You may unsubscribe via the link found at the bottom of every email.  (See our <a href="http://www.constantcontact.com/legal/privacy-statement" target="_blank">Email Privacy Policy</a> for details.) Emails are serviced by Constant Contact.</p></div>
+
+          <!-- Email Input -->
+          <p data-id="Email Address:p" >
+            <input data-id="Email Address:input" type="text" name="email" placeholder="e.g. bernie@madoff.com" value="" maxlength="80">
+             {{!-- <label data-id="Email Address:label" data-name="email" class="ctct-form-required">
+              Email Address
+            </label> --}}
+          </p>
+
+          <!-- Submit -->
+          <div class="form__submit">
+            <button class="button__submit" type="submit" class="Button ctct-button Button--block Button-secondary" data-enabled="enabled">
+              <h6>GET STARTED</h6>
+            </button>
+            <div>
+              <p class="ctct-form-footer form__footer">
+                No spam, no worries.
+              </p>
+            </div>
+        </div>
        </form>
    </div>
 </div>
