@@ -6,6 +6,7 @@ $card-width-inner: 85%;
 $card-max-width: 350px;
 $card-height: 160px;
 $card-padding-vertical: 10px;
+$card-img-width: 400px;
 
 @mixin card-text{
   width:$card-width-inner;
@@ -14,7 +15,7 @@ $card-padding-vertical: 10px;
 }
 
 .card-container{
-  padding:20px 1%;
+  padding:5vh 1%;
   background-color: $light-blue;
   width:100%;
   min-height:90vh;
@@ -28,15 +29,86 @@ $card-padding-vertical: 10px;
   }
 }
 
+.card__info{
+  padding: 40px;
+
+  h3{
+    text-align:left;
+    color: $blue;
+    padding:0px 0px 15px 0px;
+
+
+  }
+
+  p{
+    text-align:left !important;
+    display:inline-block !important;
+  }
+}
+
+
 .card__coming-soon{
   width:100%;
-  background-color:$blue-grayer;
-  text-align:center;
+  text-align:right;
   padding:10px;
-  color:$gray;
+  padding-right:30px;
+  color:$blue;
   margin:0px;
+  margin-top:100px;
   bottom:0;
   position:absolute;
+
 }
+
+
+.card__single{
+  max-width: 600px !important;
+  margin:auto;
+  margin-bottom: 20px !important;
+
+  img{
+    width:100%;
+    // height: $card-img-width *(3/4);
+  }
+
+   a:hover, a:focus{
+      text-decoration: none !important;
+    }
+}
+
+.card__single__inner-cont{
+  width: 100% !important;
+  min-height:200px;
+  border:1px solid $medium-gray;
+  background-color:$white;
+  border-radius:3px;
+  position:relative;
+  display:block;
+  margin:auto;
+
+  &:hover{
+    -webkit-box-shadow: 0px 3px 11px 0px rgba(164,164,164,1);
+  -moz-box-shadow: 0px 3px 11px 0px rgba(164,164,164,1);
+  box-shadow: 0px 3px 11px 0px rgba(164,164,164,1);
+
+  }
+}
+
+
+@media(min-width:768px){
+  .card__image--cont{
+  }
+
+  .card__single{
+  max-width: 1000px;
+  margin:auto;
+  width:100%;
+
+    img{
+
+    }
+  }
+}
+
 
 

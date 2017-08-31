@@ -1,8 +1,11 @@
+{{main-nav}}
 
-{{checklist-container
-  checklistsInfo=model.checklistsInfo
-  checklistItemsCompleted=model.checklistItemsCompleted
-}}
+<div class="container--main block--scrollable checklist__container">
+  {{checklist-container
+    checklistsInfo=model.checklistsInfo
+    checklistItemsCompleted=model.checklistItemsCompleted
+  }}
+</div>
 
 
  {{!--  updateChecklistItemsCompleted=(route-action "updateChecklistItemsCompleted") --}}

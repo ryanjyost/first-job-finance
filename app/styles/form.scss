@@ -3,7 +3,7 @@
 Form Fields
 =======================================================*/
 $form-max-width:400px;
-$button-max-width: 200px;
+$button-max-width: 400px;
 
 
 
@@ -53,28 +53,10 @@ input[type=checkbox] {
   }
 }
 
-input{
-    display:block;
-    width:100%;
-    border:$light-gray;
-    height:50px;
-    padding: 8px 20px;
-    border-radius: 3px;
-    max-width:400px;
-    color:$black;
-
-    &:active{
-      outline:none;
-     -webkit-box-shadow: 0px 6px 43px 0px rgba(242,242,242,1);
-    -moz-box-shadow: 0px 6px 43px 0px rgba(242,242,242,1);
-    box-shadow: 0px 6px 43px 0px rgba(242,242,242,1);
-     }
-   &:focus {
-    outline:none;
-     -webkit-box-shadow: 0px 6px 43px 0px rgba(242,242,242,1);
-    -moz-box-shadow: 0px 6px 43px 0px rgba(242,242,242,1);
-    box-shadow: 0px 6px 43px 0px rgba(242,242,242,1);
-   }
+.form__success{
+  h6{
+    color:$white;
+  }
 }
 
 .form__submit{

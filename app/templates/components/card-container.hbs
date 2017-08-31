@@ -7,7 +7,6 @@
   {{/if}}
 
 
-  <div class="row row-centered">
     {{#each filteredCardList as |card|}}
       {{#if (eq cardComponentType "portal")}}
         {{card-portal
@@ -42,12 +41,11 @@
 
     {{!-- Helper Info --}}
     <div class="col-md-4 col-sm-6 col-xs-12 col-centered portal portal--add">
-        <div class="portal__inner-cont">
-          <h5 id="addPortalHelperInfo">Keep all of your important websites in one place.</h5>
-          <p id="addPortalHelperInfoExtra" class="portal__desc">Remember to check on them.</p>
-        </div>
+      <div class="portal__inner-cont">
+        <h5 id="addPortalHelperInfo">Keep all of your important websites in one place.</h5>
+        <p id="addPortalHelperInfoExtra" class="portal__desc">Remember to check on them.</p>
+      </div>
     </div>
     {{/if}}
 
-  </div>
 </div>

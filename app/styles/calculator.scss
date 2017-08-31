@@ -1,6 +1,7 @@
 #calculator_container{
   background-color: $light-blue;
   padding:0px !important;
+  max-height:100vh !important;
 
   @media(min-width: 768px){
     #calculator_container{
@@ -11,8 +12,7 @@
     .calculator_input, .calculator_output {
       overflow:scroll;
       float:left;
-      height:100%;
-      padding:5vh 0px 20vh 0px;
+      height:100vh;
     }
   }
 
@@ -36,8 +36,8 @@
     .calculator_title{
       width:100%;
       text-align:center;
-      background-color: $blue-gray;
-      color:$light-gray;
+      color:$dark-black;
+
     }
 
   section:nth-child(even){
@@ -45,9 +45,9 @@
   }
 
   .calculator_output{
-    padding:20px 5% 50px 5%;
-    background-color:$light-blue;
+    padding:70px 0px 10vh 0px !important;
     border-left:4px solid $gray;
+    background-color:$light-gray;
 
     h5{
       display:inline;
@@ -56,11 +56,11 @@
     }
 
     h4{
-
-      font-size:24px;
+      font-size:18px;
       vertical-align: middle;
       line-height:1.4;
       text-align:left;
+      color:$medium-black;
     }
 
     h3{
@@ -69,7 +69,9 @@
 
     h1{
       @include text-number-big;
+      font-size:26px !important;
     }
+
 
     .row{
       @include text-center
@@ -86,9 +88,9 @@
 
   .calculator_input{
     min-height:100%;
-    padding:0px 0px 0px 0px !important;
-
     color:$black;
+    background-color:$light-blue;
+    padding:70px 0px 10vh 0px !important;
 
     p{
       color:$medium-black;

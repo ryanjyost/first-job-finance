@@ -1,25 +1,25 @@
-<div class="row card__single">
+<div class="row row-centered card__single">
+  {{#link-to link}}
+    <div class="card__single__inner-cont">
+     {{!--  <div class="col-sm-4 col-xs-12 card__image--cont">
+        <img src="assets/images/home-main.jpeg" />
+      </div> --}}
 
 
+      {{#if comingSoon}}
+        <h6 class="card__coming-soon">Coming Soon!</h6>
+      {{/if}}
 
 
-
-  <div class="col-lg-8 md-12">
-    {{#link-to link}}
-      <div class="card__single__inner-cont">
+      <div class="card__info">
         <h3 class="card__title">
           {{title}}
         </h3>
         <p class="card__desc">{{description}}</p>
 
-
         <h6 class="card__type">{{type}}</h6>
-
-        {{#if comingSoon}}
-          <h6 class="card__coming-soon">Coming Soon</h6>
-        {{/if}}
-
       </div>
-    {{/link-to}}
-  </div>
+
+    </div>
+  {{/link-to}}
 </div>

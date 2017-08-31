@@ -234,6 +234,7 @@ $tableGap: 30px;
 //BUDGET OUTPUT
 
 #budget-output{
+  padding-top: $navbar-height;
   h3{
     @include text-number-big;
   }
