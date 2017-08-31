@@ -35,6 +35,7 @@ Router.map(function() {
   });
   this.route('portals');
   this.route('checklists');
+  this.route('files');
 });
 
 export default Router;
