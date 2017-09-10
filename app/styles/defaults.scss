@@ -138,10 +138,15 @@ GENERAL BLOCKS
 =======================================================*/
 
 .container--main{
-  overflow:hidden;
-  height:100vh;
   padding-top:$navbar-height !important;
+}
 
+
+@media(min-width: 991px) {
+  .container--main{
+    overflow:hidden;
+    height:100vh;
+  }
 }
 
 
