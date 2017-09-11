@@ -1,0 +1,6 @@
+#files-container{
+  h1{
+    @include text-number-big;
+    @include text-center;
+  }
+}
