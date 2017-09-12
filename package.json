@@ -54,7 +54,7 @@
     "loader.js": "^4.2.3"
   },
   "engines": {
-    "node": "8.2.1"
+    "node": "6.11.3"
   },
   "private": true,
   "dependencies": {
