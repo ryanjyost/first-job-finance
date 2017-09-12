@@ -6,7 +6,6 @@
   @media(min-width: 768px){
     #calculator_container{
       overflow:hidden;
-      height:100vh - $navbar-height;
     }
 
     .calculator_input, .calculator_output {
