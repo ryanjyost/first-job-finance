@@ -1,4 +1,4 @@
-<div class="card-container">
+<div class="card__container row">
   {{#if filterButtons}}
     {{card-filter
       filterButtons=filterButtons
@@ -26,26 +26,20 @@
 
 
     {{#if (eq cardComponentType "portal")}}
-    {{!-- Add a portal --}}
-    <div class="col-md-4 col-sm-6 col-xs-12 col-centered portal portal--add">
-        <div class="portal__inner-cont">
-          <input type="text" id="inputPortalName" name="portalName" placeholder="e.g., Chase Checking" required/>
-          <input type="text" id="inputPortalLink" name="portalLink" placeholder="paste the website link here" required/>
+      {{#if addCard}}
+        {{!-- Add a portal --}}
+        <div class="col-md-4 col-sm-6 col-xs-12 col-centered portal portal--add">
+            <div class="portal__inner-cont">
+              <input type="text" id="inputPortalName" name="portalName" placeholder="e.g., Chase Checking" required/>
+              <input type="text" id="inputPortalLink" name="portalLink" placeholder="paste the website link here" required/>
 
-          <button class="portal__button--add" {{action handleAddPortal}}>
-            {{fa-icon "plus"}}
-          </button>
+              <button class="portal__button--add" {{action handleAddPortal}}>
+                {{fa-icon "plus"}}
+              </button>
 
+            </div>
         </div>
-    </div>
-
-    {{!-- Helper Info --}}
-    <div class="col-md-4 col-sm-6 col-xs-12 col-centered portal portal--add">
-      <div class="portal__inner-cont">
-        <h5 id="addPortalHelperInfo">Keep all of your important websites in one place.</h5>
-        <p id="addPortalHelperInfoExtra" class="portal__desc">Remember to check on them.</p>
-      </div>
-    </div>
+      {{/if}}
     {{/if}}
 
 </div>

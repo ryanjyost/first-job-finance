@@ -5,18 +5,19 @@
 
        {{!-- SUCCESS MESSAGE --}}
        <span id="success_message" style="display:none;">
-           <div class="form__success" style="text-align:center;">
-            <h4><strong>Fantastic! We'll be in touch.</strong></h4>
-            <h6>Be sure to explore the beta! <br><br> If you have any feedback, find bugs, or have an idea for a new feature, let us know at firstjobfinance@gmail.com! </h6>
-           </div>
+    {{!--        <div class="form__success" style="text-align:center;">
+            <h3><strong>Well done! That's some solid adulting right there.</strong></h3>
+            <h4>Keep scrolling to learn more, or check out the app demo. We'll be in touch!</h4>
+           </div> --}}
+           {{!-- <button class="button__download"> --}}
+              <a href="assets/Ultimate_Essential_Docs_Checklist.pdf" class="button__download"  download> DOWNLOAD
+                {{fa-icon "download"}}
+              </a>
+         {{!--  </button> --}}
        </span>
 
       {{!-- EMAIL SIGN UP FORM --}}
        <form data-id="embedded_signup:form" class="ctct-custom-form Form" name="embedded_signup" method="POST" action="https://visitor2.constantcontact.com/api/signup">
-
-              <h4>
-                <strong>Want some support with personal finance and "adulting" in general?</strong>
-              </h4>
 
            <!-- The following code must be included to ensure your sign-up form works properly. -->
            <input data-id="ca:input" type="hidden" name="ca" value="a33eedf2-023b-4cfd-8b1d-a7cea142e493">
@@ -27,7 +28,7 @@
 
           <!-- Email Input -->
           <p data-id="Email Address:p" >
-            <input data-id="Email Address:input" type="text" name="email" placeholder="e.g. bernie@madoff.com" value="" maxlength="80">
+            <input data-id="Email Address:input" type="text" name="email" placeholder="Enter your email address" value="" maxlength="80">
              {{!-- <label data-id="Email Address:label" data-name="email" class="ctct-form-required">
               Email Address
             </label> --}}
@@ -36,11 +37,11 @@
           <!-- Submit -->
           <div class="form__submit">
             <button class="button__submit" type="submit" class="Button ctct-button Button--block Button-secondary" data-enabled="enabled">
-              <h6>Join the FJF community - No strings attached</h6>
+              Get your FREE checklist
             </button>
             <div>
               <p class="ctct-form-footer form__footer">
-                No spam, no worries.
+                 <strong>No spam, no worries. Unsubscribe whenever.</strong>
               </p>
             </div>
         </div>

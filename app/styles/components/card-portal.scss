@@ -4,6 +4,14 @@ $card-max-width: 350px;
 $card-height: 160px;
 $card-padding-vertical: 10px;
 
+
+.portal__container{
+  @extend .card__container;
+  min-height:100vh;
+}
+
+
+
 .portal{
   padding:$card-padding-vertical 15px;
   margin:auto;
@@ -79,7 +87,7 @@ $card-padding-vertical: 10px;
   @include card-text;
   color:$dark-gray;
   font-weight:300;
-  padding-top:20px;
+  padding-top:10px;
 }
 
 .portal__link{
@@ -176,3 +184,29 @@ $card-padding-vertical: 10px;
     }
   }
 }
+
+//=================================
+//Separator, defaults
+//=================================
+
+
+.portal__separator{
+  h4{
+    color:$dark-gray;
+    display:block;
+    width:100%;
+    text-align:center;
+    font-size:14px;
+  }
+}
+
+.portal__defaults{
+  padding-bottom:5vh;
+}
+
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-<div class="col-md-4 col-sm-6 col-xs-12 col-centered portal">
+<div class="col-md-4 col-sm-6 col-xs-12 portal">
 
   <a href={{portal.link}} target="_blank" class="portal__link"></a>
 
@@ -9,7 +9,12 @@
           {{portal.name}}
         </h6>
         <h6 class="portal__lastVisited">
-          Last visited <strong>{{moment-from-now portal.lastVisited}}</strong>
+          {{#if portal.lastVisited}}
+            Last visited <strong>{{moment-from-now portal.lastVisited}}</strong>
+          {{else}}
+            {{portal.portalInfo}}
+          {{/if}}
+
         </h6>
 
         <button {{action "deletePortal"}} class="portal__button--delete">

@@ -1,30 +1,91 @@
-<div class="home">
-  <div id="home-container">
-    <div id="home-banner" class="row">
-      {{home-nav}}
+<div id="landing">
 
-        <div class="banner__overlay">
-          <div class="banner__content">
+  {{home-nav}}
 
-            <div class="banner__headline">
-              <h5>
-                Stress less about your personal finances
-              </h5>
-              <p>
-                First Job Finance helps you get better at adulting. Through simple tools, checklists, and support from a CERTIFIED FINANCIAL PLANNER&trade;, you'll feel more in control of your personal finances.
-              </p>
-            </div>
+  {{!--=================== Top banner ========================--}}
+  <div id="landing-banner" class="row">
+    <div class="landing__banner__inner-cont">
 
-            <div id="home-form" class="col-12">
-              {{form-email}}
-            </div>
+      <div class="col-md-8 landing__banner__text">
+        <h3>Take on the real world with confidence</h3>
+        <h6>First Job Finance helps you <strong>get better at adulting.</strong> Through simple tools, checklists, and support from a CERTIFIED FINANCIAL PLANNER™, you'll be more in control of your personal finances.</h6>
+      </div>
 
-          </div> {{!-- banner content --}}
-        </div> {{!-- banner overlay --}}
+      <div class="col-md-4">
+        <div class="landing__doc-preview"></div>
+        <div id="home-form">
+            {{form-email}}
+        </div>
+      </div>
 
-    </div> {{!-- home banner --}}
-  </div> {{!-- home-container --}}
-</div>
+    </div> {{!-- inner cont --}}
+  </div> {{!-- landing banner --}}
 
 
+  {{!--=================== Every step of the way ========================--}}
+  <div id="landing-every-step" class="row landing__section landing__section--blue">
+    <div class="section__inner-cont container">
+     <h1> Be prepared, every step of the way. </h1>
+      <div class="row">
+        <div class="landing2__stages"> <p> College </p></div>
+        <div class="landing2__stages"> <p> Graduation </p></div>
+        <div class="landing2__stages"> <p> Post grad, Pre Work </p></div>
+        <div class="landing2__stages"> <p> First Week on the Job  </p></div>
+        <div class="landing2__stages"> <p> <strong>Beyond</strong> </p></div>
+      </div>
+    </div> {{!-- inner cont --}}
+  </div>
+
+  {{!--=================== Features Headline ========================--}}
+  <div id="landing-features-headline" class="row landing__section">
+    <div class="section__inner-cont container">
+      <h1>Do more, stress less</h1>
+      <p></p>
+
+
+    </div>
+  </div>
+
+  {{!--=================== Feature - Portal ========================--}}
+  <div id="landing-feature-portal" class="row landing__section landing__section--feature">
+    <div class="section__inner-cont container">
+
+      <div class="col-md-6">
+        <video class="feature__video" autoplay loop>
+          <source src="assets/videos/fjf-portals-demo.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="col-md-6 feature__desc">
+        <h3>Keep all your important sites in one place.</h3>
+      </div>
+
+    </div> {{!-- inner cont --}}
+  </div> {{!-- landing-feature-portal --}}
+
+  {{!--=================== Feature - Portal ========================--}}
+  <div id="landing-feature-portal" class="row landing__section landing__section--blue landing__section--feature">
+    <div class="section__inner-cont container">
+
+      <div class="col-md-6">
+        <video class="feature__video" autoplay loop>
+          <source src="assets/videos/fjf-portals-demo.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="col-md-6">
+      </div>
+
+    </div> {{!-- inner cont --}}
+  </div> {{!-- landing-feature-portal --}}
+
+
+
+
+
+
+
+</div> {{!-- landing --}}
 

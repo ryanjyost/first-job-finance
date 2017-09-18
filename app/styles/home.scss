@@ -2,287 +2,447 @@
 $overlay: rgba(0,0,0,0.45);
 
 
-@media(min-width: 991px){
-  #home-container{
-     background: $light-gray; /* For browsers that do not support gradients */
-    // background: -webkit-linear-gradient(top, $blue-gray , $light-gray) !important; /* For Safari 5.1 to 6.0 */
-    // background: -o-linear-gradient(bottom, $blue-gray, $light-gray) !important; /* For Opera 11.1 to 12.0 */
-    // background: -moz-linear-gradient(bottom, $blue-gray, $light-gray) !important; /* For Firefox 3.6 to 15 */
-    // background: linear-gradient(to bottom, $blue-gray , $light-gray) !important; /* Standard syntax (must be last) */
-    height:101vh;
+#landing{
 
-  }
+//==========================================
+// Initial Landing Section
+//==========================================
+
+#landing-banner{
+  background: $light-gray !important; /* For browsers that do not support gradients */
+  //background: -webkit-linear-gradient($light-gray, $medium-blue) !important;  /* For Safari 5.1 to 6.0 */
+  //background: -o-linear-gradient($light-gray, $medium-blue) !important; /* For Opera 11.1 to 12.0 */
+  //background: -moz-linear-gradient($light-gray, $medium-blue) !important; /* For Firefox 3.6 to 15 */
+  //background: linear-gradient($light-gray, $medium-blue) !important; /* Standard syntax */
+  padding-bottom:30px;
 }
 
-.home{
-  min-height:100vh !important;
+nav{
+  display:none;
 }
 
-#home-container{
-  background-color: $white;
-  padding:0px;
-
-  nav{
-     background: transparent !important;
-    border-bottom: 0.01em solid $light-blue;
-    height:60px;
-    color:$white;
-
-    .navbar-brand{
-      background-image:url("images/fjf-logo-wide.png") !important;
-      background-size:contain;
-      background-position:center;
-      background-repeat: no-repeat;
-      margin: 10px 0px 0px 10px !important;
-      width:160px;
-      height:40px;
-    }
-
-
-    .nav-link{
-      color:$white !important
-    }
-
-    .navbar-toggle{
-      border:0px solid $white;
-      margin:5px 20px 0px 0px;
-
-      .icon-bar{
-        background-color: $white;
-        height:0.1em;
-        margin-top:6px;
-      }
-    }
-
-    ul{
-      float:right;
-    }
-
-    li{
-      width:100%;
-      text-align:center;
-      padding-right:30px;
-    }
-  }
-
-
-  #home-banner{
-    overflow: hidden;
-    background-image: url("images/home-main.jpeg");
-    background-size: cover;
-    background-position: right;
-    background-repeat: none;
-    height: 100vh;
-
-    .banner__overlay{
-      background:$overlay;
-      padding:50px 0px 20px 0px;
-      height:100%;
-    }
-
-    .banner__content{
-      z-index:1000;
-      display:block;
-      width:80%;
-      text-align:left;
-      max-width:600px;
-      margin-left:10%;
-
-
-      h5{
-        // @include home-text;
-        color:$white;
-        margin-top:10vh;
-        font-weight:400;
-        font-size:30px;
-        line-height: 35px;
-        padding-top:10px;
-        font-family:$playfair;
-      }
-    }
-
-    .banner__headline{
-      display:none;
-    }
-  }
-
-  #demo-btn{
-    text-align:center;
-  }
-
-
-  h1{
-
-  }
+.landing__banner__inner-cont{
+  padding:30px 30px 0px 30px;
+  max-width:1000px;
+  display:block;
+  margin:auto;
 
   h3{
-    color:$medium-black;
-    font-weight:400 !important;
-    letter-spacing:0.03em;
-  }
-
-  h4{
-    color:$light-blue;
-    line-height:1.3;
-    font-size:20px;
     text-align:center;
-  }
-
-  h5{
-    margin-top:20px;
-  }
-
-  p{
-    color:$light-gray;
-    // @include home-text;
-    line-height:1.5;
-    padding:0px 0px 0px 3px;
-    margin-top:10px;
-    font-weight:100 !important;
-
-  }
-
-  hr{
-    margin:10px 0px;
-  }
-
-  video{
+    font-family:$roboto;
+    font-weight:900;
+    color:$dark-black;
     width:100%;
-    max-width:600px;
-    display:block;
+    font-size:30px;
     margin:auto;
-    margin-top:40px;
-    border:5px solid $white;
-    border-radius:5px;
-    -webkit-box-shadow: 0px 8px 38px -3px rgba(164,164,164,1);
--moz-box-shadow: 0px 8px 38px -3px rgba(164,164,164,1);
-box-shadow: 0px 8px 38px -3px rgba(164,164,164,1);
+    padding-bottom:15px;
+  }
+
+  h6{
+    display:block;
+    text-align:center !important;
+    font-size:14px;
+    width:100% !important;
+    font-weight:400 !important;
+    line-height:1.5;
+    padding-bottom:15px;
+    max-width:600px;
+    margin:auto;
+  }
+
+  .landing__doc-preview{
+    background-image: url("images/ultimate-docs-preview.png");
+    height:250px;
+    background-size:contain;
+    background-position:center;
+    background-repeat: no-repeat;
   }
 }
 
-#home-form{
-  padding-top:10vh;
-  margin-top: 30px;
+
+//==============
+// Email Opt In on Landing Page
+#home-form {
+  padding-top:3vh;
+  margin-top: 10px;
   width:100%;
 
   input{
+    text-align:center;
     display:block;
     margin:auto;
+    margin-bottom:8px;
     width:100%;
-    border:$light-gray;
+    border:1px solid $medium-gray;
     height:50px;
     padding: 8px 20px;
     border-radius: 3px;
     max-width:400px;
     color:$black;
+    outline:none;
+     -webkit-box-shadow: 0px 4px 6px 0px rgba(200,200,200,1);
+    -moz-box-shadow: 0px 4px 6px 0px rgba(200,200,200,1);
+    box-shadow: 0px 4px 6px 0px rgba(200,200,200,1);
 
-    &:active{
-      outline:none;
-     -webkit-box-shadow: 0px 6px 43px 0px rgba(242,242,242,1);
-    -moz-box-shadow: 0px 6px 43px 0px rgba(242,242,242,1);
-    box-shadow: 0px 6px 43px 0px rgba(242,242,242,1);
-     }
    &:focus {
     outline:none;
-     -webkit-box-shadow: 0px 6px 43px 0px rgba(242,242,242,1);
-    -moz-box-shadow: 0px 6px 43px 0px rgba(242,242,242,1);
-    box-shadow: 0px 6px 43px 0px rgba(242,242,242,1);
+     -webkit-box-shadow: 0px 4px 13px 0px rgba(160,160,160,1);
+    -moz-box-shadow: 0px 4px 13px 0px rgba(160,160,160,1);
+    box-shadow: 0px 4px 13px 0px rgba(160,160,160,1);
    }
   }
-}
 
-#home__content{
-  padding:30px 0px;
-}
+  button{
+    max-width:400px;
 
+    a{
+      color:$white;
+      &:hover{text-decoration:none;}
+      &:focus{text-decoration:none;}
 
-.home__textarea{
-  display:block;
-  margin:auto;
-  font-weight:400;
-  font-size:18px;
-  display:block;
-  width:100%;
-  float:left;
-  border:1px solid $gray;
-  border-radius:5px;
-  padding:20px;
-  margin-bottom:10px;
+    }
+  }
 
-  &:focus, &:active{
-    outline: $white;
-    -webkit-box-shadow: 0px 8px 38px -6px rgba(252,252,252,1);
--moz-box-shadow: 0px 8px 38px -6px rgba(252,252,252,1);
-box-shadow: 0px 8px 38px -6px rgba(252,252,252,1);
+  @media(min-width:768px){
+    button{
+      width:100%;
+      max-width:400px;
+    }
   }
 }
-
-.home__email-input{
-  @extend .home__textarea;
-}
-
-
-
 
 @media(min-width: 768px){
+    nav{
+      background: $light-gray !important;
+      opacity:0.9;
+      height:70px;
+      padding:12px 2%;
+      display:block !important;
 
-#home-banner{
+      .navbar-header{
+        width:100%;
+      }
 
-  .banner__overlay{
+      .navbar-brand{
+        background-image:url("images/fjf-logo-wide.png") !important;
+        background-size:contain;
+        background-position:center;
+        background-repeat: no-repeat;
+        margin: 0px 0px 0px 10px !important;
+        width:160px;
+        height:40px;
+      }
 
-  }
+      .nav-link{
+        color:$black !important;
+        float:right;
+      }
 
-  .banner__headline{
-    display:block !important;
-    padding-bottom:10px;
-  }
+      .navbar-toggle{
+        border:0px solid $white;
+        margin:5px 20px 0px 0px;
 
-  nav{
+        .icon-bar{
+          background-color: $white;
+          height:0.1em;
+          margin-top:6px;
+        }
+      }
 
+      ul{
+        float:right;
+      }
 
-    .nav-link{
-
-    }
-
-    .navbar-brand{
-      background-image:url("images/fjf-logo-wide.png") !important;
-      background-size:contain;
-      background-position:center;
-      background-repeat: none;
-      margin: 10px 0px 0px 10px !important;
-    }
+      li{
+        width:100%;
+        text-align:center;
+        padding-right:30px;
+      }
 
     #demo-btn{
-      list-style: none;
-      line-height: 60px;
+      line-height: 35px;
+      margin-top:5px;
       padding: 0px 20px 0px 25px;
-      font-family: "Roboto", sans-serif;
-      font-weight: 700;
+      font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      border-left: 1px solid #fff;
+      float:right;
+       @include btn-basic;
+
+       &:hover{
+        background-color: $blue-btn-hover !important;
+      }
     }
   }
 
-  #home-banner{
-    background-image:url("images/home-main.jpeg");
-    background-size:100% auto;
-    background-position:center;
-    background-repeat: none;
-    height:100vh;
+  .landing__banner__inner-cont{
+    padding:100px 30px 0px 30px !important;
+
+    h3{
+      font-size:28px !important;
+      width:70%;
+    }
+
+    h6{
+       padding-bottom:25px;
+    }
+
+    .landing__doc-preview{
+      height:350px;
+    }
+  }
+}
+
+@media(min-width: 991px){
+  .landing__banner__inner-cont{
+    .landing__banner__text{
+      padding:80px 50px 0px 50px;
+
+      h3{
+        text-align:left !important;
+        font-size:45px !important;
+        width:100% !important;
+        padding-bottom:20px !important;
+        line-height:1.3;
+      }
+
+      h6{
+        display:block;
+        text-align:left !important;
+        font-size:20px !important;
+        line-height:1.5;
+        padding-bottom:5px;
+      }
+    }
   }
 
-  #home-form{
-    padding-top:20px !important;
-    background-color: rgba(255,255,255,0.2);
-    padding: 10px 5%;
-    border-radius: 3px;
-    border:2px solid $dark-gray;
-  }
 
-  h1{
+
+
+}
+
+
+//==========================================
+// Supporting Landing Sections
+//==========================================
+
+$section-max-width: 1100px;
+
+.landing__section{
+  background-color: $light-blue;
+
+  .section__inner-cont{
+    width:90%;
+    max-width:$section-max-width;
+    @include block-center;
+    padding:30px 0px;
+
+    h1{
+      @include text-center;
+      font-weight:900;
+      line-height:1.2;
+      font-size:30px;
+      color:$medium-black;
+    }
+
+    h3{
+      color:$dark-black;
+      font-size:22px;
+    }
+
+    p{
+      font-size:20px;
+      font-weight: 900;
+      width:100%;
+      display:block;
+      text-align:center;
+    }
+
+  }
+}
+
+.landing__section--blue{
+  color:$white !important;
+  background-color:$medium-blue;
+
+  h1, p{
     color:$white !important;
-    font-size:40px;
+  }
+
+  video{
+    border-color: $white !important;
   }
 }
+
+
+//==========================================
+// Every step of the way
+
+#landing-every-step{
+  background-color: $medium-blue;
+  background-size:cover;
+  background-position:top;
+  background-repeat: no-repeat;
+  background-image: url("images/graduation.jpeg");
 }
+
+
+
+//==========================================
+// Landing  - App features
+
+.landing__section--feature{
+  .section__inner-cont{
+    border-bottom: 1px solid $gray;
+    padding:50px 0px 50px 0px;
+  }
+}
+
+
+#landing-features-headline{
+  h1{
+    color:$medium-blue;
+    font-size:30px;
+  }
+
+  p{
+    color:$medium-black;
+  }
+}
+
+.feature__video{
+  width:100%;
+  border:3px solid $gray;
+  border-radius: 3px;
+  max-width:600px;
+  margin:auto;
+  display:block;
+}
+
+.feature__desc{
+  padding:20px 6%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+} //end landing
+
+
+
+
+
+
+
+
+//   video{
+//     width:100%;
+//     max-width:600px;
+//     display:block;
+//     margin:auto;
+//     margin-top:40px;
+//     border:5px solid $white;
+//     border-radius:5px;
+//     -webkit-box-shadow: 0px 8px 38px -3px rgba(164,164,164,1);
+// -moz-box-shadow: 0px 8px 38px -3px rgba(164,164,164,1);
+// box-shadow: 0px 8px 38px -3px rgba(164,164,164,1);
+//   }
+
+// #home-form{
+//   padding-top:10vh;
+//   margin-top: 30px;
+//   width:100%;
+
+//   input{
+//     display:block;
+//     margin:auto;
+//     width:100%;
+//     border:$light-gray;
+//     height:50px;
+//     padding: 8px 20px;
+//     border-radius: 3px;
+//     max-width:400px;
+//     color:$black;
+
+//     &:active{
+//       outline:none;
+//      -webkit-box-shadow: 0px 6px 43px 0px rgba(242,242,242,1);
+//     -moz-box-shadow: 0px 6px 43px 0px rgba(242,242,242,1);
+//     box-shadow: 0px 6px 43px 0px rgba(242,242,242,1);
+//      }
+//    &:focus {
+//     outline:none;
+//      -webkit-box-shadow: 0px 6px 43px 0px rgba(242,242,242,1);
+//     -moz-box-shadow: 0px 6px 43px 0px rgba(242,242,242,1);
+//     box-shadow: 0px 6px 43px 0px rgba(242,242,242,1);
+//    }
+//   }
+// }
+
+// #home__content{
+//   padding:30px 0px;
+// }
+
+
+// .home__textarea{
+//   display:block;
+//   margin:auto;
+//   font-weight:400;
+//   font-size:18px;
+//   display:block;
+//   width:100%;
+//   float:left;
+//   border:1px solid $gray;
+//   border-radius:5px;
+//   padding:20px;
+//   margin-bottom:10px;
+
+//   &:focus, &:active{
+//     outline: $white;
+//     -webkit-box-shadow: 0px 8px 38px -6px rgba(252,252,252,1);
+// -moz-box-shadow: 0px 8px 38px -6px rgba(252,252,252,1);
+// box-shadow: 0px 8px 38px -6px rgba(252,252,252,1);
+//   }
+// }
+
+// .home__email-input{
+//   @extend .home__textarea;
+// }
+

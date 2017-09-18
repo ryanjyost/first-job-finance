@@ -17,6 +17,7 @@ $light-blue: #f5f8fa;
 .light-blue{background-color:$light-blue !important}
 
 $blue: #00c0f3;
+$blue-btn-hover: #00B8EB;
 $medium-blue: #8BDAF0;
 $blue-gray: #486373;
 $blue-grayer: #516b7a;
@@ -96,6 +97,12 @@ body{
   background-color:$white;
   min-height:99vh;
 }
+
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 
 
 @media(min-width: 991px) {

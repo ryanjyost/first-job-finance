@@ -1,14 +1,31 @@
 {{main-nav}}
-<div class="container container--main card-container">
+<div class="container container--main portal__container">
   <div class="col-md-12 block--scrollable block--max-width">
     {{card-container
-      cards=model
+      cards=model.userPortals
       cardComponentType="portal"
       addCard=(route-action 'addPortal')
     }}
+
+    <br>
+    <div class="portal__separator row">
+      <h4>&uarr;</h4>
+      <h4>add your portals, websites, and online bill pay accounts</h4>
+      <hr>
+      <h4>check in on some recommended sites</h4>
+      <h4>&darr;</h4>
+    </div>
+
+    <div class="portal__defaults">
+      {{card-container
+        cards=model.defaultWebsites
+        cardComponentType="portal"
+      }}
+    </div>
+
+
   </div>
 </div>
 
-{{log model}}
 
 

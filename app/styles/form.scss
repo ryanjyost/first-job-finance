@@ -31,6 +31,15 @@ $button-max-width: 400px;
   border-radius:3px;
 }
 
+@mixin btn-basic{
+  background-color:$blue;
+  color:$white !important;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 6px 16px -4px rgba(164,164,164,1);
+  -moz-box-shadow: 0px 6px 16px -4px rgba(164,164,164,1);
+  box-shadow: 0px 6px 16px -4px rgba(164,164,164,1);
+}
+
 input[type=checkbox] {
   -webkit-appearance: none;
   background-color: transparent;
@@ -67,17 +76,27 @@ input[type=checkbox] {
 
 
 .button__submit{
-  background-color:transparent;
-  color:$white;
-  border:3px solid $blue;
-  padding:5px 20px;
-  width:100%;
-  max-width:$button-max-width;
-  transition:background-color 0.5s ease;
+  @include text-center;
+  @include btn-basic;
+  border:none;
 
   &:hover{
-    background-color: $blue;
+    background-color: $blue-btn-hover;
   }
+
+}
+
+.button__download{
+  @extend .button__submit;
+  font-weight:900;
+  max-width:400px;
+    &:hover{
+      text-decoration: none;
+    }
+
+    &:focus{
+      text-decoration: none;
+    }
 
 }
 
@@ -85,7 +104,7 @@ input[type=checkbox] {
   font-size:10px;
   font-weight:100;
   font-style: italic;
-  color:$gray;
+  color:$light-black;
   text-align:center;
   display:inline-block;
   width:100%;

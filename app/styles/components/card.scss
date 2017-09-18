@@ -14,11 +14,13 @@ $card-img-width: 400px;
   margin:auto;
 }
 
-.card-container{
-  padding:5vh 1%;
+.card__container {
+  padding:5vh 0% 0px 0%;
   background-color: $light-blue;
   width:100%;
-  min-height:90vh;
+  display:block;
+  position:relative;
+  margin:auto;
 
   @media(max-width: 768px){
     .button-group{
@@ -99,15 +101,15 @@ $card-img-width: 400px;
   .card__image--cont{
   }
 
-  .card__single{
-  max-width: 1000px;
-  margin:auto;
-  width:100%;
+  // .card__single{
+  // max-width: 1000px;
+  // margin:auto;
+  // width:100%;
 
-    img{
+  //   img{
 
-    }
-  }
+  //   }
+  // }
 }
 
 

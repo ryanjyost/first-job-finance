@@ -1,8 +1,8 @@
-<div id="calculator_container">
+<div id="calculator__container">
 <!--==============
   INPUT
 ===============-->
-<div class="col-sm-5 calculator_input">
+<div class="col-sm-5 calculator__input">
 
   <!-- Salary or Hourly -->
   <section>
@@ -113,102 +113,103 @@
 <!--==============
   OUTPUT
  ===============-->
-<div class="col-sm-7 calculator_output">
+<div class="col-sm-7 calculator__output">
+  <div class="calculator__inner">
 
-    <!-- Pick Time Period -->
-    <div class="row">
-      {{button-group
-        currentSelected='year'
-        updateSelect=(action 'updateTimeframe')
-        buttons=selectTimeframeButtons
-      }}
-    </div>
-
-
-    <!-- Income Per Period -->
-    <div class="row">
-      <h1>{{format-number (div incomePerYear timeframeDivisor) "currency"}}</h1><br>
-       <h4 class="text-align--center">
-          is how much you earn per
-        {{#if (eq timeframe "year")}}
-          year
-        {{else if (eq timeframe "month")}}
-          month
-        {{else}}
-          paycheck
-        {{/if}}
-       </h4>
-    </div>
-
-    <!-- Retirement Savings  -->
-    <div class="row">
-      <div class="col col-xs-5">
-        <h1>{{format-number (div employerPlanDeferralPerYear timeframeDivisor) "currency"}}</h1>
-        <hr>
-        <h1 class="text--bold-gray">{{format-number  model.employerPlanDeferralRate "percent"}}</h1>
+      <!-- Pick Time Period -->
+      <div class="row">
+        {{button-group
+          currentSelected='year'
+          updateSelect=(action 'updateTimeframe')
+          buttons=selectTimeframeButtons
+        }}
       </div>
-      <div class="col col-xs-7">
-        <h4>of that will be saved in your company's retirement plan</h4>
+
+
+      <!-- Income Per Period -->
+      <div class="row">
+        <h1>{{format-number (div incomePerYear timeframeDivisor) "currency"}}</h1><br>
+         <h4 class="text-align--center">
+            is how much you earn per
+          {{#if (eq timeframe "year")}}
+            year
+          {{else if (eq timeframe "month")}}
+            month
+          {{else}}
+            paycheck
+          {{/if}}
+         </h4>
       </div>
-    </div>
 
-    <!-- Federal Tax Withholding  -->
-    <div class="row">
-      <div class="col col-xs-5">
-        <h1>{{format-number (div fedTaxWhPerYear timeframeDivisor) "currency"}}</h1>
-        <hr>
-        <h1 class="text--bold-gray">{{format-number  (div fedTaxWhPerYear incomePerYear) "percent"}}</h1>
+      <!-- Retirement Savings  -->
+      <div class="row">
+        <div class="col col-xs-5">
+          <h1>{{format-number (div employerPlanDeferralPerYear timeframeDivisor) "currency"}}</h1>
+          <hr>
+          <h1 class="text--bold-gray">{{format-number  model.employerPlanDeferralRate "percent"}}</h1>
+        </div>
+        <div class="col col-xs-7">
+          <h4>of that will be saved in your company's retirement plan</h4>
+        </div>
       </div>
-      <div class="col col-xs-7">
-        <h4>will be withheld to pay federal income tax</h4>
+
+      <!-- Federal Tax Withholding  -->
+      <div class="row">
+        <div class="col col-xs-5">
+          <h1>{{format-number (div fedTaxWhPerYear timeframeDivisor) "currency"}}</h1>
+          <hr>
+          <h1 class="text--bold-gray">{{format-number  (div fedTaxWhPerYear incomePerYear) "percent"}}</h1>
+        </div>
+        <div class="col col-xs-7">
+          <h4>will be withheld to pay federal income tax</h4>
+        </div>
       </div>
-    </div>
 
-    <!-- State Tax Withholding  -->
-    <div class="row">
-      <div class="col col-xs-5">
-        <h1>{{format-number (div stateIncomeTaxPerYear timeframeDivisor) "currency"}}</h1>
-        <hr>
-        <h1 class="text--bold-gray">{{format-number (div stateIncomeTaxPerYear incomePerYear) "percent"}}</h1>
+      <!-- State Tax Withholding  -->
+      <div class="row">
+        <div class="col col-xs-5">
+          <h1>{{format-number (div stateIncomeTaxPerYear timeframeDivisor) "currency"}}</h1>
+          <hr>
+          <h1 class="text--bold-gray">{{format-number (div stateIncomeTaxPerYear incomePerYear) "percent"}}</h1>
+        </div>
+        <div class="col col-xs-7">
+          <h4>will be withheld to pay {{model.stateName}} state income tax. <i>This is a rough, conservative estimate</i></h4>
+        </div>
       </div>
-      <div class="col col-xs-7">
-        <h4>will be withheld to pay {{model.stateName}} state income tax. <i>This is a rough, conservative estimate</i></h4>
+
+      <!-- FICA Tax  -->
+      <div class="row">
+        <div class="col col-xs-5">
+          <h1>{{format-number (div ficaTaxPerYear timeframeDivisor) "currency"}}</h1>
+          <hr>
+          <h1 class="text--bold-gray">{{format-number (div ficaTaxPerYear incomePerYear) "percent"}}</h1>
+        </div>
+        <div class="col col-xs-7">
+          <h4>will be withheld to pay social security and medicare (FICA) tax</h4>
+        </div>
       </div>
-    </div>
 
-    <!-- FICA Tax  -->
-    <div class="row">
-      <div class="col col-xs-5">
-        <h1>{{format-number (div ficaTaxPerYear timeframeDivisor) "currency"}}</h1>
-        <hr>
-        <h1 class="text--bold-gray">{{format-number (div ficaTaxPerYear incomePerYear) "percent"}}</h1>
+      <div class="row">
+        <h4 class="bold text-align--center">
+          Your take-home pay per
+            <span class="text--blue-gray">
+              {{#if (eq timeframe "year")}}
+                year
+              {{else if (eq timeframe "month")}}
+                month
+              {{else}}
+                {{model.payPeriod}} paycheck
+              {{/if}}
+            </span>
+          will be <i>approximately</i>
+
+        </h4>
+        <h1>{{format-number (div takeHomePayPerYear timeframeDivisor) "currency"}}</h1>
       </div>
-      <div class="col col-xs-7">
-        <h4>will be withheld to pay social security and medicare (FICA) tax</h4>
-      </div>
-    </div>
 
-    <div class="row">
-      <h4 class="bold text-align--center">
-        Your take-home pay per
-          <span class="text--blue-gray">
-            {{#if (eq timeframe "year")}}
-              year
-            {{else if (eq timeframe "month")}}
-              month
-            {{else}}
-              {{model.payPeriod}} paycheck
-            {{/if}}
-          </span>
-        will be <i>approximately</i>
+      <hr class="line--thick-blue">
 
-      </h4>
-      <h1>{{format-number (div takeHomePayPerYear timeframeDivisor) "currency"}}</h1>
-    </div>
-
-    <hr class="line--thick-blue">
-
-
+    </div> <!-- Calculator Output Inner -->
   </div> <!-- Calculator Output -->
 </div> <!-- Calculator Container -->
 
