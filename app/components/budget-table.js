@@ -14,7 +14,7 @@ export default Component.extend({
     {id:"exp_5", expenseType:"fixed", name: 'Phone', amount: 30},
     {id:"exp_6", expenseType:"fixed", name: 'Student Loan Payment', amount: 190},
     {id:"exp_7", expenseType:"fixed", name: 'Health Insurance Premium', amount: 0},
-    {id:"exp_8", expenseType:"fixed", name: 'Cable Payment & Insurance', amount: 75},
+    {id:"exp_8", expenseType:"fixed", name: 'Car Payment & Insurance', amount: 75},
     {id:"exp_9", expenseType:"fixed", name: 'Renter\'s Insurance', amount: 16},
     {id:"exp_10", expenseType:"fixed", name: 'Parking/Train', amount: 100},
     {id:"exp_11", expenseType:"fixed", name: 'Identity Theft Protection', amount: 12},

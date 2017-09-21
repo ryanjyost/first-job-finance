@@ -13,51 +13,61 @@ export default Ember.Route.extend({
   },
 
   model(){
+    const defaultPortal =
+      {
+        "id":"portal_0",
+        "name":"Visit your most important personal finance sites",
+        "lastVisited": Date.now(),
+        "link":"https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      };
+
     const portals = this.get('repo').findAll('portals');
 
-    const portalsSortedByID = portals.sort((a,b) => {
-      return a.id.slice(7) > b.id.slice(7) ? 1 : -1;
-    });
+    if(portals.length < 1){
+      portals.push(defaultPortal);
+    }
+
+
 
     const defaultWebsites = [
       {
-        "id":"portal_0",
+        "id":"0",
         "name":"First Job Finance Blog",
         "portalInfo": "Not so shameless plug for our blog." ,
         "link":"https://medium.com/first-job-finance"
       },
       {
-        "id":"portal_1",
+        "id":"1",
         "name":"Free Annual Credit Reports",
         "portalInfo": "You get one free report from Equifax, Experian and TransUnion every year." ,
         "link":"https://www.annualcreditreport.com/index.action"
       },
       {
-        "id":"portal_2",
+        "id":"2",
         "name":"IRS.gov",
         "portalInfo": "Everything about taxes you could possibly need." ,
         "link":"https://www.irs.gov/"
       },
       {
-        "id":"portal_3",
+        "id":"3",
         "name":"NerdWallet",
         "portalInfo": "Articles and information about personal finance." ,
         "link":"https://www.nerdwallet.com/"
       },
       {
-        "id":"portal_4",
+        "id":"4",
         "name":"Bankrate",
         "portalInfo": "Articles and information about personal finance." ,
         "link":"http://www.bankrate.com/"
       },
       {
-        "id":"portal_5",
+        "id":"5",
         "name":"DMV.org",
         "portalInfo": "All the car information." ,
         "link":"http://www.dmv.org/"
       },
       {
-        "id":"portal_6",
+        "id":"6",
         "name":"The Balance",
         "portalInfo": "Articles and information about personal finance." ,
         "link":"https://www.thebalance.com/"
@@ -65,7 +75,7 @@ export default Ember.Route.extend({
     ];
 
     return Ember.RSVP.hash({
-      userPortals: portalsSortedByID,
+      userPortals: portals,
       defaultWebsites
     });
 

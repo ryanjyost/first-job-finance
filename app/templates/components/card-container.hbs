@@ -6,6 +6,24 @@
     }}
   {{/if}}
 
+    {{#if (eq cardComponentType "portal")}}
+      {{#if addCard}}
+        {{!-- Add a portal --}}
+        <div class="col-md-4 col-sm-6 col-xs-12 col-centered portal portal--add">
+            <div class="portal__inner-cont">
+              <input type="text" id="inputPortalName" name="portalName" placeholder="Enter a site name here" required/>
+              <input type="text" id="inputPortalLink" name="portalLink" placeholder="http://examplesite.com" required/>
+
+              <button class="portal__button--add" {{action handleAddPortal}}>
+                {{fa-icon "plus"}}
+              </button>
+
+            </div>
+        </div>
+      {{/if}}
+    {{/if}}
+
+
 
     {{#each filteredCardList as |card|}}
       {{#if (eq cardComponentType "portal")}}
@@ -25,21 +43,5 @@
     {{/each}}
 
 
-    {{#if (eq cardComponentType "portal")}}
-      {{#if addCard}}
-        {{!-- Add a portal --}}
-        <div class="col-md-4 col-sm-6 col-xs-12 col-centered portal portal--add">
-            <div class="portal__inner-cont">
-              <input type="text" id="inputPortalName" name="portalName" placeholder="e.g., Chase Checking" required/>
-              <input type="text" id="inputPortalLink" name="portalLink" placeholder="paste the website link here" required/>
-
-              <button class="portal__button--add" {{action handleAddPortal}}>
-                {{fa-icon "plus"}}
-              </button>
-
-            </div>
-        </div>
-      {{/if}}
-    {{/if}}
 
 </div>

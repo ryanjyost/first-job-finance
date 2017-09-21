@@ -1,12 +1,12 @@
 [
   {
     "id": 1,
-    "title": "During college",
+    "title": "During school",
     "sections": [
       {
         "id": 1,
-        "title": "During college - The Big Picture",
-        "description": "Tackle these items before moving on to other checklists. By the way, you can find checklists for each item in this checklist. That's called checklist inception.",
+        "title": "During school - The Big Picture",
+        "description": "Tackle these items before moving on to 'Prep for Graduation'. By the way, you can find checklists for each item in this checklist. That's called checklist inception.",
         "items": [
           { "id": "m1s1_1",
             "title": "Open a checking account"
@@ -93,7 +93,7 @@
       },
       {
         "id": 5,
-        "title": "Make sure you have health insurance",
+        "title": "Get details on your health insurance",
         "description": "What do health insurance and Ron Burgandy have in common? They're both kind of a big deal.",
         "items": [
           { "id": "m1s5_1",
@@ -115,31 +115,56 @@
       },
       {
         "id": 6,
-        "title": "Important docs to have at the ready",
-        "description": "There's certain stuff you just have to have.",
+        "title": "Find and save these important docs",
+        "description": "There's certain stuff you just have to have. Scan and save electronic copies. Keep the originals in a safe place.",
         "items": [
           { "id": "m1s6_1",
-            "title": "Coming Soon!"
+            "title": "Birth Certificate"
           },
           { "id": "m1s6_2",
-            "title": "Coming Soon!"
+            "title": "Social Security Card"
           },
           { "id": "m1s6_3",
-            "title": "Coming Soon!"
+            "title": "Passport"
           },
           { "id": "m1s6_4",
-            "title": "Coming Soon!"
+            "title": "Driver's License"
           },
           { "id": "m1s6_5",
-            "title": "Coming Soon!"
+            "title": "Checking/Savings Account Statements"
+          },
+          { "id": "m1s6_6",
+            "title": "Credit Card Statements"
+          },
+          { "id": "m1s6_7",
+            "title": "Voter ID"
+          },
+          { "id": "m1s6_8",
+            "title": "Student Loan Information"
+          },
+          { "id": "m1s6_9",
+            "title": "Apartment Lease / Housing Agreement"
+          },
+          { "id": "m1s6_10",
+            "title": "Health Insurance ID"
+          },
+          { "id": "m1s6_10",
+            "title": "Car Registration & Insurance"
+          },
+          { "id": "m1s6_11",
+            "title": "High School Diploma"
+          },
+          { "id": "m1s6_12",
+            "title": "Form W-2 (if you're working while in school)"
           }
+
         ]
       }
     ]
   },
 
   { "id": 2,
-    "title": "Between college and job",
+    "title": "Prep for Graduation",
     "sections": [
        {
         "id": 1,
@@ -166,7 +191,63 @@
     ]
   },
 
-  { "id": 2,
+  { "id": 3,
+    "title": "Between school and work",
+    "sections": [
+       {
+        "id": 1,
+        "title": "Coming Soon!",
+        "description": "Have an idea for a checklist? Let me know!",
+        "items": [
+          { "id": "m2s1_1",
+            "title": "Coming Soon!"
+          },
+          { "id": "m2s1_2",
+            "title": "Coming Soon!"
+          },
+          { "id": "m2s1_3",
+            "title": "Coming Soon!"
+          },
+          { "id": "m2s1_4",
+            "title": "Coming Soon!"
+          },
+          { "id": "m2s1_5",
+            "title": "Coming Soon!"
+          }
+        ]
+      }
+    ]
+  },
+
+   { "id": 4,
+    "title": "First week as a working stiff",
+    "sections": [
+       {
+        "id": 1,
+        "title": "Coming Soon!",
+        "description": "Have an idea for a checklist? Let me know!",
+        "items": [
+          { "id": "m2s1_1",
+            "title": "Coming Soon!"
+          },
+          { "id": "m2s1_2",
+            "title": "Coming Soon!"
+          },
+          { "id": "m2s1_3",
+            "title": "Coming Soon!"
+          },
+          { "id": "m2s1_4",
+            "title": "Coming Soon!"
+          },
+          { "id": "m2s1_5",
+            "title": "Coming Soon!"
+          }
+        ]
+      }
+    ]
+  },
+
+  { "id": 5,
     "title": "First week as a working stiff",
     "sections": [
        {
